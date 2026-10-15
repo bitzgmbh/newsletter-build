@@ -7,7 +7,7 @@ I started it to prepare the AI Retreat in Bad Kohlgrub (16 to 18 October 2026), 
 ## How to read it
 
 - `log/` has one short entry per work session, named by date.
-- `decisions/` has one page per decision, with the options and my reasons. Open questions are in `decisions/README.qmd`: a table as the overview, and one section per question for notes.
+- `decisions/` has one page per decision, with the options and my reasons. Open questions are in `decisions/README.md`, generated from `decisions/README.qmd`: a table as the overview, and one section per question for notes.
 - `pipeline/map.qmd` shows the stages of the pipeline and where each one stands.
 - `skills/` will hold the agent skills as they get built.
 - The editions themselves live in a separate, private repository (decision 0005).

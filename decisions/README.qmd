@@ -1,10 +1,14 @@
 ---
 title: Decisions
 format:
+  gfm:
+    wrap: none
   html:
     toc: true
     embed-resources: true
 ---
+
+<!-- Generated from README.qmd with quarto render. Edit README.qmd, not README.md. -->
 
 ## Made
 
@@ -24,23 +28,23 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 | # | Question | Current leaning |
 |---|---|---|
-| 1 | [What do English readers get from each edition?](#english-offer) | None yet |
-| 2 | [Should my international network read Zur Einsicht, or only find it?](#english-audience) | Open until a few editions are out |
-| 3 | [The English tagline](#tagline) | Draft only |
-| 4 | [Domain and registrar](#domain) | zureinsicht.ch, with the hyphen version redirected |
-| 5 | [Website design](#design) | Leaning towards a new layout |
-| 6 | [Launch page](#launch-page) | A one-page start |
-| 7 | [Name of the private repository](#repo-name) | None yet |
-| 8 | [Agents](#agents) | None yet |
-| 9 | [Blog](#blog) | Deep dive |
-| 10 | [Edition template](#edition-template) | Draft in `pipeline/template.md` |
-| 11 | [Writing skill for drafts](#writing-skill) | None yet |
-| 12 | [Checks](#checks) | None yet |
-| 13 | [Disclosure](#disclosure) | None yet |
-| 14 | [Prompt capture](#prompt-capture) | None yet |
-| 15 | [License for this repository](#license) | None yet |
+| 1 | [What do English readers get from each edition?](#1-english-offer) | None yet |
+| 2 | [Should my international network read Zur Einsicht, or only find it?](#2-english-audience) | Open until a few editions are out |
+| 3 | [The English tagline](#3-tagline) | Draft only |
+| 4 | [Domain and registrar](#4-domain-and-registrar) | zureinsicht.ch, with the hyphen version redirected |
+| 5 | [Website design](#5-website-design) | Leaning towards a new layout |
+| 6 | [Launch page](#6-launch-page) | A one-page start |
+| 7 | [Name of the private repository](#7-name-of-the-private-repository) | None yet |
+| 8 | [Agents](#8-agents) | None yet |
+| 9 | [Blog](#9-blog) | Deep dive |
+| 10 | [Edition template](#10-edition-template) | Draft in `pipeline/template.md` |
+| 11 | [Writing skill for drafts](#11-writing-skill-for-drafts) | None yet |
+| 12 | [Checks](#12-checks) | None yet |
+| 13 | [Disclosure](#13-disclosure) | None yet |
+| 14 | [Prompt capture](#14-prompt-capture) | None yet |
+| 15 | [License for this repository](#15-license-for-this-repository) | None yet |
 
-## 1 English offer {#english-offer}
+## 1 English offer {#1-english-offer}
 
 - Question: what do English readers get from each edition?
 - Options: a short English summary at the end; a full translation; English on LinkedIn only; an English version for selected editions.
@@ -49,7 +53,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 2 English audience {#english-audience}
+## 2 English audience {#2-english-audience}
 
 - Question: should my international network read Zur Einsicht, or only find it?
 - Options: read it; find it.
@@ -58,7 +62,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 3 Tagline {#tagline}
+## 3 Tagline {#3-tagline}
 
 - Question: which English tagline explains the title?
 - Options: first draft, "for inspection: how the work is done, with AI, in the open".
@@ -67,7 +71,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 4 Domain and registrar {#domain}
+## 4 Domain and registrar {#4-domain-and-registrar}
 
 - Question: which domains do I register, and where?
 - Options: zureinsicht.ch, zur-einsicht.ch, zureinsicht.de, zureinsicht.swiss (all free on 2026-10-15). Registrar: Infomaniak or hosttech.
@@ -76,7 +80,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 5 Website design {#design}
+## 5 Website design {#5-website-design}
 
 - Question: what does the website look like?
 - Options: a completely new layout; the structure of the openwashdata.org website.
@@ -90,7 +94,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 6 Launch page {#launch-page}
+## 6 Launch page {#6-launch-page}
 
 - Question: what is on the domain when the first edition goes out?
 - Options: a one-page start with the subscribe form; no website before the first blog post.
@@ -99,7 +103,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 7 Name of the private repository {#repo-name}
+## 7 Name of the private repository {#7-name-of-the-private-repository}
 
 - Question: what is the private repository for the editions called?
 - Options: none yet.
@@ -108,7 +112,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 8 Agents {#agents}
+## 8 Agents {#8-agents}
 
 - Question: how are the agents of the pipeline organised?
 - Options: one skill per stage with a thin runner; one agent for the whole pipeline.
@@ -117,7 +121,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 9 Blog {#blog}
+## 9 Blog {#9-blog}
 
 - Question: what is the blog post every four editions?
 - Options: a round-up of all four editions; a deep dive on one.
@@ -126,7 +130,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 10 Edition template {#edition-template}
+## 10 Edition template {#10-edition-template}
 
 - Question: which parts does every edition have, and how many words does each get?
 - Options: the draft in `pipeline/template.md`.
@@ -135,7 +139,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 11 Writing skill for drafts {#writing-skill}
+## 11 Writing skill for drafts {#11-writing-skill-for-drafts}
 
 - Question: which skill writes the drafts?
 - Options: plain-writing; a voice skill made for the newsletter.
@@ -144,7 +148,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 12 Checks {#checks}
+## 12 Checks {#12-checks}
 
 - Question: which checks run on a draft, and what counts as a fail?
 - Options: length, facts, links, AI tells, numbers without inline code or a cited source (see `reproducibility.md`).
@@ -153,7 +157,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 13 Disclosure {#disclosure}
+## 13 Disclosure {#13-disclosure}
 
 - Question: what does the disclosure block in each edition look like?
 - Options: none yet.
@@ -162,7 +166,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 14 Prompt capture {#prompt-capture}
+## 14 Prompt capture {#14-prompt-capture}
 
 - Question: which tool records prompts for a reproducible pipeline?
 - Options: re_gent; a curated prompts archive; other capture tools.
@@ -171,7 +175,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-## 15 License for this repository {#license}
+## 15 License for this repository {#15-license-for-this-repository}
 
 - Question: under which license is this repository published?
 - Options: none yet.

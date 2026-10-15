@@ -19,7 +19,7 @@ Write in plain English. Leave a bullet empty with "nothing" rather than padding 
 
 ## Decisions
 
-One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`.
+One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`. Then run `quarto render decisions/README.qmd` and commit `README.qmd` together with the generated `README.md`. Never edit `decisions/README.md` by hand.
 
 ## Never commit
 
