@@ -19,7 +19,7 @@ Write in plain English. Leave a bullet empty with "nothing" rather than padding 
 
 ## Decisions
 
-One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove it from the open list in `decisions/README.md`.
+One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`.
 
 ## Never commit
 
