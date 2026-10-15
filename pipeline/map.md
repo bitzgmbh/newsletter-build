@@ -6,22 +6,22 @@ Draft 2 of 2026-10-15. One edition, from idea to reader.
 flowchart TB
   subgraph start["I decide what to write"]
     direction LR
-    S1["1 Intake<br>Element thread,<br>voice note, bullets"] --> S2["2 Select<br>I pick the<br>next edition"] --> S3["3 Rough draft<br>mine, spoken<br>or written"]
+    S1["<u>1 Intake</u><br>Element thread,<br>voice note, bullets"] --> S2["<u>2 Select</u><br>I pick the<br>next edition"] --> S3["<u>3 Rough draft</u><br>mine, spoken<br>or written"]
   end
 
   subgraph agents["Agents work, and wait for my yes after each stage"]
     direction LR
-    S4["4 Research<br>Zotero, notes, web"] -- my yes --> S5["5 Draft<br>1,000 words<br>or fewer"] -- my yes --> S6["6 Checks<br>length, facts,<br>links, AI tells"] -- my yes --> S7["7 Visuals<br>charts from code,<br>images"] -- my yes --> S8["8 Translate<br>German and English"]
+    S4["<u>4 Research</u><br>Zotero, notes, web"] -- my yes --> S5["<u>5 Draft</u><br>1,000 words<br>or fewer"] -- my yes --> S6["<u>6 Checks</u><br>length, facts,<br>links, AI tells"] -- my yes --> S7["<u>7 Visuals</u><br>charts from code,<br>images"] -- my yes --> S8["<u>8 Translate</u><br>German and English"]
   end
 
   subgraph approve["I approve"]
     direction LR
-    S9["9 Approve<br>final version,<br>always my yes"]
+    S9["<u>9 Approve</u><br>final version,<br>always my yes"]
   end
 
   subgraph publish["Publish and learn"]
     direction LR
-    S10["10 Send<br>Buttondown email"] --> S11["11 Distribute<br>website, LinkedIn,<br>Bluesky, Mastodon"] --> S12["12 Replies<br>readers answer<br>one question"] --> S13["13 Review<br>open rate,<br>active readers"]
+    S10["<u>10 Send</u><br>Buttondown email"] --> S11["<u>11 Distribute</u><br>website, LinkedIn,<br>Bluesky, Mastodon"] --> S12["<u>12 Replies</u><br>readers answer<br>one question"] --> S13["<u>13 Review</u><br>open rate,<br>active readers"]
   end
 
   start -- hand over --> agents
