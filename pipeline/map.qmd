@@ -1,15 +1,21 @@
-# Pipeline map
+---
+title: Pipeline map
+format:
+  html:
+    embed-resources: true
+---
 
 Draft 2 of 2026-10-15. One edition, from idea to reader.
 
-```mermaid
+```{mermaid}
+%%| column: screen-inset
 flowchart TB
   subgraph start["I decide what to write"]
     direction LR
     S1["<u>1 Intake</u><br>Element thread,<br>voice note, bullets"] --> S2["<u>2 Select</u><br>I pick the<br>next edition"] --> S3["<u>3 Rough draft</u><br>mine, spoken<br>or written"]
   end
 
-  subgraph agents["Agents work, and wait for my yes after each stage"]
+  subgraph agents["Agents work"]
     direction LR
     S4["<u>4 Research</u><br>Zotero, notes, web"] -- my yes --> S5["<u>5 Draft</u><br>1,000 words<br>or fewer"] -- my yes --> S6["<u>6 Checks</u><br>length, facts,<br>links, AI tells"] -- my yes --> S7["<u>7 Visuals</u><br>charts from code,<br>images"] -- my yes --> S8["<u>8 Translate</u><br>German and English"]
   end
@@ -47,13 +53,13 @@ flowchart TB
 
 Ideas and rough drafts stay mine. Agents take over from research to translation and ask me after each stage. Nothing goes out without my yes. Thick outline: me. Tinted: agents. Dashed: tools and readers outside the repository. "my yes" on an arrow: a gate.
 
-The map is code, so it can be changed and rebuilt without the drawing tool or the AI that made draft 1 ([reproducibility.md](../reproducibility.md)). GitHub draws it from the block above. For a printable PDF, run this from the repository root (it needs Node.js):
+The map is code, so it can be changed and rebuilt without the drawing tool or the AI that made draft 1 ([reproducibility.md](../reproducibility.md)). To draw it, render this file from the repository root:
 
 ```
-mkdir -p print && npx -y @mermaid-js/mermaid-cli@11.4.2 -i pipeline/map.md -o print/map.md -e pdf -b white
+quarto render pipeline/map.qmd
 ```
 
-The PDF lands in `print/`, which Git ignores.
+This writes `pipeline/map.html`, which Git ignores. Open it in a browser and print it to PDF.
 
 The edition template is in [template.md](template.md).
 

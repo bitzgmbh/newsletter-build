@@ -8,7 +8,7 @@ I started it to prepare the AI Retreat in Bad Kohlgrub (16 to 18 October 2026), 
 
 - `log/` has one short entry per work session, named by date.
 - `decisions/` has one page per decision, with the options and my reasons. Open questions are listed in `decisions/README.md`.
-- `pipeline/map.md` shows the stages of the pipeline and where each one stands.
+- `pipeline/map.qmd` shows the stages of the pipeline and where each one stands.
 - `skills/` will hold the agent skills as they get built.
 - `editions/` will hold trial editions.
 - `disclosure.md` explains how AI use is recorded in this repository.
