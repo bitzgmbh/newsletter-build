@@ -1,10 +1,59 @@
 # Pipeline map
 
-Draft 1 of 2026-10-01. One edition, from idea to reader.
+Draft 2 of 2026-10-15. One edition, from idea to reader.
 
-![Pipeline map: I decide, agents work, publish and learn](map.svg)
+```mermaid
+flowchart TB
+  subgraph start["I decide what to write"]
+    direction LR
+    S1["1 Intake<br>Element thread,<br>voice note, bullets"] --> S2["2 Select<br>I pick the<br>next edition"] --> S3["3 Rough draft<br>mine, spoken<br>or written"]
+  end
 
-Ideas and rough drafts stay mine. Agents take over from research to translation and ask me after each stage. Nothing goes out without my yes. Thick outline: me. Tinted: agents. Dashed: tools and readers outside the repository. Diamond: gate.
+  subgraph agents["Agents work, and wait for my yes after each stage"]
+    direction LR
+    S4["4 Research<br>Zotero, notes, web"] -- my yes --> S5["5 Draft<br>1,000 words<br>or fewer"] -- my yes --> S6["6 Checks<br>length, facts,<br>links, AI tells"] -- my yes --> S7["7 Visuals<br>charts from code,<br>images"] -- my yes --> S8["8 Translate<br>German and English"]
+  end
+
+  subgraph approve["I approve"]
+    direction LR
+    S9["9 Approve<br>final version,<br>always my yes"]
+  end
+
+  subgraph publish["Publish and learn"]
+    direction LR
+    S10["10 Send<br>Buttondown email"] --> S11["11 Distribute<br>website, LinkedIn,<br>Bluesky, Mastodon"] --> S12["12 Replies<br>readers answer<br>one question"] --> S13["13 Review<br>open rate,<br>active readers"]
+  end
+
+  start -- hand over --> agents
+  agents -- final ping --> approve
+  approve -- my yes --> publish
+  start -. answers and results return to the backlog .- publish
+
+  classDef me fill:#ffffff,stroke:#1a2233,stroke-width:3px,color:#1a2233
+  classDef agent fill:#e3e8f6,stroke:#1a2233,stroke-width:1px,color:#1a2233
+  classDef tool fill:#ffffff,stroke:#1a2233,stroke-width:1px,stroke-dasharray:5 4,color:#1a2233
+  classDef approved fill:#2440a8,stroke:#2440a8,color:#ffffff
+
+  class S1,S2,S3,S13 me
+  class S4,S5,S6,S7,S8 agent
+  class S10,S11,S12 tool
+  class S9 approved
+
+  style start fill:#eceef4,stroke:#eceef4,color:#586178
+  style agents fill:#eceef4,stroke:#eceef4,color:#586178
+  style approve fill:#eceef4,stroke:#eceef4,color:#586178
+  style publish fill:#eceef4,stroke:#eceef4,color:#586178
+```
+
+Ideas and rough drafts stay mine. Agents take over from research to translation and ask me after each stage. Nothing goes out without my yes. Thick outline: me. Tinted: agents. Dashed: tools and readers outside the repository. "my yes" on an arrow: a gate.
+
+The map is code, so it can be changed and rebuilt without the drawing tool or the AI that made draft 1 ([reproducibility.md](../reproducibility.md)). GitHub draws it from the block above. For a printable PDF, run this from the repository root (it needs Node.js):
+
+```
+mkdir -p print && npx -y @mermaid-js/mermaid-cli@11.4.2 -i pipeline/map.md -o print/map.md -e pdf -b white
+```
+
+The PDF lands in `print/`, which Git ignores.
 
 The edition template is in [template.md](template.md).
 
@@ -18,7 +67,7 @@ The edition template is in [template.md](template.md).
 | 4 | Research: Zotero, my notes, the web | Agent | open |
 | 5 | Draft the edition, 1,000 words or fewer | Agent | open |
 | 6 | Checks: length, facts, links, AI tells | Agent | open |
-| 7 | Visuals: charts and images | Agent with me | open |
+| 7 | Visuals: charts from code, and images | Agent with me | open |
 | 8 | Translate: German and English | Agent | open |
 | 9 | Approve the final version | Me | open |
 | 10 | Send by email (Buttondown) | Tool | open |
@@ -38,6 +87,7 @@ After each agent stage (4 to 8) there is a gate. The agent pings me in Element w
 6. The voice stays mine. Agents never generate the ideas.
 7. AI use is declared from the traces the work leaves.
 8. Short and plain, 1,000 words or fewer.
+9. Figures, tables and numbers come from code, never typed in or drawn by hand. See [reproducibility.md](../reproducibility.md).
 
 ## Who it is for
 

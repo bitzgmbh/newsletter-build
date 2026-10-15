@@ -30,3 +30,4 @@ __pycache__/
 .Rhistory
 .RData
 node_modules/
+print/

@@ -12,6 +12,7 @@ I started it to prepare the AI Retreat in Bad Kohlgrub (16 to 18 October 2026), 
 - `skills/` will hold the agent skills as they get built.
 - `editions/` will hold trial editions.
 - `disclosure.md` explains how AI use is recorded in this repository.
+- `reproducibility.md` lists the principles that keep figures, tables and numbers rebuildable from code.
 
 ## Current state
 
