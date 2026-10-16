@@ -15,4 +15,6 @@ git log --grep='^Assisted-by:' --oneline
 git log --grep='^Human-authored:' --oneline
 ```
 
+Each pull request into `main` ends with a "How AI was used" table built from these trailers by the [disclosure-summary](skills/disclosure-summary/) skill.
+
 A summary per phase follows here after the retreat.

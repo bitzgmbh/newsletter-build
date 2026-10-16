@@ -31,3 +31,7 @@ One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Quest
 ## Commits
 
 Use the authorship trailers (`Assisted-by:` for Claude-touched work, `Human-authored: true` for my own work, both for mixed work). `disclosure.md` is built from them.
+
+## Pull requests
+
+Every pull request from `dev` into `main` ends with the "How AI was used" section, after the Test plan. Build it with `Rscript skills/disclosure-summary/disclosure-summary.R origin/main dev` after pushing, and paste the output unchanged. Run it again and replace the section whenever the pull request gets new commits. If the script fails, leave the section out; never write the numbers by hand.
