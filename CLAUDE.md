@@ -19,7 +19,7 @@ Write in plain English. Leave a bullet empty with "nothing" rather than padding 
 
 ## Decisions
 
-One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove it from the open list in `decisions/README.md`.
+One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`. Then run `quarto render decisions/README.qmd` and commit `README.qmd` together with the generated `README.md`. Never edit `decisions/README.md` by hand.
 
 ## Never commit
 
@@ -31,3 +31,7 @@ One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Quest
 ## Commits
 
 Use the authorship trailers (`Assisted-by:` for Claude-touched work, `Human-authored: true` for my own work, both for mixed work). `disclosure.md` is built from them.
+
+## Pull requests
+
+Pull request bodies have a Summary and no Test plan. Every pull request from `dev` into `main` ends with the "How AI was used" section. Build it with `Rscript skills/disclosure-summary/disclosure-summary.R origin/main dev` after pushing, and paste the output unchanged. Run it again and replace the section whenever the pull request gets new commits. If the script fails, leave the section out; never write the numbers by hand.

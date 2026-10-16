@@ -1,18 +1,178 @@
 # Decisions
 
+
+<!-- Generated from README.qmd with quarto render. Edit README.qmd, not README.md. -->
+
 ## Made
 
 - [0001 Owner and visibility](0001-owner-and-visibility.md)
 - [0002 Skills live in this repository](0002-skills-in-this-repo.md)
+- [0003 The map is code](0003-map-as-code.md)
+- [0004 Editions are Quarto documents](0004-editions-are-quarto.md)
+- [0005 Drafts live in a separate, private repository](0005-drafts-in-a-private-repo.md)
+- [0006 What the website is for, and who sends the newsletter](0006-website-purpose-and-sender.md)
+- [0007 How an approved edition is published](0007-publishing.md)
+- [0008 D3 is for charts in editions](0008-d3-for-charts.md)
+- [0009 Audience and title](0009-audience-and-title.md)
 
 ## Open
 
-- Languages: one bilingual edition, or one German and one English edition.
-- Agents: one skill per stage with a thin runner, or one agent for the whole pipeline.
-- Blog: one post per four editions, as a round-up of all four or a deep dive on one.
-- Edition template: which parts every edition has, and how many words each gets.
-- Writing skill for drafts: plain-writing, or a voice skill made for the newsletter.
-- Checks: which ones run, and what counts as a fail.
-- Disclosure: the format of the block in each edition.
-- Prompt capture: which tool records prompts for a reproducible pipeline.
-- License for this repository.
+The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is the overview. Each open decision has its own section below, with room for my notes. When a decision is settled, it becomes a numbered file and its row and section leave this page.
+
+| \# | Question | Current leaning |
+|----|----|----|
+| 1 | [What do English readers get from each edition?](#1-english-offer) | None yet |
+| 2 | [Should my international network read Zur Einsicht, or only find it?](#2-english-audience) | Open until a few editions are out |
+| 3 | [The English tagline](#3-tagline) | Draft only |
+| 4 | [Domain and registrar](#4-domain-and-registrar) | zureinsicht.ch, with the hyphen version redirected |
+| 5 | [Website design](#5-website-design) | Leaning towards a new layout |
+| 6 | [Launch page](#6-launch-page) | A one-page start |
+| 7 | [Name of the private repository](#7-name-of-the-private-repository) | None yet |
+| 8 | [Agents](#8-agents) | None yet |
+| 9 | [Blog](#9-blog) | Deep dive |
+| 10 | [Edition template](#10-edition-template) | Draft in `pipeline/template.md` |
+| 11 | [Writing skill for drafts](#11-writing-skill-for-drafts) | None yet |
+| 12 | [Checks](#12-checks) | None yet |
+| 13 | [Disclosure](#13-disclosure) | None yet |
+| 14 | [Prompt capture](#14-prompt-capture) | None yet |
+| 15 | [License for this repository](#15-license-for-this-repository) | None yet |
+
+## 1 English offer
+
+- Question: what do English readers get from each edition?
+- Options: a short English summary at the end; a full translation; English on LinkedIn only; an English version for selected editions.
+- Current leaning: none yet.
+- What would settle it: weighing the gate time per edition against what the English readers in question 2 need. The answer also decides whether stage 8 (Translate) stays on the map.
+
+### Notes
+
+## 2 English audience
+
+- Question: should my international network read Zur Einsicht, or only find it?
+- Options: read it; find it.
+- Current leaning: open until a few editions are out.
+- What would settle it: replies to the first editions show who actually reads.
+
+### Notes
+
+## 3 Tagline
+
+- Question: which English tagline explains the title?
+- Options: first draft, “for inspection: how the work is done, with AI, in the open”.
+- Current leaning: draft only.
+- What would settle it: trying it on people at the retreat.
+
+### Notes
+
+## 4 Domain and registrar
+
+- Question: which domains do I register, and where?
+- Options: zureinsicht.ch, zur-einsicht.ch, zureinsicht.de, zureinsicht.swiss (all free on 2026-10-15). Registrar: Infomaniak or hosttech.
+- Current leaning: zureinsicht.ch, with the hyphen version redirected.
+- What would settle it: whether people hear the name more often than they read it, and how much the readers in Germany and Austria count.
+
+### Notes
+
+## 5 Website design
+
+- Question: what does the website look like?
+- Options: a completely new layout; the structure of the openwashdata.org website.
+- Current leaning: a new layout.
+- What would settle it:
+  - What should a reader feel in the first five seconds, and how is that different from openwashdata.org?
+  - Does “new” mean a new look on Quarto (a custom theme and page templates, which keeps decision 0004), or a new tool?
+  - Which page do I design first: an edition, the start page, or a blog post?
+  - Does Zur Einsicht get its own brand (colours, fonts, wordmark), or does it wait for the bitz brand?
+  - How much time can design take before the first edition goes out?
+
+### Notes
+
+## 6 Launch page
+
+- Question: what is on the domain when the first edition goes out?
+- Options: a one-page start with the subscribe form; no website before the first blog post.
+- Current leaning: a one-page start.
+- What would settle it: decided after the domain.
+
+### Notes
+
+## 7 Name of the private repository
+
+- Question: what is the private repository for the editions called?
+- Options: none yet.
+- Current leaning: none yet.
+- What would settle it: the domain and the title, so the names match.
+
+### Notes
+
+## 8 Agents
+
+- Question: how are the agents of the pipeline organised?
+- Options: one skill per stage with a thin runner; one agent for the whole pipeline.
+- Current leaning: none yet.
+- What would settle it: building the first stage.
+
+### Notes
+
+## 9 Blog
+
+- Question: what is the blog post every four editions?
+- Options: a round-up of all four editions; a deep dive on one.
+- Current leaning: a deep dive on the edition that drew the most answers (see `pipeline/template.md`).
+- What would settle it: feedback at the retreat.
+
+### Notes
+
+## 10 Edition template
+
+- Question: which parts does every edition have, and how many words does each get?
+- Options: the draft in `pipeline/template.md`.
+- Current leaning: the draft.
+- What would settle it: feedback at the retreat.
+
+### Notes
+
+## 11 Writing skill for drafts
+
+- Question: which skill writes the drafts?
+- Options: plain-writing; a voice skill made for the newsletter.
+- Current leaning: none yet.
+- What would settle it: a test draft with each.
+
+### Notes
+
+## 12 Checks
+
+- Question: which checks run on a draft, and what counts as a fail?
+- Options: length, facts, links, AI tells, numbers without inline code or a cited source (see `reproducibility.md`).
+- Current leaning: none yet.
+- What would settle it: the first edition run through stage 6.
+
+### Notes
+
+## 13 Disclosure
+
+- Question: what does the disclosure block in each edition look like?
+- Options: none yet.
+- Current leaning: bullets, read from the traces the work leaves (principle 7 of the map).
+- What would settle it: a first block for a trial edition.
+
+### Notes
+
+## 14 Prompt capture
+
+- Question: which tool records prompts for a reproducible pipeline?
+- Options: re_gent; a curated prompts archive; other capture tools.
+- Current leaning: none yet.
+- What would settle it: a test on one edition.
+
+### Notes
+
+## 15 License for this repository
+
+- Question: under which license is this repository published?
+- Options: none yet.
+- Current leaning: none yet.
+- What would settle it: none yet.
+
+### Notes

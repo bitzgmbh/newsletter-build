@@ -1,0 +1,100 @@
+---
+title: Pipeline map
+format:
+  html:
+    embed-resources: true
+---
+
+Draft 2 of 2026-10-15. One edition, from idea to reader.
+
+```{mermaid}
+%%| column: screen-inset
+flowchart TB
+  subgraph start["I decide what to write"]
+    direction LR
+    S1["<u>1 Intake</u><br>Element thread,<br>voice note, bullets"] --> S2["<u>2 Select</u><br>I pick the<br>next edition"] --> S3["<u>3 Rough draft</u><br>mine, spoken<br>or written"]
+  end
+
+  subgraph agents["Agents work"]
+    direction LR
+    S4["<u>4 Research</u><br>Zotero, notes, web"] -- my yes --> S5["<u>5 Draft</u><br>1,000 words<br>or fewer"] -- my yes --> S6["<u>6 Checks</u><br>length, facts,<br>links, AI tells"] -- my yes --> S7["<u>7 Visuals</u><br>charts from code,<br>images"] -- my yes --> S8["<u>8 Translate</u><br>German and English"]
+  end
+
+  subgraph approve["I approve"]
+    direction LR
+    S9["<u>9 Approve</u><br>final version,<br>always my yes"]
+  end
+
+  subgraph publish["Publish and learn"]
+    direction LR
+    S10["<u>10 Send</u><br>Buttondown email"] --> S11["<u>11 Distribute</u><br>website, LinkedIn,<br>Bluesky, Mastodon"] --> S12["<u>12 Replies</u><br>readers answer<br>one question"] --> S13["<u>13 Review</u><br>open rate,<br>active readers"]
+  end
+
+  start -- hand over --> agents
+  agents -- final ping --> approve
+  approve -- my yes --> publish
+  start -. answers and results return to the backlog .- publish
+
+  classDef me fill:#ffffff,stroke:#1a2233,stroke-width:3px,color:#1a2233
+  classDef agent fill:#e3e8f6,stroke:#1a2233,stroke-width:1px,color:#1a2233
+  classDef tool fill:#ffffff,stroke:#1a2233,stroke-width:1px,stroke-dasharray:5 4,color:#1a2233
+  classDef approved fill:#2440a8,stroke:#2440a8,color:#ffffff
+
+  class S1,S2,S3,S13 me
+  class S4,S5,S6,S7,S8 agent
+  class S10,S11,S12 tool
+  class S9 approved
+
+  style start fill:#eceef4,stroke:#eceef4,color:#586178
+  style agents fill:#eceef4,stroke:#eceef4,color:#586178
+  style approve fill:#eceef4,stroke:#eceef4,color:#586178
+  style publish fill:#eceef4,stroke:#eceef4,color:#586178
+```
+
+Ideas and rough drafts stay mine. Agents take over from research to translation and ask me after each stage. Nothing goes out without my yes. Thick outline: me. Tinted: agents. Dashed: tools and readers outside the repository. "my yes" on an arrow: a gate.
+
+The map is code, so it can be changed and rebuilt without the drawing tool or the AI that made draft 1 ([reproducibility.md](../reproducibility.md)). To draw it, render this file from the repository root:
+
+```
+quarto render pipeline/map.qmd
+```
+
+This writes `pipeline/map.html`, which Git ignores. Open it in a browser and print it to PDF.
+
+The edition template is in [template.md](template.md).
+
+## Stages
+
+| # | Stage | Who | Status |
+|---|---|---|---|
+| 1 | Intake: ideas from an Element thread, voice notes, bullets | Me | open |
+| 2 | Select the next edition from the backlog | Me | open |
+| 3 | Rough draft, spoken or written | Me | open |
+| 4 | Research: Zotero, my notes, the web | Agent | open |
+| 5 | Draft the edition, 1,000 words or fewer | Agent | open |
+| 6 | Checks: length, facts, links, AI tells | Agent | open |
+| 7 | Visuals: charts from code, and images | Agent with me | open |
+| 8 | Translate: German and English | Agent | open |
+| 9 | Approve the final version | Me | open |
+| 10 | Send by email (Buttondown) | Tool | open |
+| 11 | Distribute: website, LinkedIn, Bluesky, Mastodon | Agent, my yes | open |
+| 12 | Readers answer one question per edition | Readers | open |
+| 13 | Review open rate and active readers | Me | open |
+
+After each agent stage (4 to 8) there is a gate. The agent pings me in Element with a link, and continues only after my yes. All gates are on at first.
+
+## Principles
+
+1. Independent publishing tools over platforms.
+2. Open protocols over closed chat.
+3. Open source for the tools around the work. Models are the exception.
+4. Swiss or European and local tools where they can do the job.
+5. Work in the open, with one issue per unit of work.
+6. The voice stays mine. Agents never generate the ideas.
+7. AI use is declared from the traces the work leaves.
+8. Short and plain, 1,000 words or fewer.
+9. Figures, tables and numbers come from code, never typed in or drawn by hand. See [reproducibility.md](../reproducibility.md).
+
+## Who it is for
+
+People who start out in data, data science or AI. It works when 10 to 20 subscribers read and answer regularly.
