@@ -15,7 +15,7 @@ Run from the repository root, after `dev` is pushed:
 Rscript skills/disclosure-summary/disclosure-summary.R origin/main dev
 ```
 
-Paste the printed section, unchanged, at the end of the pull request body, after the Test plan. When the pull request gets new commits, run it again and replace the section.
+Paste the printed section, unchanged, at the end of the pull request body, after the Summary. When the pull request gets new commits, run it again and replace the section.
 
 - The numbers come from the script only. Never type, round or reword them.
 - If the script stops with an error, say so and leave the section out. Never write a section by hand.

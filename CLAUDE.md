@@ -34,4 +34,4 @@ Use the authorship trailers (`Assisted-by:` for Claude-touched work, `Human-auth
 
 ## Pull requests
 
-Every pull request from `dev` into `main` ends with the "How AI was used" section, after the Test plan. Build it with `Rscript skills/disclosure-summary/disclosure-summary.R origin/main dev` after pushing, and paste the output unchanged. Run it again and replace the section whenever the pull request gets new commits. If the script fails, leave the section out; never write the numbers by hand.
+Pull request bodies have a Summary and no Test plan. Every pull request from `dev` into `main` ends with the "How AI was used" section. Build it with `Rscript skills/disclosure-summary/disclosure-summary.R origin/main dev` after pushing, and paste the output unchanged. Run it again and replace the section whenever the pull request gets new commits. If the script fails, leave the section out; never write the numbers by hand.
