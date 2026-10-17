@@ -34,6 +34,7 @@ Run `scripts/stand.py <edition folder>` first. It infers the stage from the file
 | 6 Prüfungen | `pruefbericht.md` | pruefung | gate; an Urteil "blockiert" sends the edition back to 5b |
 | 7 Grafiken | `grafiken.md`, and the chart block in `index.qmd` | skill grafiken | gate |
 | 8 Übersetzung | the English version | not built yet | gate |
+| Offenlegung (0017) | the block in `index.qmd` | offenlegung: run the script after the last agent stage, show the block in the ping for stage 9, write it with `--schreiben` after the yes | part of the stage 9 ping |
 | 9 Freigabe | merge of dev into main | Lars | |
 | 10 Versand | the email | Buttondown | |
 | 11 Verbreitung | `verbreitung.md`, one post per channel | skill verbreitung | gate: the ping carries the first line of each post |
