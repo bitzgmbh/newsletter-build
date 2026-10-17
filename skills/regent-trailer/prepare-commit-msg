@@ -1,0 +1,29 @@
+#!/bin/sh
+# Adds re_gent trailers to commits made from a Claude Code session.
+#
+# Regent-Session: the re_gent session the commit was made in.
+# Regent-Step:    the last finished step of that session. The step of the
+#                 turn that runs the commit is only written when the turn
+#                 ends, so this points to the turn before it.
+#
+# Commits made outside a Claude Code session get nothing. The hook never
+# blocks a commit.
+
+msg_file="$1"
+source="$2"
+
+[ -n "$CLAUDE_CODE_SESSION_ID" ] || exit 0
+case "$source" in merge|squash) exit 0 ;; esac
+
+rgt="$HOME/go/bin/rgt"
+[ -x "$rgt" ] || rgt=$(command -v rgt) || exit 0
+
+session="claude_code--$CLAUDE_CODE_SESSION_ID"
+step=$("$rgt" log --session "$session" --json -n 1 2>/dev/null \
+  | jq -r '.steps[0].hash // empty' 2>/dev/null | cut -c1-12)
+
+set -- --in-place --if-exists replace --trailer "Regent-Session: $session"
+[ -n "$step" ] && set -- "$@" --trailer "Regent-Step: $step"
+git interpret-trailers "$@" "$msg_file" 2>/dev/null
+
+exit 0
