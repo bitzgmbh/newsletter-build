@@ -1,17 +1,17 @@
 # Die drei Blickwinkel
 
-Ein dritter Hinweis in Stufe 6, neben Länge und Personas (Issue #4). Der Agent liest den ganzen Text einmal aus jeder Sicht und meldet in ein bis zwei Sätzen, was der Text aus dieser Sicht übersieht oder was aus ihr nicht trägt. Keine Umschreibung, kein Urteil über die Idee.
+Ein dritter Hinweis in Stufe 6, neben Länge und Personas. Der Agent liest den ganzen Text einmal aus jeder Sicht und meldet in ein bis zwei Sätzen, was der Text aus dieser Sicht übersieht oder was aus ihr nicht trägt. Keine Umschreibung, kein Urteil über die Idee. Der Hinweis läuft nur in Stufe 6, nicht vor dem Schreiben.
 
-Die Menge ist offen. Issue #4 fragt, ob diese drei zu den Themen des Newsletters passen oder ob Didaktik oder Statistik besser wären, und ob der Blickwinkel schon vor dem Schreiben (Stufe 4 oder 5) gewählt werden soll. Bis das entschieden ist, gelten diese drei.
-
-## Neurowissenschaft
-
-Fragt, was im Kopf der Leser:in passiert: Wie viel Neues verlangt der Text auf einmal, wo überfordert er das Arbeitsgedächtnis, was bleibt hängen und warum. Achtet auf Aufmerksamkeit, Belohnung und Gewohnheit: Welcher Schritt im Text wird zur neuen Gewohnheit, und was macht das alte Verhalten so bequem.
+Die Menge ist entschieden (Entscheidung 0018, aus Issue #4): Psychologie, Didaktik und Philosophie. Neurowissenschaft ist weggefallen.
 
 ## Psychologie
 
-Fragt nach Motivation und Selbstwirksamkeit: Glaubt die Leser:in nach dem Text eher, dass sie es kann, oder weniger? Wo weckt der Text Angst vor Fehlern, Scham oder Trotz, und wo gibt er Sicherheit. Achtet auf Growth Mindset und Fehlerkultur, die Ziele in `pipeline/concept.md`, und darauf, ob der Text diese Haltung vorlebt oder nur fordert.
+Fragt nach Selbstwirksamkeit und Growth Mindset: Glaubt die Leser:in nach dem Text eher, dass sie es kann, oder weniger? Wo stützt der Text diesen Glauben mit etwas, das sie selbst tun oder erleben kann, und wo untergräbt er ihn, etwa mit Angst vor Fehlern, mit Behauptungen über andere oder mit einem Nutzen, der erst in Wochen kommt. Achtet darauf, ob der Text die Fehlerkultur aus `pipeline/concept.md` vorlebt oder nur fordert.
+
+## Didaktik
+
+Fragt, ob eine Person aus dem Text lernen kann: Gibt es eine Idee, ein Beispiel dazu und einen Schritt, den sie selbst macht, und hängen die drei zusammen? Wo hat die Kette eine Lücke, ein Begriff ohne Erklärung, ein Sprung von der Behauptung zum Schritt, ein Beispiel, das die Idee nicht trägt. Achtet auf die Reihenfolge, auf das Vorwissen, das der Text voraussetzt, und darauf, ob die Leser:in am Ende weiss, was sie als Nächstes tut.
 
 ## Philosophie
 
-Fragt nach den Begriffen und den Annahmen: Was heisst hier Werkzeug, Ziel, Arbeit, Kompetenz, und sind die Begriffe sauber getrennt? Welche Annahme über den Menschen oder die Arbeit steckt unausgesprochen im Text, und würde sie einer Gegenfrage standhalten? Achtet auf Zweck und Mittel, Verantwortung und darauf, wer entscheidet.
+Fragt nach Werkzeug und Zweck, Verantwortung und Offenheit: Trägt das Argument, und was nimmt es stillschweigend an? Sind Mittel und Zweck sauber getrennt, oder ersetzt der Text ein Mittel durch ein anderes und nennt den Zweck nicht. Wer trägt die Verantwortung für das Ergebnis, wer entscheidet über den Ablauf, und was heisst Offenheit für jemanden, dessen Daten nicht offen sein dürfen.

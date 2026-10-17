@@ -55,7 +55,7 @@ Hints go into the report and Lars decides. They never block.
   - Zusammenfassung oder gute Wünsche am Schluss, Ankündigung des nächsten Punkts.
   - Überschrift als "X: Y" repeated across the text.
 - **Personas.** Each of the five personas in `personas.md` reads the whole text from her situation and names the first sentence where she stops reading, and why, in one or two sentences in German, in her own words. A persona who reads to the end says so and names what she would do next. The persona of the Hauptleserschaft speaks last, and her entry is marked "(Hauptleserschaft)". Her verdict counts most, as decided in 0016.
-- **Blickwinkel.** Read the whole text once from each perspective in `blickwinkel.md` (Neurowissenschaft, Psychologie, Philosophie for now, issue #4) and report, in one or two German sentences per perspective, what the text misses or what does not hold from that view. No rewrite, no verdict on the idea.
+- **Blickwinkel.** Read the whole text once from each perspective in `blickwinkel.md` (Psychologie, Didaktik, Philosophie, decision 0018) and report, in one or two German sentences per perspective, what the text misses or what does not hold from that view. No rewrite, no verdict on the idea.
 
 ## Output
 
