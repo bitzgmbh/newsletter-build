@@ -81,4 +81,42 @@ An jedem Prüfpunkt nach den Stufen 4 bis 8 halte ich mein Feedback in ein bis z
 
 ## Breite: Crew und Selbstständigkeit
 
-Folgt in Sitzung 3.
+### Expert:innen pro Stufe
+
+Für jede Stufe, an der ein Agent arbeitet, eine Rolle, die es besser könnte als ich. Der Skill einer Stufe arbeitet aus dieser Rolle heraus. Es sind Rollen, keine echten Personen.
+
+| # | Stufe | Rolle | Worauf sie achtet |
+|---|---|---|---|
+| 4 | Recherche | Fachbibliothekar:in für Datenrecherche | Primärquellen statt Zusammenfassungen, wie zuverlässig eine Quelle ist |
+| 5 | Entwurf | Wissenschaftsjournalist:in, die für Laien schreibt | eine Idee pro Ausgabe, der Einstieg über den Alltag der Leser:innen |
+| 5 | "Probier es selbst" | Kursleiter:in in der Erwachsenenbildung | ob der Schritt bei einer echten Aufgabe aus Excel ansetzt (A4) |
+| 6 | Prüfungen | Schlussredaktion und Faktencheck einer Zeitung | jede Zahl, jeder Link, die Länge, Floskeln von KI |
+| 7 | Grafiken | Datenjournalist:in aus einer Grafikredaktion | eine Aussage pro Grafik, lesbar auf dem Handy |
+| 8 | Übersetzung | Fachübersetzer:in Deutsch nach Englisch | Ton und Fachbegriffe, nicht Wort für Wort |
+| 11 | Verbreitung | Social Media Redakteur:in | ein Post pro Kanal, der für sich allein trägt |
+
+Die Rolle für "Probier es selbst" kommt aus A4. Der Schritt ist die Stelle, an der sich das Ziel zeigt, deshalb bekommt er eine eigene Prüfung.
+
+### Leser:innen in der Prüfstufe
+
+Fünf Personas aus der Zielgruppe lesen in Stufe 6 jeden Entwurf und melden, wo sie aussteigen. Jede Ausgabe nennt eine Gruppe als Hauptleserschaft (A7). Deren Persona hat das letzte Wort.
+
+| Gruppe | Persona |
+|---|---|
+| Behörde | Analystin in einer kantonalen Verwaltung. Arbeitet mit Excel und darf ohne die IT nichts installieren. |
+| Hochschule | Doktorand. R ist installiert, aber er fühlt sich unsicher und teilt seinen Code nicht. |
+| Privatwirtschaft | Controllerin in einem KMU. Berichte in Excel, Frust mit Copilot. |
+| NGO | Programmverantwortliche. Daten aus Feldumfragen in Excel, kein Budget für Kurse. |
+| Selbstständig | Beraterin. Zahlt jeden Kurs selbst und fragt zuerst, was er ihr bringt. |
+
+Die Personas ersetzen keine echten Leser:innen. Sie fangen ab, was offensichtlich nicht ankommt, bevor die Ausgabe rausgeht. Was wirklich ankommt, zeigen die Signale aus der Tiefe.
+
+### Selbstständigkeit
+
+"Möglichst autonom" stösst sich mit Prinzip 6 (die Stimme bleibt meine) und mit den Prüfpunkten. Deshalb gilt:
+
+- **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort entsteht die Stimme) und mein Ja vor dem Senden (Stufe 9).
+- **Kann später ohne mein Ja laufen:** die Prüfpunkte nach Recherche (4), Prüfungen (6), Grafiken (7) und Übersetzung (8).
+- **Regel:** Ein Prüfpunkt fällt erst weg, wenn meine Feedback Notizen an dieser Stelle in drei Ausgaben hintereinander keine Änderung zeigen. Meine eigene Spur entscheidet über die Selbstständigkeit, nicht ein Gefühl.
+
+Bis Ende November bleiben alle Prüfpunkte an. Mit vier Ausgaben in vier Wochen kann frühestens im Dezember einer wegfallen.

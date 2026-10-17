@@ -117,6 +117,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 ### Notes
 
 - 2026-10-17: first skill-per-stage assessment in [pipeline/skills.md](../pipeline/skills.md). About six skills; draft and checks first.
+- 2026-10-17: each skill works from a crew role ([concept.md](../pipeline/concept.md), Breite). Gates 4, 6, 7 and 8 may later run without my yes, once my feedback notes at that gate show no change in three editions in a row; gate 5 and stage 9 stay.
 
 ## 9 Blog
 
@@ -153,6 +154,8 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 - What would settle it: the first edition run through stage 6.
 
 ### Notes
+
+- 2026-10-17: five reader personas (administration, academia, private sector, NGO, self-employed) read each draft at stage 6 and say where they stop reading. The persona of the edition’s main readership has the last word ([concept.md](../pipeline/concept.md)).
 
 ## 13 Disclosure
 

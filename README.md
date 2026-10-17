@@ -15,6 +15,7 @@ My summary for the retreat board, in German, the language the newsletter is writ
 - `log/` has one short entry per work session, named by date.
 - `decisions/` has one page per decision, with the options and my reasons. Open questions are in `decisions/README.md`, generated from `decisions/README.qmd`: a table as the overview, and one section per question for notes.
 - `pipeline/map.qmd` shows the stages of the pipeline and where each one stands.
+- `pipeline/concept.md` holds the goal, the assumptions I test and the crew behind each stage (in German, decision 0010).
 - `skills/` will hold the agent skills as they get built.
 - The editions themselves live in a separate, private repository (decision 0005).
 - `disclosure.md` explains how AI use is recorded in this repository.

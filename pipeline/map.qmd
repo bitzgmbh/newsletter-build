@@ -27,7 +27,7 @@ flowchart TB
 
   subgraph publish["Publish and learn"]
     direction LR
-    S10["<u>10 Send</u><br>Buttondown email"] --> S11["<u>11 Distribute</u><br>website, LinkedIn,<br>Bluesky, Mastodon"] --> S12["<u>12 Replies</u><br>readers answer<br>one question"] --> S13["<u>13 Review</u><br>open rate,<br>active readers"]
+    S10["<u>10 Send</u><br>Buttondown email"] --> S11["<u>11 Distribute</u><br>website, LinkedIn,<br>Bluesky, Mastodon"] --> S12["<u>12 Replies</u><br>readers answer<br>one question"] --> S13["<u>13 Review</u><br>tries, replies,<br>sign-ups"]
   end
 
   start -- hand over --> agents
@@ -79,7 +79,7 @@ The edition template is in [template.md](template.md). Which stages need an agen
 | 10 | Send by email (Buttondown) | Tool | open |
 | 11 | Distribute: website, LinkedIn, Bluesky, Mastodon | Agent, my yes | open |
 | 12 | Readers answer one question per edition | Readers | open |
-| 13 | Review open rate and active readers | Me | open |
+| 13 | Review the signals from [concept.md](concept.md): tries, replies, course sign-ups and where readers come from | Me | open |
 
 After each agent stage (4 to 8) there is a gate. The agent pings me in Element with a link, and continues only after my yes. All gates are on at first.
 
@@ -96,6 +96,12 @@ After each agent stage (4 to 8) there is a gate. The agent pings me in Element w
 9. Figures, tables and numbers come from code, never typed in or drawn by hand. See [reproducibility.md](../reproducibility.md).
 10. I share my own mistakes and what I learn from my courses, so that mistakes become part of trying things.
 
+## Goal
+
+Zur Einsicht hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
+
+Readers try the "Try it yourself" step and tell me, answer the question of the edition, and sign up for a course. Goal, assumptions, crew and how autonomous the pipeline may run are worked out in [concept.md](concept.md).
+
 ## Who it is for
 
-People who start out in data, data science or AI. It works when 10 to 20 subscribers read and answer regularly.
+People who analyse data in their daily work and have good analytical skills, but work in Excel and other office tools and do not share their data. They know there is a better practice and feel left behind by it, and AI has mostly frustrated them so far. Administration and academia are closer to starting out in data; the private sector and NGOs are further away. It works when 10 to 20 subscribers read and answer regularly.
