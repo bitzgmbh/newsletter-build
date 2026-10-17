@@ -77,7 +77,7 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 | 8 | Übersetzung: Deutsch und Englisch | Agent | offen |
 | 9 | Freigabe der letzten Fassung | Ich | offen |
 | 10 | Versand per E-Mail (Buttondown) | Werkzeug | offen |
-| 11 | Verbreitung: Website, LinkedIn, Bluesky, Mastodon | Agent, mein Ja | offen |
+| 11 | Verbreitung: Website, LinkedIn, Bluesky, Mastodon | Agent, mein Ja | Skill verbreitung gebaut, noch ohne Probelauf |
 | 12 | Leser:innen beantworten eine Frage pro Ausgabe | Leser:innen | offen |
 | 13 | Auswertung der Signale aus [concept.md](concept.md): Versuche, Antworten, Kursanmeldungen und woher die Leser:innen kommen | Ich | offen |
 

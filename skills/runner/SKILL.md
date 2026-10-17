@@ -36,7 +36,7 @@ Run `scripts/stand.py <edition folder>` first. It infers the stage from the file
 | 8 Übersetzung | the English version | not built yet | gate |
 | 9 Freigabe | merge of dev into main | Lars | |
 | 10 Versand | the email | Buttondown | |
-| 11 Verbreitung | posts per channel | not built yet | gate |
+| 11 Verbreitung | `verbreitung.md`, one post per channel | skill verbreitung | gate: the ping carries the first line of each post |
 
 A stage whose skill is not built stops with "Skill fehlt: <name>" and pings Lars with that line, so the pipeline runs end to end with its gaps named. For 5b, check the parts with `skills/stimme/scripts/woerter.py <folder>/index.qmd`; when every part except "Was ihr letztes Mal gesagt habt" has words, 5b is done.
 

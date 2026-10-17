@@ -1,6 +1,6 @@
 # Skills per stage
 
-First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [pipeline map](map.qmd) it says whether an agent skill is needed and what it can build on. Built so far: the stimme skill for stage 5, the pruefung skill for stage 6, the grafiken skill for stage 7 and the runner for the gates, next to the helpers already in [skills/](../skills/).
+First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [pipeline map](map.qmd) it says whether an agent skill is needed and what it can build on. Built so far: the stimme skill for stage 5, the pruefung skill for stage 6, the grafiken skill for stage 7, the verbreitung skill for stage 11 and the runner for the gates, next to the helpers already in [skills/](../skills/).
 
 | # | Stage | Who | Skill needed? | Something to build on | Open decision | Crew role |
 |---|---|---|---|---|---|---|
@@ -14,7 +14,7 @@ First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [p
 | 8 | Translate | Agent | Yes, German to English | My plain-writing skill for the English version | 1 | Fachübersetzer:in |
 | 9 | Approve | Me | No | [clip](../skills/clip/) for the hand-off | | |
 | 10 | Send | Tool | No, Buttondown does it | | | |
-| 11 | Distribute | Agent, my yes | Yes: LinkedIn, Bluesky and Mastodon posts from the edition | My plain-writing skill, [clip](../skills/clip/) | | Social Media Redakteur:in |
+| 11 | Distribute | Agent, my yes | Yes: LinkedIn, Bluesky and Mastodon posts from the edition | Built: [skills/verbreitung](../skills/verbreitung/), on my plain-writing skill and clip | | Social Media Redakteur:in |
 | 12 | Replies | Readers | Later: collect answers back into the backlog | The intake skill of stage 1 | | |
 | 13 | Review | Me | Later, and a script rather than a skill: the signals from [concept.md](concept.md), read from Buttondown, the course sign-up form and the tagged links | [disclosure-summary](../skills/disclosure-summary/) shows the pattern: numbers from code | | |
 | Gates | After stages 4 to 8 and 11 | Agent pings, I say yes | Yes, the runner: one shared step, an Element ping with a link, then wait (0014) | Built: [skills/runner](../skills/runner/) | | |
