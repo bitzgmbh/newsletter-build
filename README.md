@@ -18,7 +18,7 @@ My summary for the retreat board, in German, the language the newsletter is writ
 - `pipeline/concept.md` holds the goal, the assumptions I test and the crew behind each stage (in German, decision 0010).
 - `skills/` holds the skills and hooks around the work. The pipeline stage skills land there as they get built.
 - `prompts/` archives, word for word, the prompts behind Claude-assisted commits (see `disclosure.md`).
-- The editions themselves live in a separate, private repository (decision 0005).
+- The editions and the website live in the private repository `bitzgmbh/zur-einsicht` (decisions 0005 and 0013).
 - `disclosure.md` explains how AI use is recorded in this repository.
 - `reproducibility.md` lists the principles that keep figures, tables and numbers rebuildable from code.
 

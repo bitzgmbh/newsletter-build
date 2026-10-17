@@ -5,5 +5,6 @@ Claude Code skills I use around the newsletter. Each folder holds one skill (`SK
 - [clip](clip/): copy a draft to the clipboard, ready to paste.
 - [disclosure-summary](disclosure-summary/): add a "How AI was used" table to each pull request, counted from the commit trailers.
 - [regent-trailer](regent-trailer/): link each agent commit to its re_gent session and step.
+- [stimme](stimme/): outline an edition from my rough draft and review the text I wrote, without writing it (stage 5).
 
-The pipeline stage skills (research, draft, checks, visuals, translate) will land here as they get built. Which stages need a skill is assessed in [pipeline/skills.md](../pipeline/skills.md).
+The other pipeline stage skills (research, checks, visuals, translate, the runner) land here as they get built. Which stages need a skill is assessed in [pipeline/skills.md](../pipeline/skills.md).
