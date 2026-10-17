@@ -116,7 +116,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
-- 2026-10-17: first skill-per-stage assessment in [pipeline/skills.md](../pipeline/skills.md). About six skills; draft and checks first.
+- 2026-10-17: first assessment of the skill per stage in [pipeline/skills.md](../pipeline/skills.md). About six skills; draft and checks first.
 - 2026-10-17: each skill works from a crew role ([concept.md](../pipeline/concept.md), Breite). Gates 4, 6, 7 and 8 may later run without my yes, once my feedback notes at that gate show no change in three editions in a row; gate 5 and stage 9 stay.
 
 ## 9 Blog
@@ -174,6 +174,8 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 - What would settle it: a test on one edition.
 
 ### Notes
+
+- 2026-10-17: both candidates are in use since the first pull request from the retreat. re_gent records every agent step in `.regent/` (not published), and the [regent-trailer](../skills/regent-trailer/) hook writes its session and step into each commit. The commit skill archives selected prompts word for word in `prompts/`, with a `Prompts:` trailer. Still open: whether the re_gent record gets a private server, and which of the two feeds the disclosure block of an edition (question 13).
 
 ## 15 License for this repository
 

@@ -19,7 +19,7 @@ Write in plain German (decision 0010). Leave a bullet empty with "nichts" rather
 
 ## Decisions
 
-One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Question, Options, Choice, Why and Date. When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`. Then run `quarto render decisions/README.qmd` and commit `README.qmd` together with the generated `README.md`. Never edit `decisions/README.md` by hand.
+One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Frage, Optionen, Wahl, Warum and Datum (files before 0010 use the English labels). When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`. Then run `quarto render decisions/README.qmd` and commit `README.qmd` together with the generated `README.md`. Never edit `decisions/README.md` by hand.
 
 ## Never commit
 
@@ -27,10 +27,11 @@ One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Quest
 - Content copied from the retreat board or other material of the hosts.
 - Names or projects of other participants without their consent.
 - Secrets. The gitleaks workflow scans every push.
+- The `.regent/` folder. It holds full transcripts and is ignored.
 
 ## Commits
 
-Use the authorship trailers (`Assisted-by:` for Claude-touched work, `Human-authored: true` for my own work, both for mixed work). `disclosure.md` is built from them.
+Use the authorship trailers (`Assisted-by:` for Claude-touched work, `Human-authored: true` for my own work, both for mixed work). `disclosure.md` is built from them. The hook in `skills/regent-trailer/` adds `Regent-Session:` and `Regent-Step:` to commits made from a Claude Code session. In a fresh clone, link it first: `ln -s ../../skills/regent-trailer/prepare-commit-msg .git/hooks/prepare-commit-msg`.
 
 ## Pull requests
 

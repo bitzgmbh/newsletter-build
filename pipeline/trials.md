@@ -1,60 +1,61 @@
-# Trial editions
+# Probeläufe
 
-Draft of 2026-10-17, still open for more ideas. Once a minimal pipeline runs, a few trial editions test it before the first live edition. Each trial is a real topic I plan to send, and each puts a different stage under strain. A trial stays in the private repository (decision 0005) until it is reworked into its live edition.
+Entwurf vom 17. Oktober 2026, offen für weitere Ideen. Die ersten vier Ausgaben sind zugleich die Probeläufe der Pipeline: Jede ist ein echtes Thema, das ich verschicke, und jede belastet eine andere Stufe. Sie entstehen im privaten Repository (Entscheidung 0005) und gehen nach meinem Ja raus.
 
-## The order of the first editions
+## Die Reihenfolge der ersten Ausgaben
 
-1. A welcome edition for all readers, in administration and academia alike.
-2. The series "Mehr als R", which promotes the R course in January 2027 on [rstats.zuerich](https://rstats.zuerich/).
+1. Eine Begrüssung für alle Leser:innen aus den fünf Gruppen in [concept.md](concept.md): Behörden, Hochschulen, Privatwirtschaft, NGOs und Selbstständige.
+2. Die Reihe "Mehr als R", die den R Kurs im Januar 2027 auf [rstats.zuerich](https://rstats.zuerich/) bewirbt.
 
-At one edition every two weeks from mid November, the three editions of the series fit before the course starts.
+Die Anmeldungen für den Kurs braucht es bis Ende November. Deshalb beginnt der Versand Anfang November mit etwa einer Ausgabe pro Woche: die Begrüssung um den 3. November, dann die drei Ausgaben der Reihe um den 10., 17. und 24. November (offene Frage 16).
 
-## What a trial can vary
+## Was ein Probelauf variieren kann
 
-| Dimension | Options | Stage it tests |
+| Dimension | Optionen | Geprüfte Stufe |
 |---|---|---|
-| Agents | the full pipeline, or none at all | all of them, as a baseline |
-| Data | none, or an open dataset with a chart from code | 7 Visuals |
-| Literature | none, or sources from Zotero | 4 Research |
-| What I hand over | voice note, bullets, or a nearly finished text | 3 Rough draft, 5 Draft |
-| Kind of piece | personal essay, explainer, or how-to | 5 Draft, template |
-| Code in the edition | with a code snippet, or without | 5 Draft, 6 Checks |
-| Language I start in | German first, or English first | 8 Translate |
-| Timing | timeless, or tied to news | 6 Checks |
-| Gates | all five on, or only after Research and Checks | the gates |
-| Whose data | my own, or someone else's open data | 6 Checks, 7 Visuals |
-| Length | 500 or 1,000 words | 5 Draft, 6 Checks |
+| Agenten | die ganze Pipeline, oder gar keine | alle, als Vergleich |
+| Daten | keine, oder ein offener Datensatz mit einer Grafik aus Code | 7 Grafiken |
+| Literatur | keine, oder Quellen aus Zotero | 4 Recherche |
+| Was ich übergebe | Sprachnotiz, Stichworte, oder ein fast fertiger Text | 3 Rohentwurf, 5 Entwurf |
+| Art des Textes | persönlicher Essay, Erklärstück, oder Anleitung | 5 Entwurf, Vorlage |
+| Code in der Ausgabe | mit einem Codeausschnitt, oder ohne | 5 Entwurf, 6 Prüfungen |
+| Sprache, in der ich beginne | Deutsch zuerst, oder Englisch zuerst | 8 Übersetzung |
+| Zeitbezug | zeitlos, oder an eine Neuigkeit gebunden | 6 Prüfungen |
+| Wessen Daten | meine eigenen, oder offene Daten von anderen | 6 Prüfungen, 7 Grafiken |
+| Länge | 500 oder 1000 Wörter | 5 Entwurf, 6 Prüfungen |
 
-## Four trials
+Die Prüfpunkte variieren nicht. Alle bleiben an, bis die Regel in [concept.md](concept.md) (Breite) einen freigibt, frühestens im Dezember.
 
-| Trial | Edition | Agents | Data | Literature | Also tests |
+## Vier Probeläufe
+
+| Probelauf | Ausgabe | Agenten | Daten | Literatur | Prüft ausserdem |
 |---|---|---|---|---|---|
-| 0 | Welcome | none | no | no | the baseline: I write it by hand and record the time |
-| 1 | Mehr als R: "Das Werkzeug ist nicht das Ziel" | yes | no | yes | research in Zotero, explainer |
-| 2 | Mehr als R: "Offen arbeiten" | yes | yes | no | an open government dataset from Kanton Zürich, a chart from code, a section that names one repository, one dataset and one tool |
-| 3 | Mehr als R: "Der Mensch bleibt drin" | yes | no | no | voice note as input, personal essay |
+| 0 | Begrüssung | keine | nein | nein | der Vergleichswert: Ich schreibe sie von Hand und messe die Zeit |
+| 1 | Mehr als R: "Das Werkzeug ist nicht das Ziel" | ja | nein | ja | Recherche in Zotero, Erklärstück |
+| 2 | Mehr als R: "Offen arbeiten" | ja | ja | nein | ein offener Datensatz des Kantons Zürich, eine Grafik aus Code, eine Rubrik mit einem Repository, einem Datensatz und einem Werkzeug |
+| 3 | Mehr als R: "Der Mensch bleibt drin" | ja | nein | nein | Sprachnotiz als Eingabe, persönlicher Essay |
 
-Trial 0 is the control. The time it takes and how it reads are what trials 1 to 3 are compared against. No trial has both data and literature yet; that corner moves to a later edition.
+Probelauf 0 ist der Vergleich. An seiner Zeit und seiner Lesbarkeit messen sich die Probeläufe 1 bis 3. Kein Probelauf hat Daten und Literatur zugleich; diese Ecke kommt in einer späteren Ausgabe dran.
 
-## Later editions
+## Spätere Ausgaben
 
-Topics for after the course start, and candidates for the corner with both data and literature:
+Themen für die Zeit nach dem Kursstart, und Kandidaten für die Ecke mit Daten und Literatur zugleich:
 
-- Learning D3 next to R, with an openwashdata dataset of the month: code in the edition, English first.
-- Evidence that work was not instantly created, from my work on AI disclosure: a topic tied to news.
-- How open is WASH research? My own data on data sharing.
-- Writing with AI without losing my voice.
-- Saying what an AI system does, without making it sound human.
-- Why the newsletter does not run on a large platform.
-- Why everyone who starts in research should learn Git.
-- A vision model on my own laptop, as a "Try it yourself".
-- What did the agent do? Recording agent work next to Git.
-- How this newsletter is made, from the build log.
+- D3 lernen neben R, mit einem Datensatz des Monats von openwashdata: Code in der Ausgabe, Englisch zuerst.
+- Belege, dass eine Arbeit nicht in einem Zug erzeugt wurde, aus meiner Arbeit zur Offenlegung von KI: ein Thema mit Zeitbezug.
+- Wie offen ist die WASH Forschung? Meine eigenen Daten zum Teilen von Daten.
+- Mit KI schreiben, ohne die eigene Stimme zu verlieren.
+- Sagen, was ein KI System tut, ohne es menschlich klingen zu lassen.
+- Warum der Newsletter nicht auf einer grossen Plattform läuft.
+- Warum alle, die in der Forschung anfangen, Git lernen sollten.
+- Ein Bildmodell auf dem eigenen Laptop, als "Probier es selbst".
+- Was hat der Agent gemacht? Die Arbeit von Agenten neben Git festhalten.
+- Wie dieser Newsletter entsteht, aus dem Build Log.
 
-Kinds of edition to try: a mistake I made, one term explained, an edition built from reader answers, and a correction of an earlier edition.
+Arten von Ausgaben zum Ausprobieren: ein Fehler, den ich gemacht habe; ein Begriff, erklärt; eine Ausgabe aus den Antworten der Leser:innen; eine Korrektur einer früheren Ausgabe.
 
-## Open
+## Offen
 
-- More ideas and more dimensions.
-- How a trial is judged, and by whom.
-- Which welcome content belongs in trial 0 and which in a launch page (decision question 6).
+- Weitere Ideen und Dimensionen.
+- Wie ein Probelauf beurteilt wird, und von wem.
+- Was von der Begrüssung in Probelauf 0 gehört und was auf eine Startseite (offene Frage 6).

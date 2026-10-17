@@ -73,11 +73,11 @@ Ohne diese drei Messpunkte lässt sich keine Annahme prüfen:
 2. Im Anmeldeformular von Buttondown zwei Fragen: "Wie nah fühlst du dich technischen Themen?" (1 = weit weg, 5 = täglich) und "Wo arbeitest du?" (Behörde, Hochschule, Privatwirtschaft, NGO, selbstständig).
 3. Getrennte Links pro Kanal, und in jeder Ausgabe die Zeile "Weitergeleitet bekommen? Hier abonnieren" mit einem eigenen Link.
 
-Diese Signale ersetzen in Stufe 13 die Öffnungsrate und die aktiven Leser:innen. Die Karte wird am Ende von Sitzung 3 angepasst.
+Diese Signale ersetzen in Stufe 13 die Öffnungsrate und die aktiven Leser:innen; die Karte ist entsprechend angepasst.
 
 ### Feedback an den Prüfpunkten
 
-An jedem Prüfpunkt nach den Stufen 4 bis 8 halte ich mein Feedback in ein bis zwei Sätzen fest: was ich geändert habe und warum. Aus diesen Notizen werden die Skills besser.
+An jedem Prüfpunkt nach den Stufen 4 bis 8 und 11 halte ich mein Feedback in ein bis zwei Sätzen fest: was ich geändert habe und warum. Aus diesen Notizen werden die Skills besser.
 
 ## Breite: Crew und Selbstständigkeit
 
@@ -116,7 +116,7 @@ Die Personas ersetzen keine echten Leser:innen. Sie fangen ab, was offensichtlic
 "Möglichst autonom" stösst sich mit Prinzip 6 (die Stimme bleibt meine) und mit den Prüfpunkten. Deshalb gilt:
 
 - **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort entsteht die Stimme) und mein Ja vor dem Senden (Stufe 9).
-- **Kann später ohne mein Ja laufen:** die Prüfpunkte nach Recherche (4), Prüfungen (6), Grafiken (7) und Übersetzung (8).
+- **Kann später ohne mein Ja laufen:** die Prüfpunkte nach Recherche (4), Prüfungen (6), Grafiken (7), Übersetzung (8) und Verbreitung (11).
 - **Regel:** Ein Prüfpunkt fällt erst weg, wenn meine Feedback Notizen an dieser Stelle in drei Ausgaben hintereinander keine Änderung zeigen. Meine eigene Spur entscheidet über die Selbstständigkeit, nicht ein Gefühl.
 
 Bis Ende November bleiben alle Prüfpunkte an. Mit vier Ausgaben in vier Wochen kann frühestens im Dezember einer wegfallen.

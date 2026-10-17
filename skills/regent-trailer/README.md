@@ -11,7 +11,7 @@ re_gent records every agent step in `.regent/`, and git records the commits, but
 
 With them, `rgt log --session <id>` or `rgt show <step>` leads from a commit to the conversation behind it. The `.regent/` record is not published, so outside this machine the trailers point to nothing. That is accepted for this test.
 
-Commits made outside a Claude Code session get no trailers. The hook never blocks a commit.
+The hook looks at the shell it runs in, not at who typed the command. A commit I run myself with `! git commit` inside a Claude Code session gets the trailers too, including a commit with `Human-authored: true`; the session record then shows that the commit happened in that session. Commits made outside a Claude Code session get no trailers. The hook never blocks a commit.
 
 ## Install
 
