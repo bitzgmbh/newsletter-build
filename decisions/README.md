@@ -114,6 +114,8 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
+- 2026-10-17: first skill-per-stage assessment in [pipeline/skills.md](../pipeline/skills.md). About six skills; draft and checks first.
+
 ## 9 Blog
 
 - Question: what is the blog post every four editions?
