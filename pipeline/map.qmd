@@ -94,6 +94,7 @@ After each agent stage (4 to 8) there is a gate. The agent pings me in Element w
 7. AI use is declared from the traces the work leaves.
 8. Short and plain, 1,000 words or fewer.
 9. Figures, tables and numbers come from code, never typed in or drawn by hand. See [reproducibility.md](../reproducibility.md).
+10. I share my own mistakes and what I learn from my courses, so that mistakes become part of trying things.
 
 ## Who it is for
 

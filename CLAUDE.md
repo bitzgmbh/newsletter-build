@@ -15,7 +15,7 @@ One file per work session in `log/`, named `YYYY-MM-DD.md` (add `-2` for a secon
 - Next:
 ```
 
-Write in plain English. Leave a bullet empty with "nothing" rather than padding it.
+Write in plain German (decision 0010). Leave a bullet empty with "nichts" rather than padding it.
 
 ## Decisions
 

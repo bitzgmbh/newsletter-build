@@ -14,6 +14,7 @@
 - [0007 How an approved edition is published](0007-publishing.md)
 - [0008 D3 is for charts in editions](0008-d3-for-charts.md)
 - [0009 Audience and title](0009-audience-and-title.md)
+- [0010 Das Repository läuft auf Deutsch](0010-sprache.md)
 
 ## Open
 
@@ -36,6 +37,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 | 13 | [Disclosure](#13-disclosure) | None yet |
 | 14 | [Prompt capture](#14-prompt-capture) | None yet |
 | 15 | [License for this repository](#15-license-for-this-repository) | None yet |
+| 16 | [Timeline for editions](#16-timeline) | A calendar at stage 2, with dates counted back from each send date |
 
 ## 1 English offer
 
@@ -176,5 +178,14 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 - Options: none yet.
 - Current leaning: none yet.
 - What would settle it: none yet.
+
+### Notes
+
+## 16 Timeline for editions
+
+- Question: where in the pipeline does an edition get its send date, and who keeps the gates on time?
+- Options: a calendar at stage 2 (Select) that I keep; a skill that counts back from the send date and reminds me in Element when a gate needs my yes; a separate planning stage before stage 1.
+- Current leaning: a calendar at stage 2, with dates counted back from each send date. No separate stage.
+- What would settle it: the first run of editions. Course sign-ups for rstatszh are due at the end of November 2026, so the welcome edition and the three editions of “Mehr als R” go out from early November, about one a week, and the trial editions become the live editions.
 
 ### Notes
