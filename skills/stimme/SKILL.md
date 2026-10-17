@@ -1,5 +1,6 @@
 ---
 name: stimme
+disable-model-invocation: true
 description: >-
   Outline and review for an edition of Zur Einsicht, in German. Two modes.
   "gliederung" turns Lars's rough draft and the research into a bullet outline

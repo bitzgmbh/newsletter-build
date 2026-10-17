@@ -1,5 +1,6 @@
 ---
 name: grafiken
+disable-model-invocation: true
 description: >-
   Makes the chart or charts of an edition of Zur Einsicht from data Lars names: a
   static version for the email and an interactive version for the website,

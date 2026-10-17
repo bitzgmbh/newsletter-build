@@ -2,6 +2,8 @@
 
 Claude Code skills I use around the newsletter. Each folder holds one skill (`SKILL.md`) or one git hook, and a short README.
 
+Every skill starts only when I invoke it with its slash command (`disable-model-invocation: true` in the frontmatter). Claude never starts one on its own. The runner still works, because it reads a stage's `SKILL.md` and follows it.
+
 - [clip](clip/): copy a draft to the clipboard, ready to paste.
 - [disclosure-summary](disclosure-summary/): add a "How AI was used" table to each pull request, counted from the commit trailers.
 - [regent-trailer](regent-trailer/): link each agent commit to its re_gent session and step.

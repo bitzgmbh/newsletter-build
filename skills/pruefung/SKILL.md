@@ -1,5 +1,6 @@
 ---
 name: pruefung
+disable-model-invocation: true
 description: >-
   Checks an edition of Zur Einsicht at stage 6 and never edits it. Hard
   checks: every fact, number, date and link traces to a source or a code

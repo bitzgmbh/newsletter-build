@@ -1,5 +1,6 @@
 ---
 name: verbreitung
+disable-model-invocation: true
 description: >-
   Writes the posts that lead to an edition of Zur Einsicht, one per channel
   (LinkedIn, Bluesky, Mastodon), each standing on its own, from the approved

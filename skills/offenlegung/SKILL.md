@@ -1,5 +1,6 @@
 ---
 name: offenlegung
+disable-model-invocation: true
 description: >-
   Writes the block "So ist diese Ausgabe entstanden" of an edition from the
   traces the work left: the commits of the edition folder, their trailers,

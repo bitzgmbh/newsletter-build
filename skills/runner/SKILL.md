@@ -1,5 +1,6 @@
 ---
 name: runner
+disable-model-invocation: true
 description: >-
   Drives one edition of Zur Einsicht through the pipeline, one stage per
   invocation, with a gate after each agent stage (decision 0014). It infers
