@@ -51,6 +51,7 @@ Themen für die Zeit nach dem Kursstart, und Kandidaten für die Ecke mit Daten 
 - Ein Bildmodell auf dem eigenen Laptop, als "Probier es selbst".
 - Was hat der Agent gemacht? Die Arbeit von Agenten neben Git festhalten.
 - Wie dieser Newsletter entsteht, aus dem Build Log.
+- Wie viele Stunden Teilnehmende im Kurs üben, aus den Nutzungsdaten von Posit Cloud: eigene Daten. Sie müssen zuerst in ein eigenes Repository extrahiert werden; für die ersten fünf Durchführungen gab es einen solchen Datensatz, seither nicht.
 
 Arten von Ausgaben zum Ausprobieren: ein Fehler, den ich gemacht habe; ein Begriff, erklärt; eine Ausgabe aus den Antworten der Leser:innen; eine Korrektur einer früheren Ausgabe.
 
