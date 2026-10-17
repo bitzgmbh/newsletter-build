@@ -11,6 +11,9 @@
 *.mp4
 *.wav
 
+# --- Agent session records: full transcripts, never in git ---
+.regent/
+
 # --- Credentials ---
 .env
 .env.*

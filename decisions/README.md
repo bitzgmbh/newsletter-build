@@ -14,6 +14,7 @@
 - [0007 How an approved edition is published](0007-publishing.md)
 - [0008 D3 is for charts in editions](0008-d3-for-charts.md)
 - [0009 Audience and title](0009-audience-and-title.md)
+- [0010 Das Repository läuft auf Deutsch](0010-sprache.md)
 
 ## Open
 
@@ -36,6 +37,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 | 13 | [Disclosure](#13-disclosure) | None yet |
 | 14 | [Prompt capture](#14-prompt-capture) | None yet |
 | 15 | [License for this repository](#15-license-for-this-repository) | None yet |
+| 16 | [Timeline for editions](#16-timeline) | A calendar at stage 2, with dates counted back from each send date |
 
 ## 1 English offer
 
@@ -114,6 +116,9 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
+- 2026-10-17: first assessment of the skill per stage in [pipeline/skills.md](../pipeline/skills.md). About six skills; draft and checks first.
+- 2026-10-17: each skill works from a crew role ([concept.md](../pipeline/concept.md), Breite). Gates 4, 6, 7 and 8 may later run without my yes, once my feedback notes at that gate show no change in three editions in a row; gate 5 and stage 9 stay.
+
 ## 9 Blog
 
 - Question: what is the blog post every four editions?
@@ -150,6 +155,8 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
+- 2026-10-17: five reader personas (administration, academia, private sector, NGO, self-employed) read each draft at stage 6 and say where they stop reading. The persona of the edition’s main readership has the last word ([concept.md](../pipeline/concept.md)).
+
 ## 13 Disclosure
 
 - Question: what does the disclosure block in each edition look like?
@@ -168,11 +175,22 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ### Notes
 
+- 2026-10-17: both candidates are in use since the first pull request from the retreat. re_gent records every agent step in `.regent/` (not published), and the [regent-trailer](../skills/regent-trailer/) hook writes its session and step into each commit. The commit skill archives selected prompts word for word in `prompts/`, with a `Prompts:` trailer. Still open: whether the re_gent record gets a private server, and which of the two feeds the disclosure block of an edition (question 13).
+
 ## 15 License for this repository
 
 - Question: under which license is this repository published?
 - Options: none yet.
 - Current leaning: none yet.
 - What would settle it: none yet.
+
+### Notes
+
+## 16 Timeline for editions
+
+- Question: where in the pipeline does an edition get its send date, and who keeps the gates on time?
+- Options: a calendar at stage 2 (Select) that I keep; a skill that counts back from the send date and reminds me in Element when a gate needs my yes; a separate planning stage before stage 1.
+- Current leaning: a calendar at stage 2, with dates counted back from each send date. No separate stage.
+- What would settle it: the first run of editions. Course sign-ups for rstatszh are due at the end of November 2026, so the welcome edition and the three editions of “Mehr als R” go out from early November, about one a week, and the trial editions become the live editions.
 
 ### Notes
