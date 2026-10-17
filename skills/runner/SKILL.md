@@ -32,7 +32,7 @@ Run `scripts/stand.py <edition folder>` first. It infers the stage from the file
 | 5b Text | parts of `index.qmd` with text | Lars writes; the runner waits | no gate, runs 5c when the parts have text |
 | 5c Prüfung stimme | `pruefung-stimme.md` | stimme, mode pruefung | gate |
 | 6 Prüfungen | `pruefbericht.md` | pruefung | gate; an Urteil "blockiert" sends the edition back to 5b |
-| 7 Grafiken | charts from code in `index.qmd` | not built yet | gate |
+| 7 Grafiken | `grafiken.md`, and the chart block in `index.qmd` | skill grafiken | gate |
 | 8 Übersetzung | the English version | not built yet | gate |
 | 9 Freigabe | merge of dev into main | Lars | |
 | 10 Versand | the email | Buttondown | |

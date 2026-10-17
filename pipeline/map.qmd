@@ -73,7 +73,7 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 | 4 | Recherche: Zotero, meine Notizen, das Web | Agent | offen |
 | 5 | Entwurf: Gliederung vom Agenten, Text von mir, Prüfung durch den Skill, höchstens 1000 Wörter (0015) | Agent mit mir | Skill stimme gebaut, noch ohne Probelauf |
 | 6 | Prüfungen: hart bei Fakten, Links und Zahlen ohne Quelle, als Hinweis bei Länge, Floskeln von KI und den fünf Personas (0016) | Agent | Skill pruefung gebaut, noch ohne Probelauf |
-| 7 | Grafiken: Grafiken aus Code, und Bilder | Agent mit mir | offen |
+| 7 | Grafiken: Grafiken aus Code, und Bilder | Agent mit mir | Skill grafiken gebaut, noch ohne Probelauf |
 | 8 | Übersetzung: Deutsch und Englisch | Agent | offen |
 | 9 | Freigabe der letzten Fassung | Ich | offen |
 | 10 | Versand per E-Mail (Buttondown) | Werkzeug | offen |

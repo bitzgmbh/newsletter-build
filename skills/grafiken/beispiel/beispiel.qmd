@@ -1,0 +1,77 @@
+---
+title: "Beispiel: eine Datenquelle, zwei Grafiken"
+lang: de
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+So baut der Skill grafiken eine Grafik: einmal statisch aus R für die E-Mail, einmal interaktiv aus Observable Plot für die Website, beide aus derselben Datei in `daten/`. Die Zahlen im Text kommen aus den Daten, nicht aus der Tastatur.
+
+```{r}
+#| label: daten
+library(readr)
+library(dplyr)
+datei <- "daten/KANTON_ZUERICH_809.csv"
+alter <- read_csv(datei, show_col_types = FALSE) |>
+  filter(GEBIET_NAME == "Zürich - ganzer Kanton") |>
+  transmute(jahr = as.integer(INDIKATOR_JAHR), alter = INDIKATOR_VALUE) |>
+  arrange(jahr)
+erstes <- alter[1, ]
+letztes <- alter[nrow(alter), ]
+abgerufen <- format(as.Date(file.info(datei)$mtime), "%d.%m.%Y")
+zahl <- function(x) format(x, decimal.mark = ",", nsmall = 1)
+quelle <- paste0("Quelle: Amt für Statistik und Daten, Kanton Zürich, Gemeindeporträt, Indikator 809, opendata.swiss, abgerufen am ", abgerufen)
+ojs_define(alter_ojs = alter)
+```
+
+Im Jahr `r letztes$jahr` lag das Durchschnittsalter der Bevölkerung des Kantons Zürich bei `r zahl(letztes$alter)` Jahren. Das sind `r zahl(letztes$alter - erstes$alter)` Jahre mehr als `r erstes$jahr`.
+
+## Für die E-Mail
+
+::: {.nur-mail}
+
+```{r}
+#| label: fig-alter
+#| fig-cap: !expr sprintf("Das Durchschnittsalter im Kanton Zürich steigt seit %d langsam an.", erstes$jahr)
+#| fig-alt: !expr sprintf("Liniendiagramm des Durchschnittsalters der Bevölkerung des Kantons Zürich von %d bis %d, von %s auf %s Jahre.", erstes$jahr, letztes$jahr, zahl(erstes$alter), zahl(letztes$alter))
+#| fig-width: 7
+#| fig-height: 4.2
+#| dev: ragg_png
+library(ggplot2)
+ggplot(alter, aes(jahr, alter)) +
+  geom_line(linewidth = 1.2, colour = "#2440a8") +
+  geom_point(size = 2.4, colour = "#2440a8") +
+  scale_y_continuous(labels = zahl) +
+  labs(x = NULL, y = "Durchschnittsalter in Jahren", caption = quelle) +
+  theme_minimal(base_size = 16) +
+  theme(panel.grid.minor = element_blank(),
+        plot.caption = element_text(size = 10, hjust = 0))
+```
+
+:::
+
+## Für die Website
+
+::: {.nur-web}
+
+```{ojs}
+//| label: fig-alter-web
+Plot.plot({
+  height: 320,
+  marginLeft: 50,
+  style: {fontSize: "14px"},
+  x: {label: null, tickFormat: d => String(d)},
+  y: {label: "Durchschnittsalter in Jahren", grid: true, tickFormat: d => d.toLocaleString("de-CH")},
+  marks: [
+    Plot.line(transpose(alter_ojs), {x: "jahr", y: "alter", stroke: "#2440a8", strokeWidth: 2}),
+    Plot.dot(transpose(alter_ojs), {x: "jahr", y: "alter", fill: "#2440a8", r: 4,
+      title: d => `${d.jahr}: ${d.alter.toLocaleString("de-CH")} Jahre`, tip: true})
+  ]
+})
+```
+
+`r quelle`.
+
+:::

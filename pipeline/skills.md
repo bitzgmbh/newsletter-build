@@ -1,6 +1,6 @@
 # Skills per stage
 
-First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [pipeline map](map.qmd) it says whether an agent skill is needed and what it can build on. Built so far: the stimme skill for stage 5 and the pruefung skill for stage 6, next to the helpers already in [skills/](../skills/).
+First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [pipeline map](map.qmd) it says whether an agent skill is needed and what it can build on. Built so far: the stimme skill for stage 5, the pruefung skill for stage 6, the grafiken skill for stage 7 and the runner for the gates, next to the helpers already in [skills/](../skills/).
 
 | # | Stage | Who | Skill needed? | Something to build on | Open decision | Crew role |
 |---|---|---|---|---|---|---|
@@ -10,7 +10,7 @@ First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [p
 | 4 | Research | Agent | Yes | Zotero, my vault, a research skill | | Fachbibliothekar:in für Datenrecherche |
 | 5 | Draft | Agent with me | Yes, the core skill: it proposes the outline as bullets, then reviews my text and records what it changes (0015) | Built: [skills/stimme](../skills/stimme/), on my plain-writing skill and [template.md](template.md) | | Wissenschaftsjournalist:in; Kursleiter:in für "Probier es selbst" |
 | 6 | Checks | Agent | Yes: hard on facts, links and numbers without a source, hints on length, AI tells and the five personas (0016) | Built: [skills/pruefung](../skills/pruefung/), on my prose-lint skill | | Schlussredaktion und Faktencheck |
-| 7 | Visuals | Agent with me | Yes: charts from code | Quarto, D3 (decision 0008), [reproducibility.md](../reproducibility.md) | | Datenjournalist:in |
+| 7 | Visuals | Agent with me | Yes: charts from code | Built: [skills/grafiken](../skills/grafiken/), on Quarto, ggplot2 and Observable Plot (decision 0008, [reproducibility.md](../reproducibility.md)) | | Datenjournalist:in |
 | 8 | Translate | Agent | Yes, German to English | My plain-writing skill for the English version | 1 | Fachübersetzer:in |
 | 9 | Approve | Me | No | [clip](../skills/clip/) for the hand-off | | |
 | 10 | Send | Tool | No, Buttondown does it | | | |

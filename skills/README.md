@@ -8,5 +8,6 @@ Claude Code skills I use around the newsletter. Each folder holds one skill (`SK
 - [stimme](stimme/): outline an edition from my rough draft and review the text I wrote, without writing it (stage 5).
 - [pruefung](pruefung/): check an edition, hard on facts, links and numbers, with hints on length, AI tells and the five personas (stage 6).
 - [runner](runner/): move an edition by one stage, commit the output, ping me in Element and record my yes (the gates, 0014).
+- [grafiken](grafiken/): the chart of an edition from open data, static for the email and interactive for the website, from one file (stage 7).
 
-The other pipeline stage skills (research, visuals, translate, distribute) land here as they get built. Which stages need a skill is assessed in [pipeline/skills.md](../pipeline/skills.md).
+The other pipeline stage skills (research, translate, distribute) land here as they get built. Which stages need a skill is assessed in [pipeline/skills.md](../pipeline/skills.md).
