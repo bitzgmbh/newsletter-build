@@ -1,7 +1,7 @@
 ---
 name: grafiken
 description: >-
-  Makes the chart or charts of an edition of Zur Einsicht from open data: a
+  Makes the chart or charts of an edition of Zur Einsicht from data Lars names: a
   static version for the email and an interactive version for the website,
   both from one data file next to the edition, both from code. Use when Lars
   asks for a Grafik for an edition, or when the runner reaches stage 7. Never
@@ -12,16 +12,20 @@ description: >-
 
 The skill works from one role: Datenjournalist:in aus einer Grafikredaktion (`pipeline/concept.md`, Breite). One statement per chart, readable on a phone, the source under the chart. The chart supports one claim of the edition; if no claim needs a chart, the skill says so and stops.
 
+## The data comes from Lars
+
+The data of a chart comes from Lars: either a source he names in `rohentwurf.md` or `recherche.md`, or his own data from a separate repository of his (for example usage data of his course from Posit Cloud, which first has to be extracted into its own repository). Without a named source the skill stops and asks. It never searches for a dataset to fill a chart, and never substitutes a "similar" dataset for the one he meant.
+
 ## Files to read first
 
 - `reproducibility.md` in the build repository: code makes the figure, numbers come through inline code, the steps to rebuild sit next to the output.
 - `pipeline/concept.md`, section "Für wen": the readers, who mostly know Excel charts.
 - The edition's `gliederung.md` and `recherche.md`: which number or claim the chart supports, and whether a data source is already named.
-- `beispiel/beispiel.qmd` in this folder: the pattern, rendered and checked.
+- `vorlage.md` in this folder: the chunk templates and the skeleton of the fetch script.
 
 ## Input
 
-An edition folder in `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`, the claim the chart supports, and the data source if known. Without a source, search opendata.swiss (the API answers only with a browser user agent) or the Datenkatalog of the Kanton Zürich for a small open dataset (under 1 MB, no personal data, a stable CSV URL) and propose it to Lars before downloading anything.
+An edition folder in `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`, the claim the chart supports, and the data source Lars named. Without one, stop and ask (see above).
 
 ## One source, two renderings
 
@@ -39,8 +43,8 @@ The org `.gitignore` ignores `*.csv`. The skill does not commit data. It writes 
 ## Steps
 
 1. Name the claim and the one statement the chart will make. Check with Lars if the outline does not settle it.
-2. Write `daten/holen.R` (pattern in `beispiel/daten/holen.R`), run it with `Rscript daten/holen.R` from the edition folder, read `daten/README.md`.
-3. Insert into `index.qmd`, at the place the outline or Lars names:
+2. Write `daten/holen.R` from the skeleton in `vorlage.md`, run it with `Rscript daten/holen.R` from the edition folder, read `daten/README.md`. For his own data from another repository, the script copies or reads from there and the README names that repository and commit.
+3. Insert into `index.qmd`, at the place the outline or Lars names, from the templates in `vorlage.md`:
    - a setup chunk (`label: daten`, no output) that reads the file, keeps the rows and columns needed, computes the numbers the text uses, and calls `ojs_define()`;
    - the figure chunk with `label: fig-<name>`, `fig-cap` and `fig-alt` built with `!expr` from the data, `echo: false`, `dev: ragg_png`, inside `::: {.nur-mail}`;
    - the OJS cell with `Plot.plot()` on `transpose(<name>)`, with tooltips, inside `::: {.nur-web}`, followed by the source line.
@@ -55,4 +59,4 @@ The org `.gitignore` ignores `*.csv`. The skill does not commit data. It writes 
 - Invent or adjust data, or type a number into the text.
 - Commit a data file, or anything outside the edition folder.
 - Change the text of an edition beyond inserting the chart block where it was told to.
-- Pick a dataset without saying which, and without Lars's yes when the outline did not name one.
+- Look for a dataset on its own, or take a different one than Lars named.
