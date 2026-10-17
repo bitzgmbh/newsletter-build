@@ -124,6 +124,6 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 - Question: where in the pipeline does an edition get its send date, and who keeps the gates on time?
 - Options: a calendar at stage 2 (Select) that I keep; a skill that counts back from the send date and reminds me in Element when a gate needs my yes; a separate planning stage before stage 1.
 - Current leaning: a calendar at stage 2, with dates counted back from each send date. No separate stage.
-- What would settle it: the first run of editions. Course sign-ups for rstatszh are due at the end of November 2026, so the welcome edition and the three editions of “Mehr als R” go out from early November, about one a week, and the trial editions become the live editions.
+- What would settle it: the first run of editions. Course sign-ups for rstatszh are due at the end of November 2026, so the welcome edition goes out on 3 November and the four editions of “Mehr als R” weekly from 10 November to 1 December, the course first; the trial editions become the live editions. The course page names no sign-up date; end of November is my own plan.
 
 ### Notes
