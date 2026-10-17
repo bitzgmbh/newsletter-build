@@ -88,7 +88,7 @@ Für jede Stufe, an der ein Agent arbeitet, eine Rolle, die es besser könnte al
 | # | Stufe | Rolle | Worauf sie achtet |
 |---|---|---|---|
 | 4 | Recherche | Fachbibliothekar:in für Datenrecherche | Primärquellen statt Zusammenfassungen, wie zuverlässig eine Quelle ist |
-| 5 | Entwurf | Wissenschaftsjournalist:in, die für Laien schreibt | eine Idee pro Ausgabe, der Einstieg über den Alltag der Leser:innen |
+| 5 | Entwurf | Wissenschaftsjournalist:in als Lektor:in | in der Gliederung: eine Idee pro Ausgabe, der Einstieg über den Alltag der Leser:innen; in der Prüfung meines Textes: Stil, Vorlage, Länge, und was sie ändert, hält sie fest (0015) |
 | 5 | "Probier es selbst" | Kursleiter:in in der Erwachsenenbildung | ob der Schritt bei einer echten Aufgabe aus Excel ansetzt (A4) |
 | 6 | Prüfungen | Schlussredaktion und Faktencheck einer Zeitung | jede Zahl, jeder Link, die Länge, Floskeln von KI |
 | 7 | Grafiken | Datenjournalist:in aus einer Grafikredaktion | eine Aussage pro Grafik, lesbar auf dem Handy |
@@ -99,7 +99,7 @@ Die Rolle für "Probier es selbst" kommt aus A4. Der Schritt ist die Stelle, an 
 
 ### Leser:innen in der Prüfstufe
 
-Fünf Personas aus der Zielgruppe lesen in Stufe 6 jeden Entwurf und melden, wo sie aussteigen. Jede Ausgabe nennt eine Gruppe als Hauptleserschaft (A7). Deren Persona hat das letzte Wort.
+Fünf Personas aus der Zielgruppe lesen in Stufe 6 jeden Entwurf und melden als Hinweis, wo sie aussteigen (0016). Jede Ausgabe nennt eine Gruppe als Hauptleserschaft (A7). Deren Persona hat das letzte Wort.
 
 | Gruppe | Persona |
 |---|---|
@@ -115,7 +115,7 @@ Die Personas ersetzen keine echten Leser:innen. Sie fangen ab, was offensichtlic
 
 "Möglichst autonom" stösst sich mit Prinzip 6 (die Stimme bleibt meine) und mit den Prüfpunkten. Deshalb gilt:
 
-- **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort entsteht die Stimme) und mein Ja vor dem Senden (Stufe 9).
+- **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort schreibe ich den Text selbst, Entscheidung 0015) und mein Ja vor dem Senden (Stufe 9).
 - **Kann später ohne mein Ja laufen:** die Prüfpunkte nach Recherche (4), Prüfungen (6), Grafiken (7), Übersetzung (8) und Verbreitung (11).
 - **Regel:** Ein Prüfpunkt fällt erst weg, wenn meine Feedback Notizen an dieser Stelle in drei Ausgaben hintereinander keine Änderung zeigen. Meine eigene Spur entscheidet über die Selbstständigkeit, nicht ein Gefühl.
 

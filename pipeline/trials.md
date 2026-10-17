@@ -35,7 +35,7 @@ Die Prüfpunkte variieren nicht. Alle bleiben an, bis die Regel in [concept.md](
 | 2 | Mehr als R: "Offen arbeiten" | ja | ja | nein | ein offener Datensatz des Kantons Zürich, eine Grafik aus Code, eine Rubrik mit einem Repository, einem Datensatz und einem Werkzeug |
 | 3 | Mehr als R: "Der Mensch bleibt drin" | ja | nein | nein | Sprachnotiz als Eingabe, persönlicher Essay |
 
-Probelauf 0 ist der Vergleich. An seiner Zeit und seiner Lesbarkeit messen sich die Probeläufe 1 bis 3. Kein Probelauf hat Daten und Literatur zugleich; diese Ecke kommt in einer späteren Ausgabe dran.
+Probelauf 0 ist der Vergleich. An seiner Zeit und seiner Lesbarkeit messen sich die Probeläufe 1 bis 3. In den Probeläufen 1 bis 3 schlägt der Agent die Gliederung vor und prüft meinen Text; die Absätze schreibe ich selbst (Entscheidung 0015). Kein Probelauf hat Daten und Literatur zugleich; diese Ecke kommt in einer späteren Ausgabe dran.
 
 ## Spätere Ausgaben
 

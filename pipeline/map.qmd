@@ -5,7 +5,7 @@ format:
     embed-resources: true
 ---
 
-Entwurf 3 vom 17. Oktober 2026. Eine Ausgabe, von der Idee bis zu den Leser:innen.
+Entwurf 4 vom 17. Oktober 2026. Eine Ausgabe, von der Idee bis zu den Leser:innen.
 
 ```{mermaid}
 %%| column: screen-inset
@@ -17,7 +17,7 @@ flowchart TB
 
   subgraph agents["Agenten arbeiten"]
     direction LR
-    S4["<u>4 Recherche</u><br>Zotero, Notizen, Web"] -- mein Ja --> S5["<u>5 Entwurf</u><br>höchstens<br>1000 Wörter"] -- mein Ja --> S6["<u>6 Prüfungen</u><br>Länge, Fakten,<br>Links, Floskeln von KI"] -- mein Ja --> S7["<u>7 Grafiken</u><br>Grafiken aus Code,<br>Bilder"] -- mein Ja --> S8["<u>8 Übersetzung</u><br>Deutsch und Englisch"]
+    S4["<u>4 Recherche</u><br>Zotero, Notizen, Web"] -- mein Ja --> S5["<u>5 Entwurf</u><br>Gliederung: Agent,<br>Text: ich, Prüfung: Skill"] -- mein Ja --> S6["<u>6 Prüfungen</u><br>Länge, Fakten,<br>Links, Floskeln von KI"] -- mein Ja --> S7["<u>7 Grafiken</u><br>Grafiken aus Code,<br>Bilder"] -- mein Ja --> S8["<u>8 Übersetzung</u><br>Deutsch und Englisch"]
   end
 
   subgraph approve["Ich gebe frei"]
@@ -51,7 +51,7 @@ flowchart TB
   style publish fill:#eceef4,stroke:#eceef4,color:#586178
 ```
 
-Ideen und Rohentwürfe bleiben meine. Die Agenten übernehmen von der Recherche bis zur Übersetzung und fragen mich nach jeder Stufe. Nichts geht ohne mein Ja raus. Dicker Rand: ich. Eingefärbt: Agenten. Gestrichelt: Werkzeuge und Leser:innen ausserhalb des Repositorys. "mein Ja" auf einem Pfeil: ein Prüfpunkt.
+Ideen und Rohentwürfe bleiben meine. Die Agenten übernehmen von der Recherche bis zur Übersetzung und fragen mich nach jeder Stufe. Den Text einer Ausgabe schreibe ich selbst, aus einer Gliederung, die der Agent vorschlägt, und der Skill prüft ihn danach (Entscheidung 0015). Nichts geht ohne mein Ja raus. Dicker Rand: ich. Eingefärbt: Agenten. Gestrichelt: Werkzeuge und Leser:innen ausserhalb des Repositorys. "mein Ja" auf einem Pfeil: ein Prüfpunkt.
 
 Die Karte ist Code. Sie lässt sich ändern und neu bauen, ohne das Zeichenwerkzeug und ohne die KI, die Entwurf 1 gemacht hat ([reproducibility.md](../reproducibility.md)). Zum Zeichnen diese Datei aus dem Wurzelverzeichnis des Repositorys rendern:
 
@@ -71,8 +71,8 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 | 2 | Auswahl der nächsten Ausgabe aus dem Backlog | Ich | offen |
 | 3 | Rohentwurf, gesprochen oder geschrieben | Ich | offen |
 | 4 | Recherche: Zotero, meine Notizen, das Web | Agent | offen |
-| 5 | Entwurf der Ausgabe, höchstens 1000 Wörter | Agent | offen |
-| 6 | Prüfungen: Länge, Fakten, Links, Floskeln von KI | Agent | offen |
+| 5 | Entwurf: Gliederung vom Agenten, Text von mir, Prüfung durch den Skill, höchstens 1000 Wörter (0015) | Agent mit mir | offen |
+| 6 | Prüfungen: hart bei Fakten, Links und Zahlen ohne Quelle, als Hinweis bei Länge, Floskeln von KI und den fünf Personas (0016) | Agent | offen |
 | 7 | Grafiken: Grafiken aus Code, und Bilder | Agent mit mir | offen |
 | 8 | Übersetzung: Deutsch und Englisch | Agent | offen |
 | 9 | Freigabe der letzten Fassung | Ich | offen |
@@ -81,7 +81,7 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 | 12 | Leser:innen beantworten eine Frage pro Ausgabe | Leser:innen | offen |
 | 13 | Auswertung der Signale aus [concept.md](concept.md): Versuche, Antworten, Kursanmeldungen und woher die Leser:innen kommen | Ich | offen |
 
-Nach jeder Agentenstufe (4 bis 8) und nach der Verbreitung (11) gibt es einen Prüfpunkt. Der Agent pingt mich in Element mit einem Link an und macht erst nach meinem Ja weiter. Am Anfang sind alle Prüfpunkte an. Wann einer wegfallen darf, steht in [concept.md](concept.md) (Breite).
+Nach jeder Agentenstufe (4 bis 8) und nach der Verbreitung (11) gibt es einen Prüfpunkt. Ein Runner ruft die Skills nacheinander auf, pingt mich in Element mit einem Link an und macht erst nach meinem Ja weiter (0014). Am Anfang sind alle Prüfpunkte an. Wann einer wegfallen darf, steht in [concept.md](concept.md) (Breite).
 
 ## Prinzipien
 
