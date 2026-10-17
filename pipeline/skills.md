@@ -17,7 +17,7 @@ First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [p
 | 11 | Distribute | Agent, my yes | Yes: LinkedIn, Bluesky and Mastodon posts from the edition | My plain-writing skill, [clip](../skills/clip/) | | Social Media Redakteur:in |
 | 12 | Replies | Readers | Later: collect answers back into the backlog | The intake skill of stage 1 | | |
 | 13 | Review | Me | Later, and a script rather than a skill: the signals from [concept.md](concept.md), read from Buttondown, the course sign-up form and the tagged links | [disclosure-summary](../skills/disclosure-summary/) shows the pattern: numbers from code | | |
-| Gates | After stages 4 to 8 and 11 | Agent pings, I say yes | Yes, the runner: one shared step, an Element ping with a link, then wait (0014) | Sending to Element from an agent already works | | |
+| Gates | After stages 4 to 8 and 11 | Agent pings, I say yes | Yes, the runner: one shared step, an Element ping with a link, then wait (0014) | Built: [skills/runner](../skills/runner/) | | |
 | All | Disclosure | Script | Yes, an edition version of disclosure-summary (0017) | [disclosure-summary](../skills/disclosure-summary/) | | |
 
 ## Reading of the table

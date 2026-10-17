@@ -81,7 +81,7 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 | 12 | Leser:innen beantworten eine Frage pro Ausgabe | Leser:innen | offen |
 | 13 | Auswertung der Signale aus [concept.md](concept.md): Versuche, Antworten, Kursanmeldungen und woher die Leser:innen kommen | Ich | offen |
 
-Nach jeder Agentenstufe (4 bis 8) und nach der Verbreitung (11) gibt es einen Prüfpunkt. Ein Runner ruft die Skills nacheinander auf, pingt mich in Element mit einem Link an und macht erst nach meinem Ja weiter (0014). Am Anfang sind alle Prüfpunkte an. Wann einer wegfallen darf, steht in [concept.md](concept.md) (Breite).
+Nach jeder Agentenstufe (4 bis 8) und nach der Verbreitung (11) gibt es einen Prüfpunkt. Ein Runner ruft die Skills nacheinander auf, pingt mich in Element mit einem Link an und macht erst nach meinem Ja weiter (0014). Am Anfang sind alle Prüfpunkte an. Wann einer wegfallen darf, steht in [concept.md](concept.md) (Breite). Der Runner ist der Skill `runner`.
 
 ## Prinzipien
 
