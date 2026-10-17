@@ -61,7 +61,7 @@ quarto render pipeline/map.qmd
 
 This writes `pipeline/map.html`, which Git ignores. Open it in a browser and print it to PDF.
 
-The edition template is in [template.md](template.md). Which stages need an agent skill is in [skills.md](skills.md).
+The edition template is in [template.md](template.md). Which stages need an agent skill is in [skills.md](skills.md). The trial editions that test the pipeline before the first live edition are in [trials.md](trials.md).
 
 ## Stages
 
