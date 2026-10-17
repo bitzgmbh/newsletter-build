@@ -18,6 +18,7 @@ The skill works from one role: Schlussredaktion und Faktencheck einer Zeitung (`
 
 - `pipeline/concept.md`, sections "Für wen" and "Breite": the readers and the five personas.
 - `personas.md` in this folder: how each persona reads.
+- `blickwinkel.md` in this folder: the three perspectives of the Blickwinkel hint.
 - `skills/stimme/regeln.md`: the German plain rules; their patterns are the AI tells.
 - `reproducibility.md`: numbers come from code or from a cited source, never typed.
 - In the edition folder, when present: `recherche.md` (the sources of stage 4), `rohentwurf.md` (Lars's own words) and `gliederung.md` (the Hauptleserschaft).
@@ -54,6 +55,7 @@ Hints go into the report and Lars decides. They never block.
   - Zusammenfassung oder gute Wünsche am Schluss, Ankündigung des nächsten Punkts.
   - Überschrift als "X: Y" repeated across the text.
 - **Personas.** Each of the five personas in `personas.md` reads the whole text from her situation and names the first sentence where she stops reading, and why, in one or two sentences in German, in her own words. A persona who reads to the end says so and names what she would do next. The persona of the Hauptleserschaft speaks last, and her entry is marked "(Hauptleserschaft)". Her verdict counts most, as decided in 0016.
+- **Blickwinkel.** Read the whole text once from each perspective in `blickwinkel.md` (Neurowissenschaft, Psychologie, Philosophie for now, issue #4) and report, in one or two German sentences per perspective, what the text misses or what does not hold from that view. No rewrite, no verdict on the idea.
 
 ## Output
 
@@ -76,6 +78,8 @@ Tabelle: Teil, Wörter, Budget, Differenz. Total.
 Je Fund: Muster, Teil, Zitat.
 ### Personas
 Fünf Einträge, die Hauptleserschaft zuletzt und markiert.
+### Blickwinkel
+Drei Einträge, je ein bis zwei Sätze.
 
 ## Urteil
 Eine Zeile: "Freigegeben für Stufe 7" oder "Blockiert, bis N harte Punkte behoben sind".
