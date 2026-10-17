@@ -29,6 +29,7 @@ format:
 - [0015 Der Entwurf: Gliederung vom Agenten, Text von mir, Prüfung durch den Skill](0015-entwurf.md)
 - [0016 Prüfungen](0016-pruefungen.md)
 - [0017 Der Offenlegungsblock einer Ausgabe](0017-offenlegungsblock.md)
+- [0018 Drei Blickwinkel als Hinweis in der Prüfung](0018-drei-blickwinkel.md)
 
 ## Open
 

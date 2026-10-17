@@ -1,0 +1,7 @@
+# 0018 Drei Blickwinkel als Hinweis in der Prüfung
+
+- Frage: Liest ein Agent meinen Text aus festen Blickwinkeln, und wenn ja, aus welchen und an welcher Stufe? (Issue #4)
+- Optionen: als Hinweis in Stufe 6, neben den fünf Personas; zusätzlich in der Gliederung als Wahl eines Blickwinkels vor dem Schreiben; nur vor dem Schreiben. Für die Blickwinkel: Neurowissenschaft, Psychologie, Philosophie wie bei einem anderen Teilnehmer am Retreat; Psychologie, Didaktik, Philosophie; Psychologie, Statistik, Philosophie.
+- Wahl: als Hinweis in Stufe 6. Der Prüf Skill liest den Text einmal aus jeder Sicht und meldet in ein bis zwei Sätzen, was fehlt oder nicht trägt. Die drei Blickwinkel sind Psychologie, Didaktik und Philosophie; sie stehen in `skills/pruefung/blickwinkel.md`. An meinem Schreiben ändert sich nichts.
+- Warum: Psychologie fragt nach Selbstwirksamkeit und Growth Mindset, also nach meinem Ziel. Didaktik fragt, ob ein Mensch aus dem Text lernen kann, also nach meiner Rolle als Kursleiter. Philosophie fragt nach Werkzeug und Zweck, Verantwortung und Offenheit, also nach den Themen der Ausgaben. Neurowissenschaft fällt weg, weil meine Texte keine Aussagen über das Gehirn machen und die Sicht leicht in Floskeln kippt. Statistik überschneidet sich mit dem harten Faktencheck. Ein Hinweis in Stufe 6 kostet mich keine Entscheidung vor dem Schreiben; die Idee, vorher einen Blickwinkel zu wählen, bleibt für später offen.
+- Datum: 2026-10-17
