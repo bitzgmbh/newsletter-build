@@ -22,6 +22,7 @@ def parts(text):
     text = re.sub(r"```.*?```", "", text, flags=re.S)
     text = re.sub(r"\{\{<.*?>\}\}", "", text)
     text = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", text)
+    text = re.sub(r"(?m)^\*Reihe:.*$", "", text)
     result = []
     name = "Einstieg"
     buf = []

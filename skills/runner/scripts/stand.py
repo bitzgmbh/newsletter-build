@@ -20,6 +20,7 @@ def parts_with_text(qmd):
         if end != -1:
             text = text[end + 4:]
     text = re.sub(r"<!--.*?-->", "", text, flags=re.S)
+    text = re.sub(r"(?m)^\*Reihe:.*$", "", text)
     text = re.sub(r"```.*?```", "", text, flags=re.S)
     text = re.sub(r"\{\{<.*?>\}\}", "", text)
     name, buf, out = "Einstieg", [], {}
