@@ -60,6 +60,7 @@ Themen für die Zeit nach dem Kursstart, und Kandidaten für die Ecke mit Daten 
 - Ein Bildmodell auf dem eigenen Laptop, als "Probier es selbst".
 - Was hat der Agent gemacht? Die Arbeit von Agenten neben Git festhalten.
 - Wie dieser Newsletter entsteht, aus dem Build Log.
+- Wenn jedes Meeting aufgezeichnet wird: Wo bleiben das Persönliche und der Humor, wenn alle wissen, dass mitgeschrieben wird? Dazu die Idee von Mensch-Assistenten, deren Aufgabe es ist, das Menschliche in einer Gruppe zu halten, mit der Zeit, die Aufnahme und Transkription frei machen. Ein Thema mit Blick in die Zukunft, aus einem Gespräch am AI Retreat vom 18. Oktober 2026.
 - Wie viele Stunden Teilnehmende im Kurs üben, aus den Nutzungsdaten von Posit Cloud: eigene Daten. Sie müssen zuerst in ein eigenes Repository extrahiert werden; für die ersten fünf Durchführungen gab es einen solchen Datensatz, seither nicht.
 
 Arten von Ausgaben zum Ausprobieren: ein Fehler, den ich gemacht habe; ein Begriff, erklärt; eine Ausgabe aus den Antworten der Leser:innen; eine Korrektur einer früheren Ausgabe.
