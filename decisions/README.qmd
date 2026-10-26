@@ -30,6 +30,12 @@ format:
 - [0016 Prüfungen](0016-pruefungen.md)
 - [0017 Der Offenlegungsblock einer Ausgabe](0017-offenlegungsblock.md)
 - [0018 Drei Blickwinkel als Hinweis in der Prüfung](0018-drei-blickwinkel.md)
+- [0019 Der Name ist bitz](0019-name-bitz.md)
+- [0020 Zwei Rubriken: Zur Einsicht und Offengelegt](0020-rubriken.md)
+- [0021 Absender und Marke](0021-absender-und-marke.md)
+- [0022 Domains](0022-domains.md)
+- [0023 Veröffentlichung ohne eigene Website](0023-veroeffentlichung-ohne-website.md)
+- [0024 Buttondown und die Datenschutzerklärung](0024-buttondown-und-datenschutz.md)
 
 ## Open
 
@@ -38,8 +44,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 | # | Question | Current leaning |
 |---|---|---|
 | 1 | [What do English readers get from each edition?](#1-english-offer) | None yet |
-| 2 | [Should my international network read Zur Einsicht, or only find it?](#2-english-audience) | Open until a few editions are out |
-| 3 | [The English tagline](#3-tagline) | Draft only |
+| 2 | [Should my international network read bitz, or only find it?](#2-english-audience) | Open until a few editions are out |
 | 5 | [Website design](#5-website-design) | Leaning towards a new layout |
 | 9 | [Blog](#9-blog) | Deep dive |
 | 10 | [Edition template](#10-edition-template) | Draft in `pipeline/template.md` |
@@ -58,19 +63,10 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 ## 2 English audience {#2-english-audience}
 
-- Question: should my international network read Zur Einsicht, or only find it?
+- Question: should my international network read bitz, or only find it?
 - Options: read it; find it.
 - Current leaning: open until a few editions are out.
 - What would settle it: replies to the first editions show who actually reads.
-
-### Notes
-
-## 3 Tagline {#3-tagline}
-
-- Question: which English tagline explains the title?
-- Options: first draft, "for inspection: how the work is done, with AI, in the open".
-- Current leaning: draft only.
-- What would settle it: trying it on people at the retreat.
 
 ### Notes
 
@@ -83,7 +79,7 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
   - What should a reader feel in the first five seconds, and how is that different from openwashdata.org?
   - Does "new" mean a new look on Quarto (a custom theme and page templates, which keeps decision 0004), or a new tool?
   - Which page do I design first: an edition, the start page, or a blog post?
-  - Does Zur Einsicht get its own brand (colours, fonts, wordmark), or does it wait for the bitz brand?
+  - Which elements does the newsletter share with the bitz brand, and which are its own (0021)?
   - How much time can design take before the first edition goes out?
 
 ### Notes

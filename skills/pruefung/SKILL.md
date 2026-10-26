@@ -2,7 +2,7 @@
 name: pruefung
 disable-model-invocation: true
 description: >-
-  Checks an edition of Zur Einsicht at stage 6 and never edits it. Hard
+  Checks an edition of bitz at stage 6 and never edits it. Hard
   checks: every fact, number, date and link traces to a source or a code
   chunk, and every link resolves; a hard fail blocks the edition. Hints: word
   count per part, AI tells in German, and five reader personas who say where

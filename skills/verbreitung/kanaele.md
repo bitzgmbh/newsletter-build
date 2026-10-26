@@ -4,11 +4,11 @@ Was pro Kanal gilt. Die Regeln für jeden Post stehen in `SKILL.md`; hier stehen
 
 ## LinkedIn
 
-- Länge: bis 3000 Zeichen. Sichtbar vor "mehr" sind die ersten rund 210 Zeichen, deshalb trägt der erste Absatz den Punkt. Ziel sind 600 bis 1200 Zeichen: Reihe, Hook, die Idee in zwei bis vier kurzen Absätzen, ein konkretes Ding, die Frage, der Link.
+- Länge: bis 3000 Zeichen. Sichtbar vor "mehr" sind die ersten rund 210 Zeichen, deshalb trägt der erste Absatz den Punkt. Ziel sind 600 bis 1200 Zeichen: Reihe, Hook, die Idee in zwei bis vier kurzen Absätzen, ein konkretes Ding, die Frage. Der Link steht im ersten Kommentar.
 - Ton: wie die Ausgabe, in der ersten Person, du zur Leser:in. Kein Jubel, keine Ankündigungssprache ("Spannende Neuigkeiten"), keine Dreierreihen aus Rhythmus.
 - Absätze: ein bis zwei Sätze, Leerzeile dazwischen. LinkedIn zeigt kein Markdown; kein Fett, keine Listenzeichen ausser einem Bindestrich am Zeilenanfang.
 - Hashtags: höchstens zwei, am Ende, nur wenn Lars sie schon nutzt. Vorerst keine. Keine Emojis.
-- Link: als letzte Zeile, in Klartext. Parameter `?ref=linkedin`.
+- Link: im ersten Kommentar unter dem Post. Der Post endet mit der Frage. Parameter `?ref=linkedin`.
 - Zeitpunkt: der Morgen nach dem Versand, zwischen 7 und 8 Uhr.
 
 ## Bluesky

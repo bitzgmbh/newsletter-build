@@ -1,4 +1,4 @@
-# Build the block "So ist diese Ausgabe entstanden" of an edition from its
+# Build the block "Offengelegt" of an edition from its
 # traces: the commits of the edition folder, their trailers (Assisted-by,
 # Human-authored, Regent-Session), the Prompts ids in the messages, and the
 # files each stage left behind. Decision 0017. Nothing here is typed from
@@ -115,8 +115,8 @@ if (schreiben) {
   if (length(s) == 1 && length(e) == 1 && e > s) {
     q <- c(q[1:s], block, q[e:length(q)])
   } else {
-    h <- which(grepl("^## So ist diese Ausgabe entstanden", q))
-    if (length(h) != 1) stop("Heading 'So ist diese Ausgabe entstanden' not found in index.qmd", call. = FALSE)
+    h <- which(grepl("^## Offengelegt", q))
+    if (length(h) != 1) stop("Heading 'Offengelegt' not found in index.qmd", call. = FALSE)
     i <- h
     # keep the template comment that follows the heading
     j <- h + 1; while (j <= length(q) && !nzchar(trimws(q[j]))) j <- j + 1

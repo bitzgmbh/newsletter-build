@@ -4,7 +4,7 @@ The disclosure block of an edition, built from the traces (decision 0017).
 
 ## Why I use it
 
-Every edition ends with "So ist diese Ausgabe entstanden". I do not want to write that block from memory, because memory flatters. The script reads the commits of the edition folder, their trailers, the prompts archive and the re_gent sessions, and says per stage who did it and with which model. An edition I wrote entirely by hand says exactly that.
+Every edition ends with "Offengelegt", the block that shows how it was made (0020). I do not want to write that block from memory, because memory flatters. The script reads the commits of the edition folder, their trailers, the prompts archive and the re_gent sessions, and says per stage who did it and with which model. An edition I wrote entirely by hand says exactly that.
 
 ## What is in here
 

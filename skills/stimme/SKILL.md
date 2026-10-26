@@ -2,7 +2,7 @@
 name: stimme
 disable-model-invocation: true
 description: >-
-  Outline and review for an edition of Zur Einsicht, in German. Two modes.
+  Outline and review for an edition of bitz, in German. Two modes.
   "gliederung" turns Lars's rough draft and the research into a bullet outline
   along the edition template. "pruefung" reviews the text Lars wrote against
   the German plain rules, the template, the length and his voice, proposes

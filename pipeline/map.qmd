@@ -98,7 +98,7 @@ Nach jeder Agentenstufe (4 bis 8) und nach der Verbreitung (11) gibt es einen Pr
 
 ## Ziel
 
-> Zur Einsicht hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
+> bitz hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
 
 Leser:innen probieren den Schritt "Probier es selbst" aus und erzählen mir davon, beantworten die Frage der Ausgabe und melden sich für einen Kurs an. Ziel, Annahmen, Crew und die Frage, wie selbstständig die Pipeline laufen darf, stehen in [concept.md](concept.md).
 

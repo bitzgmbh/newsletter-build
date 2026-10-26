@@ -2,7 +2,7 @@
 name: runner
 disable-model-invocation: true
 description: >-
-  Drives one edition of Zur Einsicht through the pipeline, one stage per
+  Drives one edition of bitz through the pipeline, one stage per
   invocation, with a gate after each agent stage (decision 0014). It infers
   the current stage from the edition folder, runs that stage's skill, commits
   the output on dev in the private repository, pings Lars in Element with a
@@ -57,7 +57,7 @@ A stage whose skill is not built stops with "Skill fehlt: <name>" and pings Lars
 One Matrix message to `element_room`, in German:
 
 ```
-Zur Einsicht, <Titel der Ausgabe>: Stufe <n> <Name> fertig, dein Ja?
+bitz, <Titel der Ausgabe>: Stufe <n> <Name> fertig, dein Ja?
 <two or three lines on what the stage produced: counts, Urteil, open "?" points>
 https://github.com/<private_repo>/blob/dev/<path to the output file>
 Antworte hier mit ja, oder mit ein bis zwei Sätzen, was ich ändern soll.

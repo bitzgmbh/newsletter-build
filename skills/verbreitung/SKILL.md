@@ -2,7 +2,7 @@
 name: verbreitung
 disable-model-invocation: true
 description: >-
-  Writes the posts that lead to an edition of Zur Einsicht, one per channel
+  Writes the posts that lead to an edition of bitz, one per channel
   (LinkedIn, Bluesky, Mastodon), each standing on its own, from the approved
   edition. In German. Use when Lars asks for the posts of an edition, says
   "Posts für die Ausgabe", or the runner reaches stage 11. The skill writes
@@ -22,7 +22,7 @@ The skill works from one role: Social Media Redakteur:in (`pipeline/concept.md`,
 ## Input
 
 - The edition folder in `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`.
-- The URL of the edition on the website: `https://zureinsicht.ch/ausgaben/<kurzname>/` once published. Before that, the placeholder `[URL]`.
+- The URL of the edition in the Buttondown archive once sent (0023: no own website yet). Before that, the placeholder `[URL]`.
 - The series label from the front matter (`reihe`), if the edition has one.
 
 If the edition has no text yet, stop. Posts come from the approved text, never from the outline.
@@ -33,7 +33,7 @@ If the edition has no text yet, stop. Posts come from the approved text, never f
 2. It holds one concrete thing from the edition: the example, or the "Probier es selbst" step. Not both, and nothing the edition does not say.
 3. It ends with the question to the reader from the edition, or a shortened form of it, before the link.
 4. It works without the edition. Read the post alone: does it make the point? If not, rewrite it.
-5. The link comes last, with the channel's parameter: `?ref=linkedin`, `?ref=bluesky`, `?ref=mastodon`. That is measuring point 3 in `concept.md`. No link shortener, no "Link in den Kommentaren".
+5. The link comes last, with the channel's parameter: `?ref=linkedin`, `?ref=bluesky`, `?ref=mastodon`. That is measuring point 3 in `concept.md`. No link shortener. On LinkedIn the link goes into the first comment, and the post ends with the question (`kanaele.md`).
 6. The series label where the edition has one, as the first line: `Mehr als R (1/3)`.
 7. The course is named only when the edition names it, and only as the edition does.
 8. No call to subscribe in the post. The edition page has the form.
@@ -58,5 +58,5 @@ Then stop. Stage 11 has a gate: the runner pings Lars with the first line of eac
 - Post anything. Lars posts.
 - Invent a claim, a number or an example that is not in the edition.
 - Change the edition.
-- Link to Buttondown, to a platform copy of the edition, or to anything but the edition on the website (principle 1 of the map).
+- Link to a platform copy of the edition, or to anything but the edition itself: its Buttondown archive page for now (0023), its page on the own domain later.
 - Write a post for a channel not in `kanaele.md`.

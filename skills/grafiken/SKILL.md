@@ -2,7 +2,7 @@
 name: grafiken
 disable-model-invocation: true
 description: >-
-  Makes the chart or charts of an edition of Zur Einsicht from data Lars names: a
+  Makes the chart or charts of an edition of bitz from data Lars names: a
   static version for the email and an interactive version for the website,
   both from one data file next to the edition, both from code. Use when Lars
   asks for a Grafik for an edition, or when the runner reaches stage 7. Never

@@ -2,7 +2,7 @@
 name: offenlegung
 disable-model-invocation: true
 description: >-
-  Writes the block "So ist diese Ausgabe entstanden" of an edition from the
+  Writes the block "Offengelegt" of an edition from the
   traces the work left: the commits of the edition folder, their trailers,
   the prompts archive and the re_gent sessions. Never from memory. Use when
   an edition is ready for stage 9, when Lars asks for the Offenlegung of an
@@ -27,7 +27,7 @@ Show the block to Lars. Then, after his yes:
 Rscript skills/offenlegung/offenlegung.R <edition folder> --schreiben
 ```
 
-This writes the block into `index.qmd` under the heading "So ist diese Ausgabe entstanden", between the markers `<!-- offenlegung:start -->` and `<!-- offenlegung:end -->`, so a later run replaces it. The template comment stays. Commit `index.qmd` on dev in the private repository with the restore/add dance around `rohentwurf.md` (`git restore --staged` before, `git add` after), trailer `Assisted-by: Claude <model-id>`, and push.
+This writes the block into `index.qmd` under the heading "Offengelegt", between the markers `<!-- offenlegung:start -->` and `<!-- offenlegung:end -->`, so a later run replaces it. The template comment stays. Commit `index.qmd` on dev in the private repository with the restore/add dance around `rohentwurf.md` (`git restore --staged` before, `git add` after), trailer `Assisted-by: Claude <model-id>`, and push.
 
 Run it last, after the last agent stage and before stage 9, because every later commit changes the traces. If a stage runs again after the block was written, run the script again.
 

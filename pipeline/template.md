@@ -6,11 +6,11 @@ Draft for feedback at the retreat, 2026-10-01. The parts and word counts are a p
 |---|---|---|
 | Subject line and opening | Written by me, in my voice | 80 |
 | The idea | One idea per edition, in small parts with bullets | 450 |
-| Example or story | From my own work and teaching | 200 |
+| Zur Einsicht (example or story) | From my own work and teaching, with my own mistake or what I learned from it (0020) | 200 |
 | Try it yourself | One step that starts from a task readers do in Excel today and uses their own knowledge. R in the browser and an AI prompt alternate from edition to edition (A4 in [concept.md](concept.md)) | 100 |
 | One question for the reader | Answered with one click or a reply | 40 |
 | What readers said last time | The answers to the previous question | 50 |
-| How this edition was made | The AI disclosure, as bullets | 60 |
+| Offengelegt (how this edition was made) | The AI disclosure, as bullets (0017, 0020) | 60 |
 | Pointers | Blog post, course, other channels, and the line for forwarded readers ("Weitergeleitet bekommen? Hier abonnieren") with its own link | 20 |
 | **Total** | | **1,000** |
 

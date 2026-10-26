@@ -1,6 +1,6 @@
-# Zur Einsicht: the build log
+# bitz: the build log
 
-This repository shows how I build the system behind my newsletter Zur Einsicht, step by step. I build it with AI agents, and the history shows where they helped.
+This repository shows how I build the system behind my newsletter bitz, step by step. Until 26 October 2026 it was called Zur Einsicht, which is now the name of one of its sections (decisions 0019 and 0020). The repositories keep their names. I build it with AI agents, and the history shows where they helped.
 
 I started it to prepare the AI Retreat in Bad Kohlgrub (16 to 18 October 2026), where the newsletter pipeline is my project. The first edition goes out in early November 2026.
 

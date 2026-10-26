@@ -5,3 +5,4 @@
 - Wahl: zureinsicht.ch und zur-einsicht.ch bei Infomaniak. Die Variante mit Bindestrich leitet auf die ohne weiter.
 - Warum: Wer den Namen hört, tippt ihn mit oder ohne Bindestrich, und beide sollen ankommen. Leser:innen in Deutschland und Österreich finden die .ch Domain genauso. Infomaniak ist ein Schweizer Anbieter (Prinzip 4) und kann später auch die Absenderadresse auf der Domain hosten.
 - Datum: 2026-10-17
+- Ersetzt durch: 0022.

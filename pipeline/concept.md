@@ -6,7 +6,7 @@ Erarbeitet am AI Retreat am 17. Oktober 2026, in drei Sitzungen. Die Höhe fragt
 
 ### Ziel
 
-> Zur Einsicht hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
+> bitz hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
 
 ### Ergebnisse für die Leser:innen
 
