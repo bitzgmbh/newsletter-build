@@ -5,3 +5,4 @@
 - Wahl: bitzgmbh/zur-einsicht.
 - Warum: Dort liegen die Ausgaben und die Website, also die Sache selbst (0005, 0007). Dieses Repository, zur-einsicht-build, ist der Begleiter dazu. Der deutsche Name folgt 0010.
 - Datum: 2026-10-17
+- Ersetzt durch: 0025.

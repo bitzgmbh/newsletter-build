@@ -21,7 +21,7 @@ The skill works from one role: Social Media Redakteur:in (`pipeline/concept.md`,
 
 ## Input
 
-- The edition folder in `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`.
+- The edition folder in `bitzgmbh/newsletter`, `ausgaben/<JJJJ-MM-TT-kurzname>/`.
 - The URL of the edition in the Buttondown archive once sent (0023: no own website yet). Before that, the placeholder `[URL]`.
 - The series label from the front matter (`reihe`), if the edition has one.
 

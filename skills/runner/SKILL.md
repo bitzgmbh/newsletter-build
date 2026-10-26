@@ -16,7 +16,7 @@ The runner is the shared step around the stage skills: it calls the skill for th
 
 ## Config
 
-Read `~/.config/zur-einsicht.json`: `element_room` (the Matrix room for the pings), `private_repo` (owner/name), `private_repo_path` (the local clone). If the file or a key is missing, say which one and stop. Nothing from that file goes into a commit or a committed file.
+Read `~/.config/bitz-newsletter.json`: `element_room` (the Matrix room for the pings), `private_repo` (owner/name), `private_repo_path` (the local clone). If the file or a key is missing, say which one and stop. Nothing from that file goes into a commit or a committed file.
 
 ## Input
 

@@ -29,6 +29,7 @@
 - [0022 Domains](0022-domains.md)
 - [0023 Veröffentlichung ohne eigene Website](0023-veroeffentlichung-ohne-website.md)
 - [0024 Buttondown und die Datenschutzerklärung](0024-buttondown-und-datenschutz.md)
+- [0025 Namen der Repositories](0025-namen-der-repositories.md)
 
 ## Open
 

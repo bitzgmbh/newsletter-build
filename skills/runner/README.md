@@ -13,4 +13,4 @@ Every agent stage ends with a gate, and I want each gate to look the same: one m
 
 ## Install
 
-Link this folder into `~/.claude/skills/runner/`. It needs `~/.config/zur-einsicht.json` with the Matrix room and the path of the private repository; those values stay out of git.
+Link this folder into `~/.claude/skills/runner/`. It needs `~/.config/bitz-newsletter.json` with the Matrix room and the path of the private repository; those values stay out of git.

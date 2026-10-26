@@ -14,7 +14,7 @@ import urllib.error
 import urllib.request
 
 URL = re.compile(r"https?://[^\s<>()\"'\]]+")
-UA = {"User-Agent": "zur-einsicht-pruefung/1.0 (link check)"}
+UA = {"User-Agent": "bitz-newsletter-pruefung/1.0 (link check)"}
 
 
 def urls(text):

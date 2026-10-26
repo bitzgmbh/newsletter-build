@@ -29,7 +29,7 @@ The skill works from one role: Wissenschaftsjournalist:in als Lektor:in (`pipeli
 
 ## Input
 
-An edition folder in the private repository `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`, with:
+An edition folder in the private repository `bitzgmbh/newsletter`, `ausgaben/<JJJJ-MM-TT-kurzname>/`, with:
 
 - `index.qmd`: the edition, started from `ausgaben/_vorlage/index.qmd`. The front matter names the Hauptleserschaft.
 - `rohentwurf.md`: Lars's rough draft, spoken or written (stage 3). If the file is missing, take the Rohentwurf field of the edition's issue.

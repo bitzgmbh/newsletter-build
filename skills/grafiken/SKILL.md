@@ -26,7 +26,7 @@ The data of a chart comes from Lars: either a source he names in `rohentwurf.md`
 
 ## Input
 
-An edition folder in `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`, the claim the chart supports, and the data source Lars named. Without one, stop and ask (see above).
+An edition folder in `bitzgmbh/newsletter`, `ausgaben/<JJJJ-MM-TT-kurzname>/`, the claim the chart supports, and the data source Lars named. Without one, stop and ask (see above).
 
 ## One source, two renderings
 

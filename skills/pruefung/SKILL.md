@@ -26,7 +26,7 @@ The skill works from one role: Schlussredaktion und Faktencheck einer Zeitung (`
 
 ## Input
 
-An edition folder in the private repository `bitzgmbh/zur-einsicht`, `ausgaben/<JJJJ-MM-TT-kurzname>/`. By default the skill checks `index.qmd`; a named file in the folder, such as `entwurf-skill.md`, is checked instead when Lars names it. The Hauptleserschaft comes from the front matter or from `gliederung.md`. If neither names it, ask.
+An edition folder in the private repository `bitzgmbh/newsletter`, `ausgaben/<JJJJ-MM-TT-kurzname>/`. By default the skill checks `index.qmd`; a named file in the folder, such as `entwurf-skill.md`, is checked instead when Lars names it. The Hauptleserschaft comes from the front matter or from `gliederung.md`. If neither names it, ask.
 
 ## Hard checks
 
