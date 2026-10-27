@@ -40,6 +40,8 @@ Menschen aus Behörden und Hochschulen stehen näher am Einstieg in die Arbeit m
 
 Daraus folgt für die Inhalte: KI hilft nur, wenn sie die eigenen Fähigkeiten verstärkt, nicht wenn sie allgemeine Inhalte erzeugt, die alle erzeugen könnten.
 
+Das Anmeldeformular kennt seit dem 27. Oktober 2026 zwei Antworten mehr als diese fünf Gruppen: "Internationale Organisation" (UN, multilaterale Organisationen, Entwicklungsbanken, aus meinem Netzwerk) und "Andere". Beide zählen zur Reichweite und werden keine Personas. Füllt sich "Andere", fehlt eine Gruppe.
+
 ### Zwei Ziele
 
 - **Für die Leser:innen:** das Ziel aus der Höhe.
@@ -70,7 +72,7 @@ A6 ("Leser:innen erzählen mir von einem Fehler") ist keine Annahme mehr. Daraus
 Ohne diese drei Messpunkte lässt sich keine Annahme prüfen:
 
 1. Im Anmeldeformular von rstatszh die Frage "Wie hast du vom Kurs erfahren?", mit "von einer Kolleg:in weitergeleitet" als einer Antwort.
-2. Im Anmeldeformular von Buttondown zwei Fragen: "Wie nah fühlst du dich technischen Themen?" (1 = weit weg, 5 = täglich) und "Wo arbeitest du?" (Behörde, Hochschule, Privatwirtschaft, NGO, selbstständig).
+2. Im Anmeldeformular von Buttondown zwei Pflichtfragen, eingerichtet am 27. Oktober 2026: "Wo stehst du bei technischen Themen?" (1 = weit weg, 5 = mittendrin) und "Wo arbeitest du?" als Mehrfachauswahl mit Behörde, Hochschule, Internationale Organisation, Privatwirtschaft, NGO, selbstständig und Andere.
 3. Getrennte Links pro Kanal, und in jeder Ausgabe die Zeile "Weitergeleitet bekommen? Hier abonnieren" mit einem eigenen Link.
 
 Diese Signale ersetzen in Stufe 13 die Öffnungsrate und die aktiven Leser:innen; die Karte ist entsprechend angepasst.
