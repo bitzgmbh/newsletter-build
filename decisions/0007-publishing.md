@@ -5,3 +5,4 @@
 - Choice: the merge into `main` starts a GitHub Action that renders with R and Quarto and deploys to Netlify. Buttondown keeps its free archive, and each email points to its copy on the website through a canonical URL.
 - Why: my yes stays the only manual step, and rendered HTML stays out of Git. Netlify already hosts my other two websites and works from a private repository. A paid subdomain would show the same editions twice.
 - Date: 2026-10-15
+- Changed by: 0023 (no Netlify deploy until the newsletter has its own domain).

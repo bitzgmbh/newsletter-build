@@ -1,5 +1,6 @@
 ---
 name: clip
+disable-model-invocation: true
 description: >-
   Copy text to the macOS clipboard ready to paste into an email or form.
   Use when the user says "copy to clipboard", "clip it" or invokes /clip

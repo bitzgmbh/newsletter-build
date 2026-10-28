@@ -1,5 +1,6 @@
 ---
 name: disclosure-summary
+disable-model-invocation: true
 description: >-
   Add a "How AI was used" section to the body of a pull request, counted
   from the commit trailers Assisted-by and Human-authored. Use whenever a

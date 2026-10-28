@@ -5,3 +5,4 @@
 - Choice: written first for German speakers in Germany, Austria and Switzerland. The title stays Zur Einsicht, with an English tagline that explains it.
 - Why: I want to host events in German in Switzerland, and the readers who could come read German. "Zur Einsicht" means "for inspection", which fits a newsletter that shows how its work is done. A tagline opens it to English readers without a second brand. What English readers get from each edition is still open.
 - Date: 2026-10-15
+- Superseded in part by: 0019 (the name is bitz). The audience still holds.

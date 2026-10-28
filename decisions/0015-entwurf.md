@@ -1,0 +1,7 @@
+# 0015 Der Entwurf: Gliederung vom Agenten, Text von mir, Prüfung durch den Skill
+
+- Frage: Welcher Skill schreibt die Entwürfe, und wer schreibt den Text?
+- Optionen: plain-writing so wie er ist; ein eigener Stimme Skill, gebaut auf plain-writing; nach einem Testentwurf mit beiden entscheiden. Für den Text: der Skill, oder ich.
+- Wahl: ein eigener Stimme Skill, gebaut auf plain-writing, mit Deutsch in Schweizer Schreibweise, der Leser:innen Form, der Vorlage, der Zielgruppe und der Rolle aus concept.md. Stufe 5 hat drei Schritte: Der Skill schlägt aus meinem Rohentwurf und der Recherche eine Gliederung als Stichworte vor. Nach meinem Ja schreibe ich die Absätze selbst. Dann prüft der Skill meinen Text gegen Stil, Vorlage und Länge und hält fest, was er ändert. Das gilt dauerhaft: Der Skill schreibt den Text nie selbst.
+- Warum: Meine Antwort im Wortlaut: "ich möchte trotzdem ein Mal erst selbst schreiben. Der Rohentwurf sollte erstehen als bullet list zuerst, welchen ich dann in paragraphen schreibe. Du schlägst die Bullets vor. Das ändert nochmals die Pipeline. Mein Draft nach dem Rohentwurf wird dann nochmals von dem Skill überprüft was dem Skill hilft meine Stimme besser zu lernen." Das ist die stärkste Form von Prinzip 6: Die Stimme bleibt meine, weil der Text meiner bleibt. Aus den festgehaltenen Änderungen lernt der Skill meine Stimme, und die Rolle Wissenschaftsjournalist:in wird zur Lektorin.
+- Datum: 2026-10-17

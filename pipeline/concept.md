@@ -6,7 +6,7 @@ Erarbeitet am AI Retreat am 17. Oktober 2026, in drei Sitzungen. Die Höhe fragt
 
 ### Ziel
 
-> Zur Einsicht hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
+> bitz hilft Menschen, die sich weit weg von technischen Themen fühlen, selbst Dinge zu tun, die vorher nur Profis konnten, damit sie Neues ausprobieren und Fehler als Teil davon erleben.
 
 ### Ergebnisse für die Leser:innen
 
@@ -40,6 +40,8 @@ Menschen aus Behörden und Hochschulen stehen näher am Einstieg in die Arbeit m
 
 Daraus folgt für die Inhalte: KI hilft nur, wenn sie die eigenen Fähigkeiten verstärkt, nicht wenn sie allgemeine Inhalte erzeugt, die alle erzeugen könnten.
 
+Das Anmeldeformular kennt seit dem 27. Oktober 2026 zwei Antworten mehr als diese fünf Gruppen: "Internationale Organisation" (UN, multilaterale Organisationen, Entwicklungsbanken, aus meinem Netzwerk) und "Andere". Beide zählen zur Reichweite und werden keine Personas. Füllt sich "Andere", fehlt eine Gruppe.
+
 ### Zwei Ziele
 
 - **Für die Leser:innen:** das Ziel aus der Höhe.
@@ -56,10 +58,10 @@ Zu jeder Annahme hat ein Agent widersprochen. Er hat beantwortet, was an ihr fal
 | # | Annahme | Stärkster Einwand | Signal in den ersten fünf Ausgaben | Entscheidung |
 |---|---|---|---|---|
 | A1 | Der Newsletter führt zu mehr Anmeldungen für meine Kurse. | Die ersten Abonnent:innen kommen aus meinem Netzwerk und hätten sich ohnehin angemeldet. | Mindestens 2 Anmeldungen, die den Newsletter nennen, davon mindestens 1 von jemandem, den ich nicht kenne. | Bleibt. Gruppe Geschäft. |
-| A8 | Die Reihe "Mehr als R" bringt bis Ende November Anmeldungen für rstatszh. | Vier Ausgaben an eine Liste, die es am 3. November noch nicht gibt. Die Arbeit für die Anmeldungen machen bis dahin vor allem die LinkedIn Posts. | Mindestens 3 Anmeldungen über einen Link aus dem Newsletter oder mit Nennung des Newsletters, oder mindestens 2 Fragen zum Kurs per Antwort. | Bleibt, mit früherem Start (offene Frage 16). Gruppe Geschäft. |
-| A2 | Über LinkedIn erreiche ich Beginner:innen, nicht nur meine Fachblase. | LinkedIn zeigt einen Post zuerst den Menschen, die schon mit mir interagieren. Beginner:innen reagieren selten öffentlich. | Mindestens ein Drittel der Anmeldungen über LinkedIn antwortet bei der Nähe zu technischen Themen mit 1 oder 2 und ist mir neu. | Bleibt. Gruppe Reichweite. |
+| A8 | Die Reihe "Mehr als R" (vier Teile, 10. November bis 1. Dezember) bringt Anmeldungen für rstatszh-k014. | Fünf Ausgaben an eine Liste, die es am 3. November noch nicht gibt, und die Kursseite nennt keine Anmeldefrist. Die Arbeit für die Anmeldungen machen bis dahin vor allem die LinkedIn Posts. | Mindestens 3 Anmeldungen über einen Link aus dem Newsletter oder mit Nennung des Newsletters, oder mindestens 2 Fragen zum Kurs per Antwort. | Bleibt, mit früherem Start und vier Teilen (offene Frage 16). Gruppe Geschäft. |
+| A2 | Über LinkedIn erreiche ich Beginner:innen, nicht nur meine Fachblase. | LinkedIn zeigt einen Post zuerst den Menschen, die schon mit mir interagieren. Beginner:innen reagieren selten öffentlich. | Anmeldungen über LinkedIn von Menschen, die mir neu sind. Ob sie am Anfang stehen, beurteile ich aus Antworten und Gesprächen, ohne Zahl (0026). | Bleibt, seit 0026 ohne Zahl. Gruppe Reichweite. |
 | A3 | Beginner:innen erreiche ich über Kolleg:innen, die meine Inhalte weiterleiten, nicht über ein Abo. | Wer weiterleitet, ist selbstsicher und kennt das Thema schon. Weitergeleitete Mails in Outlook hinterlassen keine Spur. | Mindestens 3 Abos über den Link für Weitergeleitete, oder mindestens 1 Kursanmeldung, die eine Weiterleitung nennt. | Zusammengelegt aus A3 und A5b. Die Zielgruppe sitzt in Outlook, Teams und im Intranet, wo ich nicht posten kann. Gruppe Reichweite. |
-| A5 | Menschen, die sich weit weg von technischen Themen fühlen, abonnieren einen Newsletter über Daten und KI. | Meine Kanäle erreichen Menschen, die schon programmieren. Wer sich weit weg fühlt, sucht keinen Newsletter über Daten und KI. | Mindestens 30 % der Abonnent:innen antworten bei der Nähe zu technischen Themen mit 1 oder 2, und mindestens 5 davon öffnen Ausgabe 5 noch. | Bleibt. Gruppe Reichweite. |
+| A5 | Menschen, die sich weit weg von technischen Themen fühlen, abonnieren einen Newsletter über Daten und KI. | Meine Kanäle erreichen Menschen, die schon programmieren. Wer sich weit weg fühlt, sucht keinen Newsletter über Daten und KI. | Keine Zahl (0026): ob Abonnent:innen weit weg von technischen Themen stehen, beurteile ich aus Antworten und Gesprächen. | Bleibt, seit 0026 ohne Zahl. Gruppe Reichweite. |
 | A7 | Eine Ausgabe spricht Behörden, Hochschulen, Privatwirtschaft, NGOs und Selbstständige zugleich an. | Die Gruppen haben nicht denselben nächsten Schritt: Behörden brauchen eine Freigabe, Selbstständige zahlen selbst. Mit 10 bis 20 Leser:innen bleiben 2 bis 4 pro Gruppe. | Mindestens 3 der 5 Gruppen antworten, und keine Gruppe liefert mehr als die Hälfte der Antworten. | Geändert: Jede Ausgabe nennt eine Gruppe als Hauptleserschaft, die Gruppen wechseln von Ausgabe zu Ausgabe. Gruppe Leser:innen. |
 | A4 | Ein Schritt, der an einer Aufgabe ansetzt, die Leser:innen heute in Excel machen, und ihr eigenes Wissen nutzt, wird ausprobiert. | Mails führen keinen Code aus, und jeder Klick verliert Leser:innen. Das grössere Hindernis ist die Motivation, aber auch die Installation kann eines sein. | Mindestens 3 Personen schreiben mir, dass sie den Schritt mit einer eigenen Aufgabe probiert haben. Klicks zählen nur als Nebenzeichen. | Geändert, aus "ohne Installation und ohne Konto im Browser". Zwei Formen wechseln sich ab: R im Browser mit Daten wie aus Excel, und KI, die aus der beschriebenen Struktur einer eigenen Tabelle Code schreibt, den die Leser:innen mit ihrem Fachwissen prüfen. Gruppe Leser:innen. |
 
@@ -70,7 +72,7 @@ A6 ("Leser:innen erzählen mir von einem Fehler") ist keine Annahme mehr. Daraus
 Ohne diese drei Messpunkte lässt sich keine Annahme prüfen:
 
 1. Im Anmeldeformular von rstatszh die Frage "Wie hast du vom Kurs erfahren?", mit "von einer Kolleg:in weitergeleitet" als einer Antwort.
-2. Im Anmeldeformular von Buttondown zwei Fragen: "Wie nah fühlst du dich technischen Themen?" (1 = weit weg, 5 = täglich) und "Wo arbeitest du?" (Behörde, Hochschule, Privatwirtschaft, NGO, selbstständig).
+2. Im Anmeldeformular von Buttondown eine Pflichtfrage, eingerichtet am 27. Oktober 2026: "Wo arbeitest du?" als Mehrfachauswahl mit Behörde, Hochschule, Internationale Organisation, Privatwirtschaft, NGO, selbstständig und Andere. Eine zweite Frage, "Wo stehst du bei technischen Themen?" (1 = weit weg, 5 = mittendrin), war am selben Tag kurz eingerichtet und fällt mit 0026 wieder weg.
 3. Getrennte Links pro Kanal, und in jeder Ausgabe die Zeile "Weitergeleitet bekommen? Hier abonnieren" mit einem eigenen Link.
 
 Diese Signale ersetzen in Stufe 13 die Öffnungsrate und die aktiven Leser:innen; die Karte ist entsprechend angepasst.
@@ -88,7 +90,7 @@ Für jede Stufe, an der ein Agent arbeitet, eine Rolle, die es besser könnte al
 | # | Stufe | Rolle | Worauf sie achtet |
 |---|---|---|---|
 | 4 | Recherche | Fachbibliothekar:in für Datenrecherche | Primärquellen statt Zusammenfassungen, wie zuverlässig eine Quelle ist |
-| 5 | Entwurf | Wissenschaftsjournalist:in, die für Laien schreibt | eine Idee pro Ausgabe, der Einstieg über den Alltag der Leser:innen |
+| 5 | Entwurf | Wissenschaftsjournalist:in als Lektor:in | in der Gliederung: eine Idee pro Ausgabe, der Einstieg über den Alltag der Leser:innen; in der Prüfung meines Textes: Stil, Vorlage, Länge, und was sie ändert, hält sie fest (0015) |
 | 5 | "Probier es selbst" | Kursleiter:in in der Erwachsenenbildung | ob der Schritt bei einer echten Aufgabe aus Excel ansetzt (A4) |
 | 6 | Prüfungen | Schlussredaktion und Faktencheck einer Zeitung | jede Zahl, jeder Link, die Länge, Floskeln von KI |
 | 7 | Grafiken | Datenjournalist:in aus einer Grafikredaktion | eine Aussage pro Grafik, lesbar auf dem Handy |
@@ -99,7 +101,7 @@ Die Rolle für "Probier es selbst" kommt aus A4. Der Schritt ist die Stelle, an 
 
 ### Leser:innen in der Prüfstufe
 
-Fünf Personas aus der Zielgruppe lesen in Stufe 6 jeden Entwurf und melden, wo sie aussteigen. Jede Ausgabe nennt eine Gruppe als Hauptleserschaft (A7). Deren Persona hat das letzte Wort.
+Fünf Personas aus der Zielgruppe lesen in Stufe 6 jeden Entwurf und melden als Hinweis, wo sie aussteigen (0016). Jede Ausgabe nennt eine Gruppe als Hauptleserschaft (A7). Deren Persona hat das letzte Wort.
 
 | Gruppe | Persona |
 |---|---|
@@ -115,7 +117,7 @@ Die Personas ersetzen keine echten Leser:innen. Sie fangen ab, was offensichtlic
 
 "Möglichst autonom" stösst sich mit Prinzip 6 (die Stimme bleibt meine) und mit den Prüfpunkten. Deshalb gilt:
 
-- **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort entsteht die Stimme) und mein Ja vor dem Senden (Stufe 9).
+- **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort schreibe ich den Text selbst, Entscheidung 0015) und mein Ja vor dem Senden (Stufe 9).
 - **Kann später ohne mein Ja laufen:** die Prüfpunkte nach Recherche (4), Prüfungen (6), Grafiken (7), Übersetzung (8) und Verbreitung (11).
 - **Regel:** Ein Prüfpunkt fällt erst weg, wenn meine Feedback Notizen an dieser Stelle in drei Ausgaben hintereinander keine Änderung zeigen. Meine eigene Spur entscheidet über die Selbstständigkeit, nicht ein Gefühl.
 
