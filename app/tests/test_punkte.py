@@ -18,7 +18,30 @@ OUTLINE = """# Gliederung: Test
 """
 
 
+QMD = """---
+subtitle: "TODO: Betreffzeile der E-Mail"
+---
+
+<!-- Vorlage
+#| fig-cap: "TODO: eine Aussage pro Grafik"
+-->
+
+## Die Idee (TODO: Ist Die Idee der richtige Titel?)
+
+Ein Satz. TODO: das ist veraltet.
+"""
+
+
 class OpenPoints(unittest.TestCase):
+    def test_finds_todo_in_text_heading_and_front_matter_not_in_comments(self):
+        pts = punkte.open_points(QMD)
+        self.assertEqual(len(pts), 3)
+        self.assertEqual(pts[0]["text"], "TODO: Betreffzeile der E-Mail (nach: subtitle)")
+        self.assertEqual(pts[1]["text"], "TODO: Ist Die Idee der richtige Titel?")
+        self.assertEqual(pts[2]["text"], "TODO: das ist veraltet. (nach: Ein Satz)")
+        self.assertEqual(pts[1]["section"], "Die Idee")
+        self.assertEqual(pts[2]["section"], "Die Idee")
+
     def test_finds_standalone_question_marks_only(self):
         pts = punkte.open_points(OUTLINE)
         self.assertEqual(len(pts), 3)

@@ -19,6 +19,9 @@
 <section class="panel status">
   <p class="stufe"><strong>Nächste Stufe: {{ st.next.id }} {{ st.next.name }}</strong>{% if st.next.note %} ({{ st.next.note }}){% endif %}</p>
 
+  {% if unsaved %}
+  <p class="hinweis">Positron hat ungespeicherte Änderungen an {{ unsaved|join(", ") }}. Speichere sie dort (Cmd+S), bevor du hier klickst; sonst sieht der Runner sie nicht. Danach diese Seite neu laden.</p>
+  {% endif %}
   {% if active %}
   <div class="jetzt running">
     <h3>Gerade läuft etwas</h3>

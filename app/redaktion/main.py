@@ -45,6 +45,31 @@ def show_qmd(text: str) -> str:
     return COMMENT.sub("", body)
 
 
+POSITRON_BACKUPS = Path.home() / "Library" / "Application Support" / "Positron" / "Backups"
+
+
+def unsaved_in_positron(e: dict) -> list[str]:
+    """Files of the edition with unsaved changes in Positron (its hot exit backups)."""
+    prefix = "file://" + str(e["folder"]) + "/"
+    names = []
+    for f in POSITRON_BACKUPS.glob("*/file/*"):
+        try:
+            with open(f, encoding="utf-8", errors="replace") as fh:
+                first = fh.readline()
+        except OSError:
+            continue
+        if first.startswith(prefix):
+            names.append(first[len(prefix):].split(" ", 1)[0])
+    return sorted(set(names))
+
+
+def refuse_if_unsaved(e: dict) -> None:
+    names = unsaved_in_positron(e)
+    if names:
+        raise HTTPException(409, "Positron hat ungespeicherte Änderungen an " + ", ".join(names)
+                            + ". Erst dort speichern (Cmd+S), dann noch einmal klicken.")
+
+
 def commit_own_edits(e: dict) -> str | None:
     """Lars's own edits to index.qmd at gate 5b are committed as his before the runner runs."""
     rel = f"{e['rel']}/index.qmd"
@@ -157,6 +182,7 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
         active=runs.active(name), recent=runs.recent(name, 5),
         qmd_path=e["folder"] / "index.qmd",
         points=_points_for(e, shown),
+        unsaved=unsaved_in_positron(e),
     )
 
 
@@ -184,6 +210,7 @@ async def antworten(name: str, request: Request):
     text = punkte.feedback(filename, points, answers, str(form.get("allgemein", "")))
     if not text:
         raise HTTPException(400, "Keine Antwort eingetragen.")
+    refuse_if_unsaved(e)
     if waiting == "5b":
         commit_own_edits(e)
     try:
@@ -230,6 +257,7 @@ def lauf_starten(name: str, aktion: str = Form(...), text: str = Form(""), zurue
         raise HTTPException(400, "Unbekannte Aktion")
     if st["next"]["id"] in ("9", "10", "fertig") and not verdict:
         raise HTTPException(400, "Diese Stufe läuft nicht über den Runner.")
+    refuse_if_unsaved(e)
     if st["gate_waiting"] == "5b":
         commit_own_edits(e)
     try:
