@@ -34,11 +34,16 @@
       <button name="aktion" value="ja">Ja, weiter</button>
       <span>Passt so. Der Runner trägt dein Ja ein und macht die nächste Stufe. Ist die nächste Stufe dein Text (5b), wartet er auf dich.</span>
     </form>
+    {% if points %}
+    <p class="choice"><a class="button secondary-link" href="#punkte">Offene Punkte beantworten ({{ points|length }})</a>
+      <span>Rechts neben dem Ergebnis steht jeder Punkt mit "?" mit einem eigenen Feld. Deine Antworten gehen zusammen an den Runner, der sie in {{ shown }} einarbeitet. Danach entscheidest du hier noch einmal.</span></p>
+    {% else %}
     <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
-      <input name="text" placeholder="Ein bis zwei Sätze, was sich ändern soll" required>
+      <textarea name="text" rows="3" placeholder="Was soll sich ändern?" required></textarea>
       <button name="aktion" value="geaendert" class="secondary">Ändern lassen</button>
       <span>Der Runner trägt deine Sätze ein und passt das Ergebnis an. Danach entscheidest du hier noch einmal.</span>
     </form>
+    {% endif %}
     <details class="selten">
       <summary>Selten: die Ausgabe zurückschicken</summary>
       <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
@@ -88,17 +93,36 @@
   {% endif %}
 </section>
 
-<div class="two">
+<div class="{% if points %}two answer-layout{% else %}one{% endif %}">
   <section>
     <nav class="tabs">
       {% for f in present %}<a href="?datei={{ f }}" class="{% if f == shown %}on{% endif %}">{{ f }}</a>{% endfor %}
     </nav>
-    {% if shown %}<article class="doc">{{ shown_text|md|safe }}</article>{% else %}<p class="muted">Noch keine Ausgabe einer Stufe.</p>{% endif %}
+    {% if shown %}<article class="doc">{{ shown_text|md|safe }}</article>{% else %}<p class="muted">Noch kein Ergebnis einer Stufe.</p>{% endif %}
   </section>
-  <section>
-    <h2>index.qmd (Vorschau, nur lesen)</h2>
-    <article class="doc preview">{{ preview|md|safe }}</article>
+  {% if points %}
+  <section id="punkte" class="answers">
+    <form method="post" action="/ausgabe/{{ e.name }}/antworten">
+      <h2>Offene Punkte in {{ shown }} ({{ points|length }})</h2>
+      <p class="muted">Beantworte, was du jetzt weisst. Leere Felder bleiben offen.</p>
+      {% for p in points %}
+      <div class="punkt">
+        <p class="wo">{{ p.n }}. {{ p.section or "ohne Teil" }}</p>
+        <p class="frage">{{ p.text }}</p>
+        <textarea name="antwort_{{ p.n }}" rows="2" placeholder="Deine Antwort"></textarea>
+      </div>
+      {% endfor %}
+      <div class="punkt">
+        <p class="wo">Sonst noch etwas</p>
+        <textarea name="allgemein" rows="3" placeholder="Was sonst noch anders soll"></textarea>
+      </div>
+      <div class="send">
+        <button type="submit">Antworten einarbeiten lassen</button>
+        <span class="muted">Der Runner arbeitet die Antworten in {{ shown }} ein. Danach entscheidest du oben noch einmal.</span>
+      </div>
+    </form>
   </section>
+  {% endif %}
 </div>
 
 <section>

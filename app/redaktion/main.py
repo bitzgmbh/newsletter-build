@@ -20,7 +20,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markdown_it import MarkdownIt
 
-from . import buttondown, config, editions, gitops, runs
+from . import buttondown, config, editions, gitops, punkte, runs
 
 HERE = Path(__file__).parent
 cfg = config.load()
@@ -134,7 +134,39 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
         preview=preview, back_to=BACK_TO, hinweis=hinweis,
         active=runs.active(name), recent=runs.recent(name, 5),
         qmd_path=e["folder"] / "index.qmd",
+        points=_points_for(e, shown),
     )
+
+
+def _points_for(e: dict, shown: str | None) -> list[dict]:
+    """Open points of the result whose gate waits; none when another file is shown."""
+    waiting = e["state"]["gate_waiting"]
+    if not waiting or not shown or shown != editions.stand.BY_ID[waiting][3]:
+        return []
+    return punkte.open_points(editions.read_file(cfg, e["name"], shown) or "")
+
+
+@app.post("/ausgabe/{name}/antworten")
+async def antworten(name: str, request: Request):
+    """Lars's answers to the open points go to the runner as one 'geändert' verdict."""
+    e = load_edition(name)
+    waiting = e["state"]["gate_waiting"]
+    if not waiting:
+        raise HTTPException(400, "Kein Prüfpunkt wartet.")
+    filename = editions.stand.BY_ID[waiting][3]
+    form = await request.form()
+    points = punkte.open_points(editions.read_file(cfg, name, filename) or "")
+    answers = {}
+    for p in points:
+        answers[p["n"]] = str(form.get(f"antwort_{p['n']}", ""))
+    text = punkte.feedback(filename, points, answers, str(form.get("allgemein", "")))
+    if not text:
+        raise HTTPException(400, "Keine Antwort eingetragen.")
+    try:
+        run_id = runs.start(cfg, name, e["rel"], waiting, f'geändert: "{text}"')
+    except RuntimeError as exc:
+        raise HTTPException(409, str(exc))
+    return RedirectResponse(f"/lauf/{run_id}", status_code=303)
 
 
 @app.post("/ausgabe/{name}/oeffnen")
