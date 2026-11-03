@@ -83,3 +83,8 @@ textarea { font: inherit; width: 100%; padding: 6px 8px; border: 1px solid var(-
 .choice textarea { flex: 1 1 320px; width: auto; }
 .send { position: sticky; bottom: 0; background: var(--card); padding: 10px 0 0; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .secondary-link { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+.puls { display: flex; gap: 10px; align-items: center; color: var(--muted); margin: 12px 0; }
+.spinner { display: inline-block; width: 16px; height: 16px; border-radius: 50%; vertical-align: -2px;
+           border: 2px solid var(--line); border-top-color: var(--run); animation: drehen 0.9s linear infinite; }
+@keyframes drehen { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 3s; } }

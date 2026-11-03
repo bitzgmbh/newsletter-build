@@ -9,8 +9,7 @@
 {% set was = {
   "4": "Der Agent sucht Quellen für jede Aussage im Rohentwurf, dein eigenes Material und Kontext und schreibt recherche.md.",
   "5a": "Der Agent schlägt aus Rohentwurf und Recherche eine Gliederung in Stichworten vor (gliederung.md).",
-  "5b": "Der Skill stimme schreibt die Absätze in index.qmd, nach deiner Gliederung und in deiner Stimme. Wo ein Satz von dir kommen muss, setzt er einen offenen Punkt mit \"?\". Danach liest du den Text und gibst dein Urteil (0032).",
-  "5c": "Der Skill stimme prüft den Text und schlägt Änderungen vor (pruefung-stimme.md). Er schreibt den Text nicht um.",
+  "5b": "Der Skill stimme schreibt die Absätze in index.qmd, nach deiner Gliederung und in deiner Stimme. Er prüft den Text selbst gegen Regeln, Länge und Stimme. Wo ein Satz von dir kommen muss, setzt er einen offenen Punkt mit \"?\". Danach liest du den Text und gibst dein Urteil (0032).",
   "6": "Der Skill pruefung prüft Fakten, Links und Zahlen hart und gibt Hinweise zu Länge und Stil (pruefbericht.md).",
   "7": "Der Skill grafiken baut die Grafik aus Daten, die du nennst (grafiken.md und ein Block in index.qmd).",
   "8": "Der Skill uebersetzung schreibt die englische Fassung (index-en.qmd).",
@@ -24,7 +23,7 @@
   {% endif %}
   {% if active %}
   <div class="jetzt running">
-    <h3>Gerade läuft etwas</h3>
+    <h3><span class="spinner" aria-hidden="true"></span> Gerade läuft etwas</h3>
     <p>Der Runner arbeitet an dieser Ausgabe. <a href="/lauf/{{ active }}">Lauf #{{ active }} live ansehen</a>. Wenn er fertig ist, lade diese Seite neu; dann siehst du hier deinen nächsten Schritt.</p>
   </div>
   {% elif st.gate_waiting %}
