@@ -42,7 +42,7 @@ For each item write: Bestanden or Fail, the part and the quoted passage, the rea
 
 Hints go into the report and Lars decides. They never block.
 
-- **Length.** Run `skills/stimme/scripts/woerter.py <file>`. Report a table with part, count, budget from `pipeline/template.md` and the difference. A total over 1000 is a hint.
+- **Length.** Run `skills/stimme/scripts/woerter.py <file>`. Report a table with part, count, budget from `pipeline/template.md` and the difference. A total outside 500 to 700 is a hint (decision 0031).
 - **AI tells.** Read the text against `regeln.md` and the patterns below, adapted from the prose-lint skill for German. Report each finding with the pattern name, the part and the quoted passage. No suggested rewrite.
   - Gegensatz als Figur: "nicht X, sondern Y", "nicht nur X, sondern auch Y", more than once in the text (one is Lars's voice, see `skills/stimme/stimme.md`).
   - Pointe als Fragment: a sentence without a verb as a closer.

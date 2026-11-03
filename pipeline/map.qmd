@@ -71,7 +71,7 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 | 2 | Auswahl der nächsten Ausgabe aus dem Backlog | Ich | offen |
 | 3 | Rohentwurf, gesprochen oder geschrieben | Ich | offen |
 | 4 | Recherche: Zotero, meine Notizen, das Web | Agent | offen |
-| 5 | Entwurf: Gliederung vom Agenten, Text von mir, Prüfung durch den Skill, höchstens 1000 Wörter (0015) | Agent mit mir | Skill stimme gebaut, noch ohne Probelauf |
+| 5 | Entwurf: Gliederung vom Agenten, Text von mir, Prüfung durch den Skill, 500 bis 700 Wörter (0015, 0031) | Agent mit mir | Skill stimme gebaut, noch ohne Probelauf |
 | 6 | Prüfungen: hart bei Fakten, Links und Zahlen ohne Quelle, als Hinweis bei Länge, Floskeln von KI und den fünf Personas (0016) | Agent | Skill pruefung gebaut, noch ohne Probelauf |
 | 7 | Grafiken: Grafiken aus Code, und Bilder | Agent mit mir | Skill grafiken gebaut, noch ohne Probelauf |
 | 8 | Übersetzung: Deutsch und Englisch | Agent | offen |
@@ -92,7 +92,7 @@ Nach jeder Agentenstufe (4 bis 8) und nach der Verbreitung (11) gibt es einen Pr
 5. Offen arbeiten, mit einem Issue pro Arbeitseinheit.
 6. Die Stimme bleibt meine. Agenten erzeugen nie die Ideen.
 7. Der Einsatz von KI wird aus den Spuren erklärt, die die Arbeit hinterlässt.
-8. Kurz und einfach, höchstens 1000 Wörter.
+8. Kurz und einfach, 500 bis 700 Wörter (0031).
 9. Grafiken, Tabellen und Zahlen kommen aus Code, nie von Hand getippt oder gezeichnet. Siehe [reproducibility.md](../reproducibility.md).
 10. Ich teile eigene Fehler und Learnings aus meinen Kursen, damit Fehler zum Ausprobieren dazugehören.
 

@@ -50,7 +50,7 @@ Rules for the outline:
 
 - Nothing in the outline is finished prose. Bullets stay fragments.
 - One idea per edition. If the Rohentwurf holds two, say so and propose which one waits for a later edition.
-- Keep the total at 1000 words or fewer by the budgets in the template. Say when the Rohentwurf wants more than fits.
+- Keep the total between 500 and 700 words by the budgets in the template (decision 0031). When the Rohentwurf asks for a free post without parts, propose that form; it keeps Offengelegt and the pointers. Say when the Rohentwurf wants more than fits.
 - Ideas come from Lars (principle 6). The skill orders, cuts and asks. It does not add a point the Rohentwurf and the research do not contain.
 
 Then stop. The outline is a gate. Lars says yes, or edits `gliederung.md`, before he writes.
@@ -61,7 +61,7 @@ Input is the text Lars wrote in `index.qmd`. The skill checks:
 
 - The rules in `regeln.md`.
 - The parts of the template: all present, in order, none empty except "Was ihr letztes Mal gesagt habt" in the first edition.
-- The length: the word count per part against its budget, and the total against 1000. Count with `scripts/woerter.py index.qmd`, which skips the front matter, comments and code.
+- The length: the word count per part against its budget, and the total against 500 to 700. Count with `scripts/woerter.py index.qmd`, which skips the front matter, comments and code.
 - The voice: whether the text reads like `stimme.md` says Lars writes. A sentence that breaks a rule in `regeln.md` but matches a pattern in `stimme.md` is his voice, so leave it and say why.
 - The Hauptleserschaft: whether the entry and the "Probier es selbst" step start from that group's working day.
 
