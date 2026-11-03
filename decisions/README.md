@@ -30,6 +30,11 @@
 - [0023 Veröffentlichung ohne eigene Website](0023-veroeffentlichung-ohne-website.md)
 - [0024 Buttondown und die Datenschutzerklärung](0024-buttondown-und-datenschutz.md)
 - [0025 Namen der Repositories](0025-namen-der-repositories.md)
+- [0026 Nur eine Frage im Abo Formular](0026-nur-eine-frage-im-abo-formular.md)
+- [0027 Kein Tracking von Öffnungen und Klicks](0027-kein-tracking.md)
+- [0028 Redaktion, eine App vor der Pipeline](0028-redaktion-app.md)
+- [0029 Buttondown Entwurf über die API](0029-buttondown-entwurf-ueber-die-api.md)
+- [0030 Englisch als eigene Mail](0030-englisch-als-eigene-mail.md)
 
 ## Open
 
@@ -37,7 +42,6 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 
 | \# | Question | Current leaning |
 |----|----|----|
-| 1 | [What do English readers get from each edition?](#1-english-offer) | None yet |
 | 2 | [Should my international network read bitz, or only find it?](#2-english-audience) | Open until a few editions are out |
 | 5 | [Website design](#5-website-design) | Leaning towards a new layout |
 | 9 | [Blog](#9-blog) | Deep dive |
@@ -45,15 +49,6 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 | 14 | [Prompt capture](#14-prompt-capture) | None yet |
 | 15 | [License for this repository](#15-license-for-this-repository) | None yet |
 | 16 | [Timeline for editions](#16-timeline) | A calendar at stage 2, with dates counted back from each send date |
-
-## 1 English offer
-
-- Question: what do English readers get from each edition?
-- Options: a short English summary at the end; a full translation; English on LinkedIn only; an English version for selected editions.
-- Current leaning: none yet.
-- What would settle it: weighing the gate time per edition against what the English readers in question 2 need. The answer also decides whether stage 8 (Translate) stays on the map.
-
-### Notes
 
 ## 2 English audience
 
