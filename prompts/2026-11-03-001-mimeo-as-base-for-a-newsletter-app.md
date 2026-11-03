@@ -3,6 +3,7 @@ id: 2026-11-03-001-mimeo-as-base-for-a-newsletter-app
 timestamp: 2026-11-03T11:20:00+01:00
 model: claude-opus-5-5
 files_touched:
+  - README.md
   - app/README.md
   - app/pyproject.toml
   - app/redaktion/__init__.py
@@ -27,10 +28,17 @@ files_touched:
   - decisions/0030-englisch-als-eigene-mail.md
   - decisions/README.md
   - decisions/README.qmd
+  - log/2026-11-03.md
+  - pipeline/skills.md
   - prompts/2026-11-03-001-mimeo-as-base-for-a-newsletter-app.md
+  - skills/README.md
+  - skills/recherche/README.md
+  - skills/recherche/SKILL.md
   - skills/runner/SKILL.md
   - skills/runner/scripts/stand.py
   - skills/runner/tests/test_stand.py
+  - skills/uebersetzung/README.md
+  - skills/uebersetzung/SKILL.md
 ---
 
 its all here now: https://github.com/larnsce/mimeo
