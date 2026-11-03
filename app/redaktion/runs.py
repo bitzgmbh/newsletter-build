@@ -55,8 +55,7 @@ def prompt_for(cfg: Config, rel_folder: str, verdict: str | None, quelle: str | 
         lines.append(f'--quelle "{quelle}"')
     if cfg.dry_run:
         lines.append(
-            "Trockenlauf: commit locally on dev, but do not push, do not send the Element ping and do not "
-            "edit the GitHub issue. Print the ping you would have sent."
+            "Trockenlauf: commit locally on dev, but do not push and do not edit the GitHub issue."
         )
     lines.append("You run headless: nobody can answer questions. If something is unclear, stop and say what.")
     lines.append(
@@ -159,6 +158,29 @@ def _run(cfg: Config, edition: str, run_id: int, session: str, prompt: str) -> N
         con.commit()
         with _lock:
             _active.pop(edition, None)
+        notify(cfg, edition, run_id, status)
+
+
+def notify(cfg: Config, edition: str, run_id: int, status: str) -> None:
+    """A macOS notification when a run ends (0034); none in a dry run."""
+    if cfg.dry_run or os.environ.get("REDAKTION_NO_NOTIFY") == "1":
+        return
+    try:
+        from . import editions
+        e = editions.edition(cfg, edition)
+        st = e["state"]
+        if status != "fertig":
+            body = f"Lauf #{run_id} mit Fehler beendet."
+        elif st["gate_waiting"]:
+            body = f"Lauf #{run_id} fertig. Dein Urteil zu Stufe {st['gate_waiting']} wartet."
+        else:
+            body = f"Lauf #{run_id} fertig. Nächste Stufe: {st['next']['id']} {st['next']['name']}."
+        subprocess.run(["osascript", "-e", "on run argv", "-e",
+                        "display notification (item 1 of argv) with title (item 2 of argv)",
+                        "-e", "end run", body, f"bitz: {e['title']}"],
+                       capture_output=True, timeout=10)
+    except Exception:  # a notification must never break a run
+        pass
 
 
 def get(run_id: int) -> sqlite3.Row | None:

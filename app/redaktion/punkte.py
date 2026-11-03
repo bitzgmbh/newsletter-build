@@ -48,6 +48,10 @@ def open_points(markdown: str) -> list[dict]:
                 text += f" (nach: {before})"
             points.append({"n": len(points) + 1, "section": section, "text": text})
             continue
+        if section.lower().startswith("offen") and LIST_MARK.match(line):
+            text = LIST_MARK.sub("", line).strip()
+            points.append({"n": len(points) + 1, "section": section, "text": text})
+            continue
         if not STANDALONE_Q.search(line):
             continue
         text = LIST_MARK.sub("", line).strip()

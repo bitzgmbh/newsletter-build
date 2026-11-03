@@ -36,6 +36,9 @@
         <form method="post" action="/ausgabe/{{ e.name }}/oeffnen" class="inline"><input type="hidden" name="datei" value="index.qmd"><button class="secondary">index.qmd in Positron öffnen</button></form>
         Speichern genügt. Die App committet deine Änderungen als deine, bevor der Runner weitermacht.</li>
       {% endif %}
+      <li>Oder in Claude Code mit Entscheidungsboxen:
+        <code id="cmd">/redaktion {{ e.name[11:] }}</code>
+        <button type="button" class="secondary" onclick="navigator.clipboard.writeText(document.getElementById('cmd').textContent); this.textContent='kopiert'">kopieren</button></li>
       <li>Entscheide mit einem der Knöpfe. Jeder startet den Runner, der dein Urteil in <code>pruefpunkte.md</code> einträgt.</li>
     </ol>
     {% if report6 and report6.blockiert %}

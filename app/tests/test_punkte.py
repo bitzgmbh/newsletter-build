@@ -67,3 +67,11 @@ class OpenPoints(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class OffenSection(unittest.TestCase):
+    def test_bullets_under_offen_are_points(self):
+        text = "# Grafiken\n\n- fig: gut\n\n## Offen\n\n- Erster Punkt.\n- Zweiter Punkt.\n"
+        pts = punkte.open_points(text)
+        self.assertEqual([p["text"] for p in pts], ["Erster Punkt.", "Zweiter Punkt."])
+        self.assertEqual(pts[0]["section"], "Offen")

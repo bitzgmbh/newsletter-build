@@ -41,14 +41,14 @@ def load() -> Config:
     if not CONFIG_PATH.exists():
         raise SystemExit(f"Konfiguration fehlt: {CONFIG_PATH}")
     data = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
-    for key in ("private_repo", "private_repo_path", "element_room"):
+    for key in ("private_repo", "private_repo_path"):
         if key not in data:
             raise SystemExit(f"Schlüssel fehlt in {CONFIG_PATH}: {key}")
     repo = os.environ.get("REDAKTION_REPO_PATH") or data["private_repo_path"]
     return Config(
         private_repo=data["private_repo"],
         repo_path=pathlib.Path(repo).expanduser(),
-        element_room=data["element_room"],
+        element_room=data.get("element_room", ""),  # unused since 0034
         app_url=data.get("app_url", "http://127.0.0.1:8765"),
         dry_run=os.environ.get("REDAKTION_DRY_RUN") == "1",
     )

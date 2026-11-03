@@ -45,6 +45,7 @@ format:
 - [0031 Länge: 500 bis 700 Wörter](0031-laenge-500-bis-700.md)
 - [0032 Der Text kommt vom Agenten, ich sehe ihn durch](0032-text-vom-agenten.md)
 - [0033 Die Prüfung durch den Skill gehört zu 5b](0033-pruefung-stimme-in-5b.md)
+- [0034 Entscheiden in Claude Code, die App führt durch die Stufen](0034-entscheiden-in-claude-code.md)
 
 ## Open
 

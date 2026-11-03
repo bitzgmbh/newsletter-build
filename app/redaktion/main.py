@@ -440,6 +440,92 @@ def versand_entwurf(name: str, sprache: str = Form("de")):
     return RedirectResponse(f"/ausgabe/{name}/versand?hinweis={quote(note)}", status_code=303)
 
 
+# JSON for the redaktion skill in Claude Code (decision 0034). It reads the
+# same state and open points as the pages and starts runs the same way.
+
+def resolve(name: str) -> str:
+    """A full folder name, or its short name without the date."""
+    names = [e["name"] for e in editions.list_editions(cfg)]
+    if name in names:
+        return name
+    hits = [n for n in names if n[11:] == name or name in n]
+    if len(hits) == 1:
+        return hits[0]
+    raise HTTPException(404, f"Keine eindeutige Ausgabe für {name}: {', '.join(hits) or 'keine'}")
+
+
+def summary(e: dict) -> dict:
+    st = e["state"]
+    return {"name": e["name"], "title": e["title"], "date": e["date"],
+            "next": st["next"]["id"], "next_name": st["next"]["name"],
+            "gate_waiting": st["gate_waiting"], "active": runs.active(e["name"])}
+
+
+@app.get("/api/ausgaben")
+def api_ausgaben():
+    return sorted((summary(e) for e in editions.list_editions(cfg)), key=lambda s: s["date"])
+
+
+@app.get("/api/ausgabe/{name}")
+def api_ausgabe(name: str):
+    e = load_edition(resolve(name))
+    st = e["state"]
+    waiting = st["gate_waiting"]
+    datei = editions.stand.BY_ID[waiting][3] if waiting else None
+    text = editions.read_file(cfg, e["name"], datei) if datei else ""
+    out = summary(e) | {
+        "gate_name": editions.stand.BY_ID[waiting][1] if waiting else None,
+        "datei": datei, "tab": TABS.get(datei) if datei else None,
+        "link": f"{cfg.app_url}/ausgabe/{e['name']}" + (f"?datei={datei}" if datei else ""),
+        "punkte": points_of(datei, text or "") if datei else [],
+        "unsaved": unsaved_in_positron(e),
+        "files": st["files"],
+        "gates": [gate_row(g) for g in st["gates"]][-5:],
+    }
+    if datei == "pruefbericht.md":
+        rep_ = bericht.parse(text or "")
+        out["bericht"] = {"urteil": rep_["urteil"], "blockiert": rep_["blockiert"],
+                          "hart": [{"name": g["name"], "counts": g["counts"]} for g in rep_["hart"]]}
+    return out
+
+
+@app.post("/api/ausgabe/{name}/urteil")
+async def api_urteil(name: str, request: Request):
+    """Body: {"art": "ja" | "geändert" | "ja, mit Änderungen" | "blockiert", "text": "...", "zurueck": "5b"}."""
+    e = load_edition(resolve(name))
+    body = await request.json()
+    art, text = body.get("art"), " ".join(str(body.get("text", "")).replace('"', "'").split())
+    waiting = e["state"]["gate_waiting"]
+    if not waiting:
+        raise HTTPException(400, "Kein Prüfpunkt wartet.")
+    if art == "ja":
+        verdict = "ja"
+    elif art in ("geändert", "ja, mit Änderungen"):
+        if not text:
+            raise HTTPException(400, "Text fehlt.")
+        verdict = f'{art}: "{text}"'
+    elif art == "blockiert" and body.get("zurueck") in BACK_TO:
+        verdict = f"blockiert, zurück zu {body['zurueck']}"
+    else:
+        raise HTTPException(400, "Unbekanntes Urteil.")
+    refuse_if_unsaved(e)
+    if waiting == "5b":
+        commit_own_edits(e)
+    try:
+        run_id = runs.start(cfg, e["name"], e["rel"], waiting, verdict)
+    except RuntimeError as exc:
+        raise HTTPException(409, str(exc))
+    return {"run_id": run_id, "link": f"{cfg.app_url}/lauf/{run_id}", "verdict": verdict}
+
+
+@app.get("/api/lauf/{run_id}")
+def api_lauf(run_id: int):
+    r = runs.get(run_id)
+    if not r:
+        raise HTTPException(404, "Kein Lauf")
+    return {k: r[k] for k in ("id", "edition", "stage", "verdict", "status", "cost", "turns", "result")}
+
+
 def run():
     port = int(os.environ.get("REDAKTION_PORT", "8765"))
     uvicorn.run("redaktion.main:app", host="127.0.0.1", port=port, reload=False)
