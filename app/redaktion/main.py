@@ -123,6 +123,8 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
     if not shown:
         waiting = e["state"]["gate_waiting"]
         wanted = editions.stand.BY_ID[waiting][3] if waiting else None
+        if not wanted and e["state"]["next"]["id"] == "5b":
+            wanted = "gliederung.md"  # the outline is the guide while Lars writes
         shown = wanted if wanted in present else (present[0] if present else None)
     qmd = editions.read_file(cfg, name, "index.qmd") or ""
     preview = buttondown.clean_markdown(editions.body_without_frontmatter(qmd), e["meta"], {})
@@ -131,7 +133,25 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
         shown_text=editions.read_file(cfg, name, shown) if shown else "",
         preview=preview, back_to=BACK_TO, hinweis=hinweis,
         active=runs.active(name), recent=runs.recent(name, 5),
+        qmd_path=e["folder"] / "index.qmd",
     )
+
+
+@app.post("/ausgabe/{name}/oeffnen")
+def oeffnen(name: str, datei: str = Form("index.qmd")):
+    """Open a file of the edition in Positron (or the default app when Positron is missing)."""
+    e = load_edition(name)
+    if datei not in ("index.qmd", "index-en.qmd", "rohentwurf.md"):
+        raise HTTPException(400, "Diese Datei öffnet die App nicht.")
+    path = e["folder"] / datei
+    if not path.exists():
+        raise HTTPException(404, f"{datei} gibt es noch nicht.")
+    app_name = os.environ.get("REDAKTION_EDITOR", "Positron")
+    p = subprocess.run(["open", "-a", app_name, str(path)], capture_output=True, text=True)
+    if p.returncode != 0:
+        subprocess.run(["open", str(path)])
+    return RedirectResponse(f"/ausgabe/{name}?hinweis={quote(datei + ' geöffnet in ' + app_name)}",
+                            status_code=303)
 
 
 @app.post("/ausgabe/{name}/lauf")

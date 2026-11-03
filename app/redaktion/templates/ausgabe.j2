@@ -6,38 +6,85 @@
 <h1>{{ e.title }}</h1>
 <p class="muted">{{ e.rel }} · Sendedatum {{ e.date }}</p>
 
+{% set was = {
+  "4": "Der Agent sucht Quellen für jede Aussage im Rohentwurf, dein eigenes Material und Kontext und schreibt recherche.md.",
+  "5a": "Der Agent schlägt aus Rohentwurf und Recherche eine Gliederung in Stichworten vor (gliederung.md).",
+  "5c": "Der Skill stimme prüft deinen Text und schlägt Änderungen vor (pruefung-stimme.md). Er schreibt den Text nicht um.",
+  "6": "Der Skill pruefung prüft Fakten, Links und Zahlen hart und gibt Hinweise zu Länge und Stil (pruefbericht.md).",
+  "7": "Der Skill grafiken baut die Grafik aus Daten, die du nennst (grafiken.md und ein Block in index.qmd).",
+  "8": "Der Skill uebersetzung schreibt die englische Fassung (index-en.qmd).",
+  "11": "Der Skill verbreitung schreibt die Posts für LinkedIn, Bluesky und Mastodon (verbreitung.md). Posten machst du."
+} %}
 <section class="panel status">
-  <p><strong>Nächste Stufe: {{ st.next.id }} {{ st.next.name }}</strong>{% if st.next.note %} ({{ st.next.note }}){% endif %}</p>
+  <p class="stufe"><strong>Nächste Stufe: {{ st.next.id }} {{ st.next.name }}</strong>{% if st.next.note %} ({{ st.next.note }}){% endif %}</p>
+
   {% if active %}
-    <p><span class="pill run">läuft</span> <a href="/lauf/{{ active }}">Lauf #{{ active }} ansehen</a></p>
+  <div class="jetzt running">
+    <h3>Gerade läuft etwas</h3>
+    <p>Der Runner arbeitet an dieser Ausgabe. <a href="/lauf/{{ active }}">Lauf #{{ active }} live ansehen</a>. Wenn er fertig ist, lade diese Seite neu; dann siehst du hier deinen nächsten Schritt.</p>
+  </div>
   {% elif st.gate_waiting %}
-    <p>Prüfpunkt Stufe {{ st.gate_waiting }} wartet auf dein Urteil. Mit dem Urteil startet der Runner die nächste Stufe.</p>
-    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="row">
+  <div class="jetzt">
+    <h3>Was jetzt? Dein Urteil zu Stufe {{ st.gate_waiting }}</h3>
+    <ol>
+      <li>Lies links <strong>{{ shown or "das Ergebnis" }}</strong>, das Ergebnis der Stufe.</li>
+      <li>Entscheide mit einem der Knöpfe. Jeder startet den Runner, der dein Urteil in <code>pruefpunkte.md</code> einträgt.</li>
+    </ol>
+    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
       <button name="aktion" value="ja">Ja, weiter</button>
+      <span>Passt so. Der Runner trägt dein Ja ein und macht die nächste Stufe. Ist die nächste Stufe dein Text (5b), wartet er auf dich.</span>
     </form>
-    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="row">
+    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
       <input name="text" placeholder="Ein bis zwei Sätze, was sich ändern soll" required>
-      <button name="aktion" value="geaendert" class="secondary">Geändert</button>
+      <button name="aktion" value="geaendert" class="secondary">Ändern lassen</button>
+      <span>Der Runner trägt deine Sätze ein und passt das Ergebnis an. Danach entscheidest du hier noch einmal.</span>
     </form>
-    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="row">
-      <select name="zurueck">{% for b in back_to %}<option>{{ b }}</option>{% endfor %}</select>
-      <button name="aktion" value="blockiert" class="danger">Blockiert, zurück</button>
-    </form>
+    <details class="selten">
+      <summary>Selten: die Ausgabe zurückschicken</summary>
+      <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
+        <select name="zurueck" required><option value="" disabled selected>zurück zu Stufe …</option>{% for b in back_to %}<option>{{ b }}</option>{% endfor %}</select>
+        <button name="aktion" value="blockiert" class="danger">Blockieren</button>
+        <span>Nur wenn das Ergebnis nicht zu retten ist. Die Ausgabe springt auf die gewählte Stufe zurück.</span>
+      </form>
+    </details>
+  </div>
   {% elif st.next.id == "5b" %}
-    <p>Du schreibst den Text in <code>index.qmd</code> in deinem Editor.</p>
-    {% if st.empty_parts %}<p class="muted">Noch ohne Text: {{ st.empty_parts|join(", ") }}</p>{% endif %}
-    <form method="post" action="/ausgabe/{{ e.name }}/lauf"><button name="aktion" value="text_fertig" {% if st.empty_parts %}disabled{% endif %}>Text fertig, Prüfung starten</button></form>
+  <div class="jetzt">
+    <h3>Was jetzt? Du schreibst den Text</h3>
+    <ol>
+      <li>Öffne <code>index.qmd</code> in Positron:
+        <form method="post" action="/ausgabe/{{ e.name }}/oeffnen" class="inline"><input type="hidden" name="datei" value="index.qmd"><button>index.qmd in Positron öffnen</button></form>
+        <br><span class="muted">{{ qmd_path }}</span></li>
+      <li>Schreib deine Absätze unter jede Überschrift (<code>## Die Idee</code> und so weiter). Der Kommentar unter jeder Überschrift nennt die Wortzahl. Links steht die <strong>Gliederung</strong> als Leitfaden, <code>recherche.md</code> hat die Quellen. <code>rohentwurf.md</code> bleibt, wie er ist.</li>
+      <li>Speichern. Rechts siehst du die Vorschau, nach dem Neuladen dieser Seite.</li>
+      <li>Wenn jeder Teil Text hat, klick hier:
+        <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="inline"><button name="aktion" value="text_fertig" {% if st.empty_parts %}disabled{% endif %}>Text fertig, Prüfung starten</button></form></li>
+    </ol>
+    {% if st.empty_parts %}<p class="muted">Noch ohne Text: {{ st.empty_parts|join(", ") }}. Der Teil "Was ihr letztes Mal gesagt habt" darf leer bleiben.</p>{% endif %}
+  </div>
   {% elif st.next.id == "9" %}
+  <div class="jetzt">
+    <h3>Was jetzt? Die Freigabe</h3>
+    <p>Alle Stufen haben dein Ja. Lies die Ausgabe ein letztes Mal und gib sie frei. Danach geht sie als Entwurf nach Buttondown.</p>
     <p><a class="button" href="/ausgabe/{{ e.name }}/freigabe">Zur Freigabe</a></p>
+  </div>
   {% elif st.next.id == "10" %}
+  <div class="jetzt">
+    <h3>Was jetzt? Der Entwurf in Buttondown</h3>
+    <p>Die Ausgabe ist freigegeben. Die App legt einen Entwurf in Buttondown an; senden machst du dort.</p>
     <p><a class="button" href="/ausgabe/{{ e.name }}/versand">Entwurf für Buttondown</a></p>
+  </div>
   {% elif st.next.id == "fertig" %}
-    <p>Alle Stufen haben dein Ja.</p>
+  <div class="jetzt"><h3>Fertig</h3><p>Alle Stufen haben dein Ja.</p></div>
   {% else %}
-    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="row">
+  <div class="jetzt">
+    <h3>Was jetzt? Stufe {{ st.next.id }} starten</h3>
+    <p>{{ was.get(st.next.id, "") }} Danach liest du das Ergebnis hier und gibst dein Urteil.</p>
+    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
       {% if st.next.id == "7" %}<input name="quelle" placeholder="Datenquelle für die Grafik (Datei oder Paket)">{% endif %}
       <button name="aktion" value="start">Stufe {{ st.next.id }} {{ st.next.name }} starten</button>
     </form>
+  </div>
   {% endif %}
 </section>
 
@@ -49,7 +96,7 @@
     {% if shown %}<article class="doc">{{ shown_text|md|safe }}</article>{% else %}<p class="muted">Noch keine Ausgabe einer Stufe.</p>{% endif %}
   </section>
   <section>
-    <h2>index.qmd</h2>
+    <h2>index.qmd (Vorschau, nur lesen)</h2>
     <article class="doc preview">{{ preview|md|safe }}</article>
   </section>
 </div>
