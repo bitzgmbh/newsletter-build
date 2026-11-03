@@ -88,3 +88,28 @@ textarea { font: inherit; width: 100%; padding: 6px 8px; border: 1px solid var(-
            border: 2px solid var(--line); border-top-color: var(--run); animation: drehen 0.9s linear infinite; }
 @keyframes drehen { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 3s; } }
+.bericht .urteil { padding: 10px 14px; border-radius: 6px; font-weight: 600; margin: 12px 0; }
+.bericht .urteil.rot { background: color-mix(in srgb, var(--danger) 15%, transparent); color: var(--danger); }
+.bericht .urteil.gruen { background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent); }
+.bericht h3 { font-size: .95rem; margin: 18px 0 8px; }
+.check { display: grid; grid-template-columns: 90px 1fr 210px; gap: 10px; align-items: center; margin: 6px 0; }
+.check .bar { display: flex; height: 12px; border-radius: 6px; overflow: hidden; background: var(--line); gap: 2px; }
+.check .bar i { display: block; }
+.check .bar .ok { background: var(--accent); } .check .bar .hinweis { background: var(--warn); } .check .bar .fail { background: var(--danger); }
+.check .zahlen { font-size: .85rem; color: var(--muted); white-space: nowrap; }
+.bericht details { border-top: 1px solid var(--line); padding: 6px 0; }
+.bericht summary { cursor: pointer; }
+.tag { font-size: .7rem; padding: 1px 6px; border-radius: 999px; text-transform: none; letter-spacing: 0; }
+.tag.fail { color: var(--danger); border: 1px solid var(--danger); }
+.tag.hinweis { color: var(--warn); border: 1px solid var(--warn); }
+.befund { border-left: 3px solid var(--warn); padding: 2px 12px; margin: 8px 0; }
+.befund.muss { border-color: var(--danger); }
+.befund .wo { margin: 4px 0 0; font-size: .8rem; color: var(--muted); }
+.befund p { margin: 4px 0; }
+.gates-kurz { border-collapse: collapse; font-size: .9rem; }
+.gates-kurz td { padding: 4px 10px 4px 0; vertical-align: top; border-top: 1px solid var(--line); }
+.gates-kurz details p { margin: 4px 0; max-width: 70ch; }
+.verdict { font-size: .8rem; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--muted); white-space: nowrap; }
+.verdict.ja, .verdict.ja-mit-Änderungen { color: var(--accent); border-color: var(--accent); }
+.verdict.geändert { color: var(--warn); border-color: var(--warn); }
+.verdict.blockiert { color: var(--danger); border-color: var(--danger); }

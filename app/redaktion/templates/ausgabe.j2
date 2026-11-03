@@ -38,6 +38,9 @@
       {% endif %}
       <li>Entscheide mit einem der Knöpfe. Jeder startet den Runner, der dein Urteil in <code>pruefpunkte.md</code> einträgt.</li>
     </ol>
+    {% if report6 and report6.blockiert %}
+    <p class="hinweis"><strong>Der Prüfbericht blockiert die Ausgabe: {{ report6.fails }} Fail offen.</strong> Beantworte die Fails rechts und klick "Einarbeiten und weiter". "Ja, weiter" übergeht sie.</p>
+    {% endif %}
     <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
       <button name="aktion" value="ja">Ja, weiter</button>
       <span>Passt so. Der Runner trägt dein Ja ein und macht gleich die nächste Stufe.</span>
@@ -92,7 +95,32 @@
     <nav class="tabs">
       {% for f in present %}<a href="?datei={{ f }}" class="{% if f == shown %}on{% endif %}">{{ f }}</a>{% endfor %}
     </nav>
-    {% if shown %}<article class="doc">{{ shown_text|md|safe }}</article>{% else %}<p class="muted">Noch kein Ergebnis einer Stufe.</p>{% endif %}
+    {% if report %}
+    <article class="doc bericht">
+      <p class="urteil {{ 'rot' if report.blockiert else 'gruen' }}">{{ report.urteil or "Kein Urteil im Bericht." }}</p>
+      <h3>Harte Prüfungen</h3>
+      {% for g in report.hart %}{% set c = g.counts %}{% set total = c.ok + c.hinweis + c.fail %}
+      <div class="check">
+        <span class="name">{{ g.name }}</span>
+        <span class="bar">{% if total %}<i class="ok" style="flex:{{ c.ok }}"></i><i class="hinweis" style="flex:{{ c.hinweis }}"></i><i class="fail" style="flex:{{ c.fail }}"></i>{% endif %}</span>
+        <span class="zahlen">{{ c.ok }} bestanden{% if c.hinweis %} · {{ c.hinweis }} Hinweis{% endif %}{% if c.fail %} · <strong>{{ c.fail }} Fail</strong>{% endif %}</span>
+      </div>
+      {% endfor %}
+      <h3>Zu entscheiden ({{ report.punkte|length }})</h3>
+      {% for p in report.punkte %}
+      <div class="befund {{ p.art }}"><p class="wo">{{ p.section }} <span class="tag {{ 'fail' if p.art == 'muss' else 'hinweis' }}">{{ "Fail" if p.art == "muss" else "Hinweis" }}</span></p>{{ p.text|md|safe }}</div>
+      {% else %}<p class="muted">Kein Fail und kein Hinweis.</p>{% endfor %}
+      {% if points %}<p class="muted">Rechts hat jeder Punkt ein Feld für deine Antwort.</p>{% endif %}
+      <h3>Hinweise zu Länge, Stil und Leser:innen</h3>
+      {% for g in report.hinweise %}
+      <details><summary>{{ g.name }}{% if g.eintraege %} ({{ g.eintraege|length }}){% endif %}</summary>
+        {% if g.body %}{{ g.body|md|safe }}{% endif %}
+        {% if g.eintraege %}<ul>{% for i in g.eintraege %}<li>{{ i.text|md|safe }}</li>{% endfor %}</ul>{% endif %}
+      </details>
+      {% endfor %}
+      <details><summary>Ganzer Bericht</summary>{{ shown_text|md|safe }}</details>
+    </article>
+    {% elif shown %}<article class="doc">{{ shown_text|md|safe }}</article>{% else %}<p class="muted">Noch kein Ergebnis einer Stufe.</p>{% endif %}
   </section>
   {% if points %}
   <section id="punkte" class="answers">
@@ -101,7 +129,7 @@
       <p class="muted">Beantworte, was du jetzt weisst. Leere Felder bleiben offen.</p>
       {% for p in points %}
       <div class="punkt">
-        <p class="wo">{{ p.n }}. {{ p.section or "ohne Teil" }}</p>
+        <p class="wo">{{ p.n }}. {{ p.section or "ohne Teil" }}{% if p.art == "muss" %} <span class="tag fail">Fail, muss behoben werden</span>{% elif p.art == "kann" %} <span class="tag hinweis">Hinweis</span>{% endif %}</p>
         <p class="frage">{{ p.text }}</p>
         <textarea name="antwort_{{ p.n }}" rows="2" placeholder="Deine Antwort"></textarea>
       </div>
@@ -122,7 +150,11 @@
 
 <section>
   <h2>Prüfpunkte</h2>
-  <ul class="gates">{% for g in st.gates %}<li>{{ g[2:] }}</li>{% else %}<li class="muted">noch keine</li>{% endfor %}</ul>
+  <table class="gates-kurz">
+  {% for g in gate_rows %}<tr><td class="muted">{{ g.when }}</td><td>{{ g.stage }}</td><td><span class="verdict {{ g.word|replace(',', '')|replace(' ', '-') }}">{{ g.word }}</span></td>
+    <td>{% if g.rest %}<details><summary>Text</summary><p>{{ g.rest }}</p></details>{% endif %}</td></tr>
+  {% else %}<tr><td class="muted">noch keine</td></tr>{% endfor %}
+  </table>
   {% if recent %}<h2>Läufe</h2><ul>{% for r in recent %}<li><a href="/lauf/{{ r.id }}">#{{ r.id }}</a> Stufe {{ r.stage }}, {{ r.status }}, {{ r.started|zeit }}</li>{% endfor %}</ul>{% endif %}
 </section>
 {% endblock %}

@@ -21,7 +21,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from markdown_it import MarkdownIt
 
-from . import buttondown, config, editions, gitops, punkte, runs
+from . import bericht, buttondown, config, editions, gitops, punkte, runs
 
 HERE = Path(__file__).parent
 cfg = config.load()
@@ -193,6 +193,10 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
         active=runs.active(name), recent=runs.recent(name, 5),
         qmd_path=e["folder"] / "index.qmd",
         points=_points_for(e, shown),
+        report=bericht.parse(editions.read_file(cfg, name, shown) or "") if shown == "pruefbericht.md" else None,
+        report6=(bericht.parse(editions.read_file(cfg, name, "pruefbericht.md") or "")
+                 if e["state"]["gate_waiting"] == "6" else None),
+        gate_rows=[gate_row(g) for g in e["state"]["gates"]],
         unsaved=unsaved_in_positron(e),
     )
 
@@ -202,7 +206,28 @@ def _points_for(e: dict, shown: str | None) -> list[dict]:
     waiting = e["state"]["gate_waiting"]
     if not waiting or not shown or shown != editions.stand.BY_ID[waiting][3]:
         return []
-    return punkte.open_points(editions.read_file(cfg, e["name"], shown) or "")
+    return points_of(shown, editions.read_file(cfg, e["name"], shown) or "")
+
+
+GATE_LINE = re.compile(r"^- (\S+ \S+) Stufe (\S+) ([^:]+):\s*(.*)$")
+
+
+def gate_row(line: str) -> dict:
+    """One line of pruefpunkte.md, split for the short list: when, stage, verdict word, the rest."""
+    m = GATE_LINE.match(line)
+    if not m:
+        return {"when": "", "stage": "", "word": line[2:], "rest": ""}
+    when, stage, name, verdict = m.groups()
+    word = re.match(r"(ja, mit Änderungen|ja|geändert|blockiert|offen)?", verdict).group(1) or verdict[:40]
+    return {"when": when, "stage": f"{stage} {name.strip()}", "word": word,
+            "rest": verdict[len(word):].lstrip(":, ").strip()}
+
+
+def points_of(filename: str, text: str) -> list[dict]:
+    """The check report has its own points (Fail and 'mit Hinweis'); other files mark them with '?'."""
+    if filename == "pruefbericht.md":
+        return bericht.open_points(text)
+    return punkte.open_points(text)
 
 
 @app.post("/ausgabe/{name}/antworten")
@@ -214,11 +239,12 @@ async def antworten(name: str, request: Request):
         raise HTTPException(400, "Kein Prüfpunkt wartet.")
     filename = editions.stand.BY_ID[waiting][3]
     form = await request.form()
-    points = punkte.open_points(editions.read_file(cfg, name, filename) or "")
+    points = points_of(filename, editions.read_file(cfg, name, filename) or "")
     answers = {}
     for p in points:
         answers[p["n"]] = str(form.get(f"antwort_{p['n']}", ""))
-    text = punkte.feedback(filename, points, answers, str(form.get("allgemein", "")))
+    target = "index.qmd (Befunde aus pruefbericht.md)" if filename == "pruefbericht.md" else filename
+    text = punkte.feedback(target, points, answers, str(form.get("allgemein", "")))
     if not text:
         raise HTTPException(400, "Keine Antwort eingetragen.")
     refuse_if_unsaved(e)
