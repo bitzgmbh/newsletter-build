@@ -15,14 +15,15 @@ import pathlib
 import re
 import sys
 
-PARTS_OPTIONAL = {"Was ihr letztes Mal gesagt habt"}
+# Offengelegt is written by the offenlegung script before stage 9, not at 5b.
+PARTS_OPTIONAL = {"Was ihr letztes Mal gesagt habt", "Offengelegt"}
 
 # id, name, who runs it, output file (None when the stage has no file),
 # gate after the stage, label of the checkbox in the edition issue
 STAGES = [
     ("4", "Recherche", "agent", "recherche.md", True, "4 Recherche"),
     ("5a", "Gliederung", "agent", "gliederung.md", True, "5 Gliederung vom Agenten"),
-    ("5b", "Text", "lars", None, False, "5 Text von mir"),
+    ("5b", "Text", "agent", "index.qmd", True, "5 Text vom Agenten, Durchsicht von mir"),
     ("5c", "Prüfung stimme", "agent", "pruefung-stimme.md", True, "5 Prüfung durch den Skill"),
     ("6", "Prüfungen", "agent", "pruefbericht.md", True, "6 Prüfungen"),
     ("7", "Grafiken", "agent", "grafiken.md", True, "7 Grafiken"),
@@ -61,14 +62,23 @@ def stage_lines(gates, stage_id):
     return [g for g in gates if pattern.search(g)]
 
 
+def verdict(line, stage_id):
+    """The first word after the stage name: ja, geändert, blockiert, offen.
+
+    Only that word counts; the answers in a "geändert" line may say "ja" too.
+    """
+    m = re.search(r"Stufe " + re.escape(stage_id) + r"\b[^:]*:\s*(\w+)", line)
+    return m.group(1) if m else None
+
+
 def has_yes(gates, stage_id):
     """True when pruefpunkte.md has a 'ja' line for this stage."""
-    return any(re.search(r":\s*ja\b", g) for g in stage_lines(gates, stage_id))
+    return any(verdict(g, stage_id) == "ja" for g in stage_lines(gates, stage_id))
 
 
 def settled(gates, stage_id):
     """True when the gate of this stage has a yes or sent the edition back."""
-    return any(re.search(r":\s*(ja|blockiert)\b", g) for g in stage_lines(gates, stage_id))
+    return any(verdict(g, stage_id) in ("ja", "blockiert") for g in stage_lines(gates, stage_id))
 
 
 def infer(folder):
@@ -119,7 +129,8 @@ def infer(folder):
     # (the order only moves on after the yes); for 4 to 6 the file order has
     # already moved on, so it is the agent stage just before the next one.
     waiting = None
-    if info and info[4] and output in have and not settled(gates, stage):
+    # index.qmd exists from the template on, so 5b never waits on itself.
+    if info and info[4] and stage != "5b" and output in have and not settled(gates, stage):
         waiting = stage
     elif info and not note:
         idx = STAGE_IDS.index(stage)
@@ -152,7 +163,7 @@ def text_line(state):
         return "fertig"
     label = f"{nxt['id']} {nxt['name']}"
     if nxt["id"] == "5b":
-        label += " (Lars schreibt" + (", " + nxt["note"] if nxt["note"] else "") + ")"
+        label += " (Agent schreibt, Lars sieht durch" + (", " + nxt["note"] if nxt["note"] else "") + ")"
     elif nxt["id"] == "9":
         label += " (Lars merged dev in main)"
     elif nxt["id"] == "10":

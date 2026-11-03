@@ -7,7 +7,7 @@ A small local app in front of the bitz pipeline (decision 0028). It shows every 
 - The stage of an edition always comes from `skills/runner/scripts/stand.py`, the same script the runner reads.
 - Every agent stage goes through the runner. The app starts it headless (`claude -p`, `stream-json`) with the verdict I clicked and shows the run live, with the cost at the end. The runner commits, ticks the issue and sends the Element notice.
 - Three buttons are mine alone and the app does them itself: "Ausgabe anlegen" from a draft in `_entwuerfe/`, "Freigeben" (stage 9) and "Entwurf in Buttondown anlegen" (stage 10).
-- It never writes the text of an edition, never sends an email, and never checks out another branch. Freigabe only fast-forwards `main` to `dev`.
+- The app itself never writes the text of an edition; the skill stimme does that in a run (0032), and my own edits at gate 5b are committed as mine before the next run. It never sends an email, and never checks out another branch. Freigabe only fast-forwards `main` to `dev`.
 - Run history lives in `~/.local/share/bitz-redaktion/runs.db`, outside git. The repository stays the record.
 
 ## Start

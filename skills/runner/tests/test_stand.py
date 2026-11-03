@@ -71,6 +71,11 @@ class Order(unittest.TestCase):
         state = stand.infer(make(["recherche.md"], ["4 Recherche: ja"]))
         self.assertIsNone(state["gate_waiting"])
 
+    def test_ja_inside_a_change_is_not_a_yes(self):
+        gate = '5a Gliederung: geändert: "Punkt 1 (Form): ja, das passt. | Punkt 2: blockiert nichts"'
+        state = stand.infer(make(["recherche.md", "gliederung.md", "index-empty"], ["4 Recherche: ja", gate]))
+        self.assertEqual(state["gate_waiting"], "5a")
+
     def test_offen_keeps_gate_waiting(self):
         state = stand.infer(make(["recherche.md"], ["4 Recherche: offen"]))
         self.assertEqual(state["gate_waiting"], "4")
@@ -79,6 +84,19 @@ class Order(unittest.TestCase):
         state = stand.infer(make(["recherche.md", "gliederung.md", "index-empty"]))
         self.assertEqual(state["next"]["id"], "5b")
         self.assertIn("Die Idee", state["empty_parts"])
+
+    def test_5b_is_an_agent_stage_without_a_gate_before_it_runs(self):
+        state = stand.infer(make(["recherche.md", "gliederung.md", "index-empty"], ["5a Gliederung: ja"]))
+        self.assertEqual(state["next"]["who"], "agent")
+        self.assertIsNone(state["gate_waiting"])
+
+    def test_text_written_means_gate_5b_waits(self):
+        state = stand.infer(make(["recherche.md", "gliederung.md", "index.qmd"], ["5a Gliederung: ja"]))
+        self.assertEqual(state["next"]["id"], "5c")
+        self.assertEqual(state["gate_waiting"], "5b")
+        state = stand.infer(make(["recherche.md", "gliederung.md", "index.qmd"],
+                                 ["5a Gliederung: ja", "5b Text: ja"]))
+        self.assertIsNone(state["gate_waiting"])
 
     def test_optional_part_may_stay_empty(self):
         self.assertEqual(nxt(make(["recherche.md", "gliederung.md", "index.qmd"])), "5c")

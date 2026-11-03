@@ -81,7 +81,15 @@ if (length(all_models) == 0) {
   text <- gsub("(?m)^\\*Reihe:.*$", "", text, perl = TRUE)
   words <- length(strsplit(trimws(gsub("\\s+", " ", gsub("(?m)^#.*$", "", text, perl = TRUE))), " ")[[1]])
   cs <- touching("index.qmd")
+  # Since decision 0032 the skill stimme writes the text at 5b and I review
+  # it; the 5b gate line in pruefpunkte.md marks those editions.
+  pp <- file.path(folder, "pruefpunkte.md")
+  agent_text <- file.exists(pp) && any(grepl("Stufe 5b", readLines(pp, warn = FALSE)))
   text_line <- if (words < 50) "Text: noch nicht geschrieben"
+    else if (agent_text) switch(who(cs),
+      beide = with_model("Text: Skill stimme nach meiner Gliederung, durchgesehen und geändert von mir", cs),
+      agent = with_model("Text: Skill stimme nach meiner Gliederung, durchgesehen von mir", cs),
+      "Text: von mir")
     else switch(who(cs), mir = "Text: von mir", beide = "Text: von mir, geprüft vom Skill",
                 agent = with_model("Text: Agent", cs), "Text: noch kein Commit")
   if (has("entwurf-skill.md")) text_line <- paste0(text_line, "; ein Testentwurf des Skills liegt daneben")

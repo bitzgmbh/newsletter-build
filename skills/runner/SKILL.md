@@ -33,7 +33,7 @@ Run `scripts/stand.py --json <edition folder>` first. It infers the stage from t
 |---|---|---|---|
 | 4 Recherche | `recherche.md` | recherche | gate |
 | 5a Gliederung | `gliederung.md` | stimme, mode gliederung | gate |
-| 5b Text | parts of `index.qmd` with text | Lars writes; the runner waits | no gate, runs 5c when the parts have text |
+| 5b Text | parts of `index.qmd` with text | stimme, mode text (0032) | gate: Lars reviews the text |
 | 5c Prüfung stimme | `pruefung-stimme.md` | stimme, mode pruefung | gate |
 | 6 Prüfungen | `pruefbericht.md` | pruefung | gate; an Urteil "blockiert" sends the edition back to 5b |
 | 7 Grafiken | `grafiken.md`, and the chart block in `index.qmd` | skill grafiken | gate |
@@ -43,7 +43,7 @@ Run `scripts/stand.py --json <edition folder>` first. It infers the stage from t
 | 10 Versand | a draft in Buttondown | Lars, with the button in the app | the app writes the line `10 Versand: Entwurf <id>` |
 | 11 Verbreitung | `verbreitung.md`, one post per channel | skill verbreitung | gate: the ping carries the first line of each post |
 
-A stage whose skill is not built stops with "Skill fehlt: <name>" and pings Lars with that line, so the pipeline runs end to end with its gaps named. For 5b, check the parts with `skills/stimme/scripts/woerter.py <folder>/index.qmd`; when every part except "Was ihr letztes Mal gesagt habt" has words, 5b is done.
+A stage whose skill is not built stops with "Skill fehlt: <name>" and pings Lars with that line, so the pipeline runs end to end with its gaps named. For 5b, check the parts with `skills/stimme/scripts/woerter.py <folder>/index.qmd`; when every part except "Was ihr letztes Mal gesagt habt" and "Offengelegt" has words, the text is written and gate 5b waits for Lars.
 
 ## One invocation
 

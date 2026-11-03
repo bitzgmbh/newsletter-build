@@ -36,6 +36,7 @@
 - [0029 Buttondown Entwurf über die API](0029-buttondown-entwurf-ueber-die-api.md)
 - [0030 Englisch als eigene Mail](0030-englisch-als-eigene-mail.md)
 - [0031 Länge: 500 bis 700 Wörter](0031-laenge-500-bis-700.md)
+- [0032 Der Text kommt vom Agenten, ich sehe ihn durch](0032-text-vom-agenten.md)
 
 ## Open
 

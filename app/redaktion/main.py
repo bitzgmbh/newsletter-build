@@ -7,6 +7,7 @@ the two buttons that are Lars's alone: Freigabe (stage 9) and Versand
 import asyncio
 import datetime as dt
 import json
+import re
 import os
 import subprocess
 import tempfile
@@ -32,7 +33,27 @@ templates.env.filters["md"] = lambda text: md.render(text or "")
 templates.env.filters["zeit"] = lambda ts: dt.datetime.fromtimestamp(ts).strftime("%d.%m. %H:%M") if ts else ""
 
 OUTPUTS = ["recherche.md", "gliederung.md", "pruefung-stimme.md", "pruefbericht.md", "grafiken.md",
-           "verbreitung.md", "rohentwurf.md", "index-en.qmd"]
+           "verbreitung.md", "rohentwurf.md", "index.qmd", "index-en.qmd"]
+OPEN_POINT = re.compile(r"<!--\s*\?\s*(.*?)\s*-->", re.S)
+COMMENT = re.compile(r"<!--.*?-->", re.S)
+
+
+def show_qmd(text: str) -> str:
+    """index.qmd for reading: no front matter, open points visible, other comments gone."""
+    body = editions.body_without_frontmatter(text)
+    body = OPEN_POINT.sub(lambda m: "> **? " + " ".join(m.group(1).split()) + "**", body)
+    return COMMENT.sub("", body)
+
+
+def commit_own_edits(e: dict) -> str | None:
+    """Lars's own edits to index.qmd at gate 5b are committed as his before the runner runs."""
+    rel = f"{e['rel']}/index.qmd"
+    if not gitops.git(cfg.repo_path, "status", "--porcelain", "--", rel).strip():
+        return None
+    return gitops.commit_paths(cfg.repo_path, [rel], (
+        f"docs(ausgabe): eigene Änderungen am Text, {e['name']}\n\n"
+        "Von Lars in index.qmd geändert, bei der Durchsicht an Prüfpunkt 5b (0032).\n\n"
+        "Human-authored: true"))
 BACK_TO = ["5b", "5a", "4"]
 
 
@@ -124,13 +145,14 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
         waiting = e["state"]["gate_waiting"]
         wanted = editions.stand.BY_ID[waiting][3] if waiting else None
         if not wanted and e["state"]["next"]["id"] == "5b":
-            wanted = "gliederung.md"  # the outline is the guide while Lars writes
+            wanted = "gliederung.md"  # the text is not written yet; the outline is what there is
         shown = wanted if wanted in present else (present[0] if present else None)
     qmd = editions.read_file(cfg, name, "index.qmd") or ""
     preview = buttondown.clean_markdown(editions.body_without_frontmatter(qmd), e["meta"], {})
     return page(
         request, "ausgabe.j2", e=e, present=present, shown=shown,
-        shown_text=editions.read_file(cfg, name, shown) if shown else "",
+        shown_text=(show_qmd(editions.read_file(cfg, name, shown) or "") if shown and shown.endswith(".qmd")
+                    else editions.read_file(cfg, name, shown) if shown else ""),
         preview=preview, back_to=BACK_TO, hinweis=hinweis,
         active=runs.active(name), recent=runs.recent(name, 5),
         qmd_path=e["folder"] / "index.qmd",
@@ -162,6 +184,8 @@ async def antworten(name: str, request: Request):
     text = punkte.feedback(filename, points, answers, str(form.get("allgemein", "")))
     if not text:
         raise HTTPException(400, "Keine Antwort eingetragen.")
+    if waiting == "5b":
+        commit_own_edits(e)
     try:
         run_id = runs.start(cfg, name, e["rel"], waiting, f'geändert: "{text}"')
     except RuntimeError as exc:
@@ -202,13 +226,12 @@ def lauf_starten(name: str, aktion: str = Form(...), text: str = Form(""), zurue
         if zurueck not in BACK_TO:
             raise HTTPException(400, "Unbekannte Stufe")
         verdict = f"blockiert, zurück zu {zurueck}"
-    elif aktion == "text_fertig":
-        if st["empty_parts"]:
-            raise HTTPException(400, "Noch ohne Text: " + ", ".join(st["empty_parts"]))
     elif aktion != "start":
         raise HTTPException(400, "Unbekannte Aktion")
     if st["next"]["id"] in ("9", "10", "fertig") and not verdict:
         raise HTTPException(400, "Diese Stufe läuft nicht über den Runner.")
+    if st["gate_waiting"] == "5b":
+        commit_own_edits(e)
     try:
         run_id = runs.start(cfg, name, e["rel"], st["gate_waiting"] or st["next"]["id"], verdict,
                             quelle.strip() or None)
