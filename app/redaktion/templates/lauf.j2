@@ -8,6 +8,12 @@
 <ol id="log" class="log">
 {% for ev in events %}<li class="{{ ev.kind }}" data-id="{{ ev.rowid }}"><pre>{{ ev.text }}</pre></li>{% endfor %}
 </ol>
+<div id="weiter" class="panel jetzt"{% if run.status == "läuft" %} hidden{% endif %}>
+  <h3>Wie weiter?</h3>
+  <p>Der Bericht des Laufs steht oben. Geh zurück zur Ausgabe: dort steht das neue Ergebnis der Stufe,
+     und du entscheidest wieder mit "Ja, weiter", beantwortest die offenen Punkte oder lässt noch einmal ändern.</p>
+  <p><a class="button" href="/ausgabe/{{ run.edition }}">Zurück zur Ausgabe</a></p>
+</div>
 {% if run.status == "läuft" %}
 <script>
 const log = document.getElementById("log");
@@ -22,6 +28,7 @@ es.onmessage = (m) => {
 es.addEventListener("ende", (m) => {
   const d = JSON.parse(m.data); es.close();
   document.getElementById("status").textContent = d.status;
+  document.getElementById("weiter").hidden = false;
   if (d.cost) document.getElementById("cost").textContent = " · " + d.cost.toFixed(2) + " USD, " + d.turns + " Schritte";
 });
 </script>

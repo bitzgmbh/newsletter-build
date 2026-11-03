@@ -222,7 +222,15 @@ def lauf(request: Request, run_id: int):
     r = runs.get(run_id)
     if not r:
         raise HTTPException(404, "Kein Lauf")
-    return page(request, "lauf.j2", run=r, events=runs.events_after(run_id, 0))
+    events, texts = [], set()
+    for ev in runs.events_after(run_id, 0):
+        # older runs logged the final report twice (last text and result)
+        if ev["kind"] == "result" and ev["text"].strip() in texts:
+            continue
+        if ev["kind"] == "text":
+            texts.add(ev["text"].strip())
+        events.append(ev)
+    return page(request, "lauf.j2", run=r, events=events)
 
 
 @app.get("/lauf/{run_id}/events")

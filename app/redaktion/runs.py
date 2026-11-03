@@ -59,6 +59,11 @@ def prompt_for(cfg: Config, rel_folder: str, verdict: str | None, quelle: str | 
             "edit the GitHub issue. Print the ping you would have sent."
         )
     lines.append("You run headless: nobody can answer questions. If something is unclear, stop and say what.")
+    lines.append(
+        "Lars reads your messages and your final report in the app: write all of them in German, in his plain "
+        "style (short sentences, no dashes, Leser:innen form). End the final report with one line that starts "
+        "with 'Als Nächstes:' and says what Lars does now in the app."
+    )
     return "\n".join(lines)
 
 
@@ -137,7 +142,11 @@ def _run(cfg: Config, edition: str, run_id: int, session: str, prompt: str) -> N
                 turns = ev.get("num_turns")
                 result = ev.get("result") or ""
                 status = "fehler" if ev.get("is_error") else "fertig"
-                _event(con, run_id, seq, "result", result)
+                # the result repeats the last text block; log it only when it differs
+                last = con.execute("select text from events where run_id=? and kind='text' "
+                                   "order by rowid desc limit 1", (run_id,)).fetchone()
+                if result and not (last and last["text"].strip() == result.strip()):
+                    _event(con, run_id, seq, "result", result)
         proc.wait()
         if proc.returncode != 0 and status == "fertig":
             status = "fehler"
