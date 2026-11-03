@@ -225,7 +225,8 @@ async def antworten(name: str, request: Request):
     if waiting == "5b":
         commit_own_edits(e)
     try:
-        run_id = runs.start(cfg, name, e["rel"], waiting, f'geändert: "{text}"')
+        kind = "ja, mit Änderungen" if form.get("weiter") == "ja" else "geändert"
+        run_id = runs.start(cfg, name, e["rel"], waiting, f'{kind}: "{text}"')
     except RuntimeError as exc:
         raise HTTPException(409, str(exc))
     return RedirectResponse(f"/lauf/{run_id}", status_code=303)

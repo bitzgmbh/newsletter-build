@@ -23,7 +23,7 @@ Read `~/.config/bitz-newsletter.json`: `element_room` (the Matrix room for the p
 
 An edition folder in the private repository, `ausgaben/<JJJJ-MM-TT-kurzname>/`. If none is named, list the folders and ask.
 
-Optionally a verdict after the folder, as the app passes it: `ja`, `geändert: "<sätze>"` or `blockiert, zurück zu <Stufe>`. A verdict given this way is Lars's answer to the open gate; do not look for one in the chat or the room. Optionally also `--quelle "<text>"` for stage 7: the data source Lars named, passed to grafiken.
+Optionally a verdict after the folder, as the app passes it: `ja`, `geändert: "<sätze>"`, `ja, mit Änderungen: "<sätze>"` or `blockiert, zurück zu <Stufe>`. "ja, mit Änderungen" means: apply his sentences to the stage's output, then treat the gate as a yes (append the line with that verdict, tick the checkbox) and run the next stage in the same invocation. A verdict given this way is Lars's answer to the open gate; do not look for one in the chat or the room. Optionally also `--quelle "<text>"` for stage 7: the data source Lars named, passed to grafiken.
 
 ## State
 
@@ -74,7 +74,7 @@ When `app_url` is set, the last line links to the edition page in the app, where
 One line per gate, appended, never rewritten:
 
 ```
-- <JJJJ-MM-TT HH:MM> Stufe <n> <Name>: <ja | offen | geändert: "<seine Sätze>" | blockiert, zurück zu <Stufe>>
+- <JJJJ-MM-TT HH:MM> Stufe <n> <Name>: <ja | ja, mit Änderungen: "<seine Sätze>" | offen | geändert: "<seine Sätze>" | blockiert, zurück zu <Stufe>>
 ```
 
 This file is the record the autonomy rule reads (concept.md, Breite): a gate may run without a yes once three editions in a row show "ja" at that gate without a change. It is committed with the next stage's output.

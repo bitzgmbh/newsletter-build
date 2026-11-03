@@ -112,8 +112,9 @@
         <textarea name="allgemein" rows="3" placeholder="Was sonst noch anders soll"></textarea>
       </div>
       <div class="send">
-        <button type="submit">Antworten einarbeiten lassen</button>
-        <span class="muted">Der Runner arbeitet die Antworten in {{ shown }} ein. Danach entscheidest du oben noch einmal.</span>
+        <button type="submit" name="weiter" value="ja">Einarbeiten und weiter</button>
+        <button type="submit" class="secondary">Einarbeiten, dann noch einmal ansehen</button>
+        <span class="muted">"Einarbeiten und weiter": der Runner arbeitet die Antworten in {{ shown }} ein, zählt das als dein Ja und macht gleich die nächste Stufe. Die zweite Variante, wenn du das Ergebnis danach noch einmal sehen willst.</span>
       </div>
     </form>
   </section>
