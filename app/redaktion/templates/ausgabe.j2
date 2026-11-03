@@ -30,7 +30,7 @@
   <div class="jetzt">
     <h3>Was jetzt? Dein Urteil zu Stufe {{ st.gate_waiting }}</h3>
     <ol>
-      <li>Lies links <strong>{{ shown or "das Ergebnis" }}</strong>, das Ergebnis der Stufe.</li>
+      <li>Lies links <strong>{{ tabs.get(shown, shown) if shown else "das Ergebnis" }}</strong> (<code>{{ shown }}</code>), das Ergebnis der Stufe.</li>
       {% if st.gate_waiting == "5b" %}
       <li>Willst du selbst Sätze ändern, öffne den Text:
         <form method="post" action="/ausgabe/{{ e.name }}/oeffnen" class="inline"><input type="hidden" name="datei" value="index.qmd"><button class="secondary">index.qmd in Positron öffnen</button></form>
@@ -93,7 +93,7 @@
 <div class="{% if points %}two answer-layout{% else %}one{% endif %}">
   <section>
     <nav class="tabs">
-      {% for f in present %}<a href="?datei={{ f }}" class="{% if f == shown %}on{% endif %}">{{ f }}</a>{% endfor %}
+      {% for f in present %}<a href="?datei={{ f }}" class="{% if f == shown %}on{% endif %}" title="{{ f }}">{{ tabs[f] }}</a>{% endfor %}
     </nav>
     {% if report %}
     <article class="doc bericht">

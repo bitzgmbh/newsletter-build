@@ -32,8 +32,19 @@ md = MarkdownIt("commonmark", {"html": False}).enable("table")
 templates.env.filters["md"] = lambda text: md.render(text or "")
 templates.env.filters["zeit"] = lambda ts: dt.datetime.fromtimestamp(ts).strftime("%d.%m. %H:%M") if ts else ""
 
-OUTPUTS = ["recherche.md", "gliederung.md", "pruefung-stimme.md", "pruefbericht.md", "grafiken.md",
-           "verbreitung.md", "rohentwurf.md", "index.qmd", "index-en.qmd"]
+# The files of an edition in stage order, with the label of their tab.
+TABS = {
+    "rohentwurf.md": "3 Rohentwurf",
+    "recherche.md": "4 Recherche",
+    "gliederung.md": "5a Gliederung",
+    "index.qmd": "5b Text",
+    "pruefung-stimme.md": "5c Prüfung stimme",
+    "pruefbericht.md": "6 Prüfbericht",
+    "grafiken.md": "7 Grafiken",
+    "index-en.qmd": "8 Englisch",
+    "verbreitung.md": "11 Verbreitung",
+}
+OUTPUTS = list(TABS)
 OPEN_POINT = re.compile(r"<!--\s*\?\s*(.*?)\s*-->", re.S)
 COMMENT = re.compile(r"<!--.*?-->", re.S)
 
@@ -198,6 +209,7 @@ def ausgabe(request: Request, name: str, datei: str | None = None, hinweis: str 
                  if e["state"]["gate_waiting"] == "6" else None),
         gate_rows=[gate_row(g) for g in e["state"]["gates"]],
         unsaved=unsaved_in_positron(e),
+        tabs=TABS,
     )
 
 
