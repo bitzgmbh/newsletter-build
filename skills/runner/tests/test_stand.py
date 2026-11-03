@@ -92,14 +92,14 @@ class Order(unittest.TestCase):
 
     def test_text_written_means_gate_5b_waits(self):
         state = stand.infer(make(["recherche.md", "gliederung.md", "index.qmd"], ["5a Gliederung: ja"]))
-        self.assertEqual(state["next"]["id"], "5c")
+        self.assertEqual(state["next"]["id"], "6")
         self.assertEqual(state["gate_waiting"], "5b")
         state = stand.infer(make(["recherche.md", "gliederung.md", "index.qmd"],
                                  ["5a Gliederung: ja", "5b Text: ja"]))
         self.assertIsNone(state["gate_waiting"])
 
     def test_optional_part_may_stay_empty(self):
-        self.assertEqual(nxt(make(["recherche.md", "gliederung.md", "index.qmd"])), "5c")
+        self.assertEqual(nxt(make(["recherche.md", "gliederung.md", "index.qmd"])), "6")
 
     def test_blocked_goes_back_to_5b(self):
         files = ["recherche.md", "gliederung.md", "index.qmd", "pruefung-stimme.md", "pruefbericht.md"]

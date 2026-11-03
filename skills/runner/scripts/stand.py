@@ -24,7 +24,6 @@ STAGES = [
     ("4", "Recherche", "agent", "recherche.md", True, "4 Recherche"),
     ("5a", "Gliederung", "agent", "gliederung.md", True, "5 Gliederung vom Agenten"),
     ("5b", "Text", "agent", "index.qmd", True, "5 Text vom Agenten, Durchsicht von mir"),
-    ("5c", "Prüfung stimme", "agent", "pruefung-stimme.md", True, "5 Prüfung durch den Skill"),
     ("6", "Prüfungen", "agent", "pruefbericht.md", True, "6 Prüfungen"),
     ("7", "Grafiken", "agent", "grafiken.md", True, "7 Grafiken"),
     ("8", "Übersetzung", "agent", "index-en.qmd", True, "8 Übersetzung"),
@@ -96,18 +95,17 @@ def infer(folder):
         stage = "4"
     elif "gliederung.md" not in have:
         stage = "5a"
-    elif "pruefung-stimme.md" not in have:
+    elif "pruefbericht.md" not in have:
+        # 5c (the stimme check) is part of 5b since decision 0033: once the
+        # text is written, gate 5b waits, then stage 6 runs.
         counts = parts_with_text(folder / "index.qmd") if "index.qmd" in have else {}
         empty = [n for n, c in counts.items() if c == 0 and n not in PARTS_OPTIONAL]
-        stage = "5b" if (not counts or empty) else "5c"
-    elif "pruefbericht.md" not in have or "zurück zu 5b" in last:
-        if "pruefbericht.md" not in have:
-            stage = "6"
-        else:
-            stage, note = "5b", "nach blockiertem Urteil"
-            if "index.qmd" in have:
-                counts = parts_with_text(folder / "index.qmd")
-                empty = [n for n, c in counts.items() if c == 0 and n not in PARTS_OPTIONAL]
+        stage = "5b" if (not counts or empty) else "6"
+    elif "zurück zu 5b" in last:
+        stage, note = "5b", "nach blockiertem Urteil"
+        if "index.qmd" in have:
+            counts = parts_with_text(folder / "index.qmd")
+            empty = [n for n, c in counts.items() if c == 0 and n not in PARTS_OPTIONAL]
     elif not has_yes(gates, "7"):
         stage = "7"
     elif not has_yes(gates, "8"):

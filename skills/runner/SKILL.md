@@ -33,8 +33,7 @@ Run `scripts/stand.py --json <edition folder>` first. It infers the stage from t
 |---|---|---|---|
 | 4 Recherche | `recherche.md` | recherche | gate |
 | 5a Gliederung | `gliederung.md` | stimme, mode gliederung | gate |
-| 5b Text | parts of `index.qmd` with text | stimme, mode text (0032) | gate: Lars reviews the text |
-| 5c Prüfung stimme | `pruefung-stimme.md` | stimme, mode pruefung | gate |
+| 5b Text | parts of `index.qmd` with text | stimme, mode text, with its own check (0032, 0033) | gate: Lars reviews the text |
 | 6 Prüfungen | `pruefbericht.md` | pruefung | gate; an Urteil "blockiert" sends the edition back to 5b |
 | 7 Grafiken | `grafiken.md`, and the chart block in `index.qmd` | skill grafiken | gate |
 | 8 Übersetzung | `index-en.qmd` | uebersetzung | gate |

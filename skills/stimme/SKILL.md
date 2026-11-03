@@ -15,11 +15,12 @@ description: >-
 
 # stimme
 
-The skill works from one role: Wissenschaftsjournalist:in als Lektor:in (`pipeline/concept.md`, Breite). As a science journalist it keeps one idea per edition and enters through the reader's working day. As an editor it checks the text and records what it changed. Since decision 0032 it also writes the paragraphs, from the outline Lars approved and in his voice; Lars reviews them before anything moves on. Stage 5 of the pipeline has three steps, and this skill does all three:
+The skill works from one role: Wissenschaftsjournalist:in als Lektor:in (`pipeline/concept.md`, Breite). As a science journalist it keeps one idea per edition and enters through the reader's working day. As an editor it checks the text and records what it changed. Since decision 0032 it also writes the paragraphs, from the outline Lars approved and in his voice; Lars reviews them before anything moves on. Stage 5 of the pipeline has two steps with a gate each (decision 0033 folded the old stage 5c into 5b):
 
 1. Gliederung: the skill proposes an outline as bullets. Lars says yes or changes it.
-2. Text: the skill writes the paragraphs from the approved outline. Lars reviews them at gate 5b: yes, answers to the open points, or his own edits in `index.qmd`.
-3. Prüfung: the skill reviews the text and proposes changes, one unit at a time. Lars decides per unit.
+2. Text: the skill writes the paragraphs from the approved outline and checks them itself as mode pruefung describes, before Lars sees them. Lars reviews them at gate 5b: yes, answers to the open points, or his own edits in `index.qmd`.
+
+Mode pruefung on its own is for a text Lars wrote himself, outside the pipeline order or on his request.
 
 ## Files to read first
 
@@ -65,6 +66,8 @@ Input: `gliederung.md` with Lars's yes at gate 5a, `rohentwurf.md`, `recherche.m
 - Only what the outline, the Rohentwurf and the research contain. No new point, example, number or source. Every number keeps its source from `recherche.md`.
 - Keep the template's comments, the front matter and any code chunks as they are. Leave "Was ihr letztes Mal gesagt habt" empty when the outline drops it. Leave "Offengelegt" to the offenlegung script.
 - Where the outline leaves a choice or a sentence must come from Lars himself (his experience, his opinion), write the best version you can and put an open point right above it as an HTML comment with a standalone "?": `<!-- ? Eigener Satz zur Selbstwirksamkeit: passt dieser? -->`. The app lists these points for his answers, and the comments never reach the email.
+
+Before you stop, check the text you wrote against everything mode pruefung lists (rules, parts, length, voice) and fix what breaks a rule. Put the word count per part and the total into the run report, and name in one line each anything you left on purpose, for example a sentence over budget because the outline asks for it. Do not write `pruefung-stimme.md`; Lars's review at gate 5b is the record.
 
 Then stop. Gate 5b: Lars reads the text in the app, answers the open points or edits `index.qmd` himself, and says yes. On a "geändert" verdict, work his answers into the text and remove the comments of the points he answered. His own edits in the file stay as he made them.
 

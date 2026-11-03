@@ -20,7 +20,7 @@ _spec.loader.exec_module(stand)
 
 # Board columns: (title, stage ids)
 COLUMNS = [
-    ("Recherche bis Prüfungen", {"4", "5a", "5b", "5c", "6"}),
+    ("Recherche bis Prüfungen", {"4", "5a", "5b", "6"}),
     ("Grafiken und Übersetzung", {"7", "8"}),
     ("Freigabe", {"9"}),
     ("Versand", {"10"}),
