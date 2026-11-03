@@ -39,10 +39,21 @@ COMMENT = re.compile(r"<!--.*?-->", re.S)
 
 
 def show_qmd(text: str) -> str:
-    """index.qmd for reading: no front matter, open points visible, other comments gone."""
+    """index.qmd for reading: subject and preview from the front matter on top,
+    open points visible, other comments gone, meta shortcodes filled in."""
+    import yaml
+    meta = {}
+    if text.startswith("---"):
+        end = text.find("\n---", 3)
+        if end != -1:
+            meta = yaml.safe_load(text[3:end]) or {}
     body = editions.body_without_frontmatter(text)
     body = OPEN_POINT.sub(lambda m: "> **? " + " ".join(m.group(1).split()) + "**", body)
-    return COMMENT.sub("", body)
+    body = COMMENT.sub("", body)
+    body = re.sub(r"\{\{<\s*meta\s+(\w+)\s*>\}\}", lambda m: str(meta.get(m.group(1), "")), body)
+    head = (f"**Betreff:** {meta.get('subtitle', '')}\n\n"
+            f"**Vorschau:** {meta.get('description', '')}\n\n---\n\n")
+    return head + body
 
 
 POSITRON_BACKUPS = Path.home() / "Library" / "Application Support" / "Positron" / "Backups"
