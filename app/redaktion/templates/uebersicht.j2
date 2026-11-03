@@ -1,0 +1,54 @@
+{% extends "base.j2" %}
+{% block title %}Übersicht{% endblock %}
+{% block content %}
+{% if waiting %}
+<section class="wartet">
+  <h2>Wartet auf dich</h2>
+  <ul>
+  {% for e in waiting %}
+    <li><a href="/ausgabe/{{ e.name }}">{{ e.title }}</a>
+      {% if e.state.gate_waiting %}Prüfpunkt Stufe {{ e.state.gate_waiting }}{% else %}Stufe {{ e.state.next.id }} {{ e.state.next.name }}{% endif %}
+      <span class="muted">{{ e.date }}</span></li>
+  {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<div class="board">
+  <section class="col">
+    <h2>Entwürfe</h2>
+    {% for d in drafts %}
+      <a class="card" href="/entwurf/{{ d.file }}">
+        <strong>{{ d.meta.ausgabe or d.file }}</strong>
+        <span class="muted">{{ d.file }} · {{ d.meta.form or "?" }} · {{ d.words }} Wörter</span>
+        <span class="excerpt">{{ d.start }} …</span>
+      </a>
+    {% else %}<p class="muted">Keine Entwürfe in _entwuerfe/.</p>{% endfor %}
+  </section>
+  {% for title, eds in columns %}
+  <section class="col">
+    <h2>{{ title }}</h2>
+    {% for e in eds %}
+      <a class="card{% if e.waiting %} needs{% endif %}" href="/ausgabe/{{ e.name }}">
+        <strong>{{ e.title }}</strong>
+        <span class="muted">{{ e.date }}</span>
+        <span class="stage">Stufe {{ e.state.next.id }} {{ e.state.next.name }}{% if e.state.next.note %} ({{ e.state.next.note }}){% endif %}</span>
+        {% if active[e.name] %}<span class="pill run">läuft</span>{% elif e.state.gate_waiting %}<span class="pill">Prüfpunkt {{ e.state.gate_waiting }} wartet</span>{% endif %}
+      </a>
+    {% else %}<p class="muted">leer</p>{% endfor %}
+  </section>
+  {% endfor %}
+</div>
+
+{% if recent %}
+<section>
+  <h2>Letzte Läufe</h2>
+  <table class="runs">
+  {% for r in recent %}
+    <tr><td><a href="/lauf/{{ r.id }}">#{{ r.id }}</a></td><td>{{ r.edition }}</td><td>Stufe {{ r.stage }}</td>
+      <td>{{ r.status }}</td><td>{{ r.started|zeit }}</td><td>{% if r.cost %}{{ "%.2f"|format(r.cost) }} USD{% endif %}</td></tr>
+  {% endfor %}
+  </table>
+</section>
+{% endif %}
+{% endblock %}

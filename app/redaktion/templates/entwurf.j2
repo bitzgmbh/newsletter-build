@@ -1,0 +1,18 @@
+{% extends "base.j2" %}
+{% block title %}Entwurf{% endblock %}
+{% block content %}
+<p><a href="/">Übersicht</a></p>
+<h1>{{ draft.meta.ausgabe or draft.file }}</h1>
+<p class="muted">{{ draft.file }} · {{ draft.meta.datum }} · {{ draft.meta.form }}</p>
+<div class="two">
+  <article class="doc">{{ text|md|safe }}</article>
+  <form method="post" class="panel">
+    <h2>Als Ausgabe übernehmen</h2>
+    <p>Legt <code>ausgaben/&lt;Sendedatum&gt;-&lt;Kurzname&gt;/</code> aus der Vorlage an, kopiert den Entwurf unverändert nach <code>rohentwurf.md</code>, committet auf dev und legt das Issue an.</p>
+    <label>Sendedatum <input type="date" name="sendedatum" required></label>
+    <label>Kurzname <input name="kurzname" pattern="[a-z0-9]+(-[a-z0-9]+)*" placeholder="willkommen" required></label>
+    <label>Titel für das Issue <input name="titel" value="{{ draft.meta.ausgabe or '' }}"></label>
+    <button type="submit">Ausgabe anlegen</button>
+  </form>
+</div>
+{% endblock %}

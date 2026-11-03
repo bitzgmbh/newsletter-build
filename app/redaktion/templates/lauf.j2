@@ -1,0 +1,29 @@
+{% extends "base.j2" %}
+{% block title %}Lauf #{{ run.id }}{% endblock %}
+{% block content %}
+<p><a href="/">Übersicht</a> · <a href="/ausgabe/{{ run.edition }}">{{ run.edition }}</a></p>
+<h1>Lauf #{{ run.id }}, Stufe {{ run.stage }}</h1>
+<p>Status: <strong id="status">{{ run.status }}</strong>{% if run.verdict %} · Urteil: {{ run.verdict }}{% endif %}
+  <span id="cost">{% if run.cost %} · {{ "%.2f"|format(run.cost) }} USD, {{ run.turns }} Schritte{% endif %}</span></p>
+<ol id="log" class="log">
+{% for ev in events %}<li class="{{ ev.kind }}" data-id="{{ ev.rowid }}"><pre>{{ ev.text }}</pre></li>{% endfor %}
+</ol>
+{% if run.status == "läuft" %}
+<script>
+const log = document.getElementById("log");
+const last = [...log.children].map(li => +li.dataset.id).pop() || 0;
+const es = new EventSource("/lauf/{{ run.id }}/events?after=" + last);
+es.onmessage = (m) => {
+  const ev = JSON.parse(m.data);
+  const li = document.createElement("li"); li.className = ev.kind;
+  const pre = document.createElement("pre"); pre.textContent = ev.text; li.appendChild(pre);
+  log.appendChild(li); li.scrollIntoView({block: "end"});
+};
+es.addEventListener("ende", (m) => {
+  const d = JSON.parse(m.data); es.close();
+  document.getElementById("status").textContent = d.status;
+  if (d.cost) document.getElementById("cost").textContent = " · " + d.cost.toFixed(2) + " USD, " + d.turns + " Schritte";
+});
+</script>
+{% endif %}
+{% endblock %}
