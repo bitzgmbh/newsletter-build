@@ -63,8 +63,9 @@ if (length(all_models) == 0) {
     cs <- touching("rohentwurf.md")
     head_lines <- readLines(file.path(folder, "rohentwurf.md"), n = 5, warn = FALSE)
     spoken <- any(grepl("Sprachnachricht|gesprochen", head_lines, ignore.case = TRUE))
+    written <- any(grepl('form: "geschrieben"', head_lines))
     if (length(cs) == 0) add("Rohentwurf: noch nicht committet")
-    else if (who(cs) %in% c("mir", "beide")) add(paste0("Rohentwurf: von mir", if (spoken) ", gesprochen" else ""))
+    else if (who(cs) %in% c("mir", "beide")) add(paste0("Rohentwurf: von mir", if (spoken) ", gesprochen" else if (written) ", geschrieben" else ""))
     else add(with_model("Rohentwurf: Agent", cs))
   }
   # Recherche
@@ -82,10 +83,16 @@ if (length(all_models) == 0) {
   words <- length(strsplit(trimws(gsub("\\s+", " ", gsub("(?m)^#.*$", "", text, perl = TRUE))), " ")[[1]])
   cs <- touching("index.qmd")
   # Since decision 0032 the skill stimme writes the text at 5b and I review
-  # it; the 5b gate line in pruefpunkte.md marks those editions.
+  # it; the 5b gate line in pruefpunkte.md marks those editions. Since decision
+  # 0037 an edition can also be my own text, reviewed in the chat with Claude
+  # Code; its 5b gate line then says "Text von Lars" (or "Text von mir").
   pp <- file.path(folder, "pruefpunkte.md")
-  agent_text <- file.exists(pp) && any(grepl("Stufe 5b", readLines(pp, warn = FALSE)))
+  gates <- if (file.exists(pp)) readLines(pp, warn = FALSE) else character(0)
+  lines_5b <- gates[grepl("Stufe 5b", gates)]
+  own_text <- any(grepl("Text von (Lars|mir)", lines_5b))
+  agent_text <- length(lines_5b) > 0 && !own_text
   text_line <- if (words < 50) "Text: noch nicht geschrieben"
+    else if (own_text) with_model("Text: von mir, im Chat durchgesehen", cs)
     else if (agent_text) switch(who(cs),
       beide = with_model("Text: Skill stimme nach meiner Gliederung, durchgesehen und geändert von mir", cs),
       agent = with_model("Text: Skill stimme nach meiner Gliederung, durchgesehen von mir", cs),
@@ -104,7 +111,20 @@ if (length(all_models) == 0) {
     if (!is.na(urteil) && nchar(urteil) > 60) urteil <- sub(":.*$", "", urteil)
     add(paste0("Prüfung: Skill pruefung, Urteil: ", if (is.na(urteil)) "ohne Urteil" else urteil))
   }
-  if (has("grafiken.md")) add("Grafiken: aus Code (Skill grafiken)")
+  if (has("grafiken.md")) {
+    cs <- touching("grafiken.md")
+    add(if (length(models(cs))) with_model("Grafiken: aus Code", cs) else "Grafiken: aus Code (Skill grafiken)")
+  }
+  # Stage 8: the English version, since decision 0030; who made it comes from
+  # the commits that touched index-en.qmd.
+  if (has("index-en.qmd")) {
+    cs <- touching("index-en.qmd")
+    add(switch(who(cs),
+      beide = with_model("Übersetzung: Claude Code, durchgesehen und geändert von mir", cs),
+      agent = with_model("Übersetzung: Claude Code, durchgesehen von mir", cs),
+      mir = "Übersetzung: von mir",
+      "Übersetzung: noch kein Commit"))
+  }
   if (has("verbreitung.md")) add("Posts: Skill verbreitung")
   add(paste0("Modelle: ", paste(all_models, collapse = ", ")))
   n_prompts <- sum(vapply(commits, function(c) c$prompts, numeric(1)))
