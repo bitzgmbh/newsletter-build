@@ -37,6 +37,15 @@ uv run python -m redaktion.entwurf publikum <name> --en
 
 A new draft has no filter and would go to everyone. The German mail goes to the answers Deutsch and Beide of the language question, the English one to English and Beide (decision 0036). Subscribers without an answer are Lars's two test accounts and get both. Tell Lars the number of recipients you expect from the subscriber list, and ask him to compare it with the number the Buttondown editor shows before he sends.
 
+## Set the issue number
+
+```sh
+uv run python -m redaktion.entwurf nummer <name> <number>
+uv run python -m redaktion.entwurf nummer <name> <number> --en
+```
+
+Buttondown counts every mail as an issue, so the German and the English mail of one edition would get two numbers. Both carry the number of the edition (Lars's choice of 12 November 2026). The number of the last edition is the `secondary_id` of its German mail.
+
 ## Check, every time
 
 ```sh
@@ -74,10 +83,12 @@ Renders the edition again, uploads the figures, and replaces body, subject and p
 
 ## Tests and surveys
 
-A subscriber answers a survey once. Lars's test accounts receive the real mail with the live survey, so no click on an answer in a test mail.
+A survey can only be answered from the mail. In the web archive Buttondown shows the answers as links that lead to "Umfrage nicht gefunden", by design, so the text of an edition with a survey says so in one sentence ("Die Umfrage lässt sich nur aus der Mail beantworten.", "The survey can only be answered from the email."). The comment field appears after the click on an answer, when the survey has free text switched on.
+
+A subscriber answers a survey once. A second click lands on the sign-up page. Lars's test accounts receive the real mail with the live survey, so no click on an answer in a test mail.
 
 ## What this skill never does
 
-- Send, schedule or publish an email.
+- Send, schedule or publish an email. Changing the text of a sent mail (`aktualisieren`) changes its archive page and sends nothing; the check then reports the status `sent`, which is expected.
 - Edit a draft in the Buttondown editor or write text that is not in the repository.
 - Create a second draft where one exists for that language.
