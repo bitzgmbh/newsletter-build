@@ -56,7 +56,7 @@ The app in `app/` shows the stages, runs the runner and keeps the run log. This 
 
 ## What this skill does not do
 
-- Freigabe (stage 9) or the Buttondown draft (stage 10). Those are buttons in the app.
+- Freigabe (stage 9) or the Buttondown draft (stage 10). In the app those are buttons; from the terminal, stage 10 is the [versand](../versand/) skill (decision 0037).
 - Write or change edition text, `pruefpunkte.md` or any file in the repositories. The runner does that in the run.
 - Start the app, push, or edit the GitHub issue.
 - Send anything to Element (0034).

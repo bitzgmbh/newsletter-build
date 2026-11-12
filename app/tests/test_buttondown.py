@@ -52,5 +52,37 @@ class Convert(unittest.TestCase):
         self.assertEqual(buttondown.local_images(body), ["index_files/x.png"])
 
 
+
+class Entwurf(unittest.TestCase):
+    META = {"subtitle": "Titel", "description": "Vorschau"}
+    GOOD = {"status": "draft", "subject": "Titel", "description": "Vorschau",
+            "filters": {"filters": [{"field": "x", "operator": "equals", "value": "y"}], "groups": [], "predicate": "or"},
+            "body": "<!-- buttondown-editor-mode: plaintext -->\nEin Absatz in einer Zeile.\n\n![Alt](https://assets.buttondown.email/images/a.png)\n\n- eins\n- zwei\n"}
+
+    def failed(self, d):
+        from redaktion import entwurf
+        return [label for ok, label in entwurf.checks(d, self.META) if not ok]
+
+    def test_good_draft_passes(self):
+        self.assertEqual(self.failed(self.GOOD), [])
+
+    def test_editor_html_and_wrapped_paragraph_fail(self):
+        bad = dict(self.GOOD, body="<p>Ein Absatz<br>mit Umbruch</p>")
+        self.assertEqual(len(self.failed(bad)), 2)
+        wrapped = dict(self.GOOD, body=self.GOOD["body"].replace("in einer Zeile", "in\nzwei Zeilen"))
+        self.assertEqual(len(self.failed(wrapped)), 1)
+
+    def test_local_image_and_missing_filter_fail(self):
+        bad = dict(self.GOOD, body=self.GOOD["body"].replace("https://assets.buttondown.email/images/a.png", "index_files/a.png"),
+                   filters={"filters": [], "groups": [], "predicate": "and"})
+        self.assertEqual(len(self.failed(bad)), 2)
+
+    def test_audience_by_language(self):
+        from redaktion import entwurf
+        de = [f["value"] for f in entwurf.audience(False)["filters"]]
+        en = [f["value"] for f in entwurf.audience(True)["filters"]]
+        self.assertEqual(de, ["deutsch", "beide-both", ""])
+        self.assertEqual(en, ["english", "beide-both", ""])
+
 if __name__ == "__main__":
     unittest.main()
