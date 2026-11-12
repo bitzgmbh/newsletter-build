@@ -25,6 +25,14 @@ trailer <- function(sha, key) {
   trimws(v[nzchar(trimws(v))])
 }
 has <- function(name) file.exists(file.path(folder, name))
+# A stage file that only says the stage was skipped ("Entfällt ...", written by hand
+# so stand.py moves on, decision 0037) is not a trace of a run.
+ran <- function(name) {
+  if (!has(name)) return(FALSE)
+  l <- readLines(file.path(folder, name), warn = FALSE)
+  l <- trimws(l[nzchar(trimws(l)) & !grepl("^#", l)])
+  !(length(l) > 0 && grepl("^Entfällt", l[1]))
+}
 
 shas <- git("rev-list", "--no-merges", "--reverse", "HEAD", "--", ".")
 commits <- lapply(shas, function(sha) list(
@@ -69,12 +77,12 @@ if (length(all_models) == 0) {
     else add(with_model("Rohentwurf: Agent", cs))
   }
   # Recherche
-  if (has("recherche.md")) {
+  if (ran("recherche.md")) {
     cs <- touching("recherche.md")
     add(if (who(cs) == "mir") "Recherche: von mir" else with_model("Recherche: Agent", cs))
   }
   # Gliederung
-  if (has("gliederung.md")) add(with_model("Gliederung: Skill stimme", touching("gliederung.md")))
+  if (ran("gliederung.md")) add(with_model("Gliederung: Skill stimme", touching("gliederung.md")))
   # Text: always named
   text <- readLines(file.path(folder, "index.qmd"), warn = FALSE)
   if (length(text) && text[1] == "---") { end <- which(text == "---")[2]; if (!is.na(end)) text <- text[-seq_len(end)] }
@@ -103,7 +111,7 @@ if (length(all_models) == 0) {
   add(text_line)
   if (has("pruefung-stimme.md")) add(with_model("Stil: Skill stimme", touching("pruefung-stimme.md")))
   # Prüfung
-  if (has("pruefbericht.md")) {
+  if (ran("pruefbericht.md")) {
     b <- readLines(file.path(folder, "pruefbericht.md"), warn = FALSE)
     u <- which(grepl("^## Urteil", b))
     urteil <- if (length(u)) { after <- b[(u[1] + 1):length(b)]; trimws(after[nzchar(trimws(after))][1]) } else NA
