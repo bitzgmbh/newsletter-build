@@ -9,7 +9,11 @@ I build this system together with Claude (Claude Code). Every commit says who di
 Claude-assisted commits can carry more trailers:
 
 - `Prompts:` lists the prompts behind the change. Each one is archived word for word in `prompts/`, one file per prompt.
-- `Regent-Session:` and `Regent-Step:` point to the re_gent record of the agent session on my machine, written by the [regent-trailer](skills/regent-trailer/) hook. That record is not published, so these two trailers resolve only there. Each edition carries the same idea as a block built by the [offenlegung](skills/offenlegung/) skill from the commits of that edition.
+- `Regent-Session:` and `Regent-Step:` point to the re_gent record of the agent session on my machine, written by the [regent-trailer](skills/regent-trailer/) hook. That record is not published, so these two trailers resolve only there.
+
+## The block in each edition
+
+Every edition of the newsletter ends with a block called "Offengelegt". It says who wrote the text, what Claude Code did (researched, outlined, checked, proposed, built, translated), which model it was, and who gave feedback before the send. The [offenlegung](skills/offenlegung/) skill builds the block from the commits of that edition and from sentences I confirm, so it does not come from memory (decision [0040](decisions/0040-offengelegt-in-saetzen.md)). The editions themselves live in a private repository, because drafts and data sit next to them.
 
 The ideas, the decisions and the final yes on every edition are mine.
 
