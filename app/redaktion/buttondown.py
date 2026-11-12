@@ -116,7 +116,9 @@ def render(cfg: Config, folder: Path, qmd_name: str = "index.qmd") -> tuple[dict
     ignore = shutil.ignore_patterns(".git", "_site", ".quarto", ".Rproj.user", "_freeze")
     shutil.copytree(cfg.repo_path, tmp / "repo", ignore=ignore)
     rel = folder.relative_to(cfg.repo_path)
-    p = subprocess.run([cfg.quarto, "render", str(rel / qmd_name), "--to", "gfm"],
+    # wrap:none keeps a paragraph on one line; Buttondown shows the line ends of a
+    # wrapped paragraph as breaks in the mail.
+    p = subprocess.run([cfg.quarto, "render", str(rel / qmd_name), "--to", "gfm", "-M", "wrap:none"],
                        cwd=tmp / "repo", capture_output=True, text=True)
     out_dir = tmp / "repo" / "_site" / rel
     md = out_dir / (Path(qmd_name).stem + ".md")
