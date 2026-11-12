@@ -1,0 +1,10 @@
+{% extends "base.j2" %}
+{% block title %}Idee{% endblock %}
+{% block content %}
+<p><a href="/ideen">Ideen</a></p>
+<h1>{{ idea.meta.titel or idea.file }}</h1>
+<p class="muted">{{ idea.file }} · {{ idea.meta.datum }} · {{ idea.meta.form }} · {{ idea.status }}{% if idea.meta.quelle %} · {{ idea.meta.quelle }}{% endif %}</p>
+{% if idea.meta.medien %}<p class="muted">Foto: <code>{{ idea.meta.medien }}</code> (bleibt ausserhalb des Repositorys)</p>{% endif %}
+<article class="doc">{{ text|md|safe }}</article>
+{% if idea.meta.entwurf %}<p>Rohentwurf: <code>{{ idea.meta.entwurf }}</code></p>{% endif %}
+{% endblock %}

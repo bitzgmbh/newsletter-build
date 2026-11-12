@@ -163,3 +163,49 @@ def issue_body(cfg: Config, name: str, send_date: str) -> str:
         f"### Stufen und Prüfpunkte\n\n{boxes}\n\n"
         f"Ordner: `ausgaben/{name}/`\n"
     )
+
+
+# --- Ideen (decision 0038): the backlog in _ideen/, read-only -----------------
+
+IDEA_STATUS = ["neu", "besprochen", "gewählt", "verworfen"]
+IDEA_TITLES = {"neu": "Neu", "besprochen": "Besprochen", "gewählt": "Gewählt", "verworfen": "Verworfen"}
+
+
+def ideas_dir(cfg: Config) -> Path:
+    return cfg.repo_path / "_ideen"
+
+
+def list_ideas(cfg: Config) -> list[dict]:
+    """Every idea file, newest first within its status, statuses in IDEA_STATUS order."""
+    root = ideas_dir(cfg)
+    if not root.is_dir():
+        return []
+    out = []
+    for p in sorted(root.glob("*.md"), reverse=True):
+        if p.name.lower() == "readme.md":
+            continue
+        meta = frontmatter(p)
+        body = body_without_frontmatter(p.read_text(encoding="utf-8"))
+        text = body.split("\n## Verlauf", 1)[0]
+        status = str(meta.get("status", "neu"))
+        out.append({
+            "file": p.name,
+            "meta": meta,
+            "status": status,
+            "words": len(text.split()),
+            "start": " ".join(text.split()[:30]),
+        })
+    out.sort(key=lambda d: IDEA_STATUS.index(d["status"]) if d["status"] in IDEA_STATUS else len(IDEA_STATUS))
+    return out
+
+
+def idea_board(cfg: Config) -> list[tuple[str, list[dict]]]:
+    ideas = list_ideas(cfg)
+    return [(IDEA_TITLES[s], [d for d in ideas if d["status"] == s]) for s in IDEA_STATUS]
+
+
+def idea_counts(cfg: Config) -> dict:
+    ideas = list_ideas(cfg)
+    counts = {s: sum(1 for d in ideas if d["status"] == s) for s in IDEA_STATUS}
+    counts["total"] = len(ideas)
+    return counts
