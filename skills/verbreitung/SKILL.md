@@ -42,7 +42,7 @@ If the edition has no text yet, stop. Posts come from the approved text, never f
 
 ## Output
 
-Write `verbreitung.md` into the edition folder:
+Write `verbreitung.qmd` into the edition folder and render it to `verbreitung.md` beside it (`quarto render verbreitung.qmd`, run in the edition folder; delete a leftover `verbreitung.knit.md`). The `.qmd` is the source, the `.md` is what GitHub and `stand.py` read and is never edited by hand. Both are committed. The file holds:
 
 - A first line naming the source file and the date.
 - One section per channel, in this order: LinkedIn, Bluesky, Mastodon. Each with:
@@ -50,6 +50,22 @@ Write `verbreitung.md` into the edition folder:
   - the character count, counted with `python3 -c "import sys; print(len(open(sys.argv[1]).read()))"` on the post alone, or by eye from the text,
   - the proposed day and time: LinkedIn the morning after the send, Bluesky and Mastodon on the day of the send. Lars decides.
   - the link with its parameter.
+
+## The image for a post
+
+A post can carry the chart of the edition. In the mail the chart leans on the text around it; in a feed it stands alone. So the image for a post is its own figure:
+
+- It is built in a chunk of `verbreitung.qmd`, from the same data and colours as the chart in `index.qmd`. Read and run the data chunk of `index.qmd` from there (the edition of 12 November 2026 shows how) so the post cannot show other numbers than the edition. Never a screenshot, never the PNG from the mail.
+- It has a title that says the point without the edition, with the numbers from the data, and a subtitle that says what is counted. The source line of the chart stays.
+- White background, the font and colours of the brand through `marke.R`, no transparent PNG.
+- The chunk saves one file with a fixed name per channel next to the `.qmd`, for LinkedIn `verbreitung-linkedin.png`, 2400 by 1500 pixels (8 by 5 inches at 300 dpi), and shows it with `knitr::include_graphics()`. The file is committed in the private repository with the `.qmd` and the `.md`; nothing for a post lives outside the edition folder.
+- Look at the rendered image before showing it to Lars: title readable at feed size, nothing cut off, labels unambiguous for someone who has not read the edition.
+
+An edition without a chart gets no image unless Lars asks for one.
+
+## When Lars writes the post himself
+
+His text goes in unchanged, with one line above it that says so, and replaces the draft of the skill. The rules for every post above bind the skill's drafts, not his own words. Say what you notice (a number that changed since the edition, a missing link) and leave the text alone.
 
 Then stop. Stage 11 has a gate: the runner pings Lars with the first line of each post, and he says yes or changes a post.
 
