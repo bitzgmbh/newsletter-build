@@ -9,6 +9,7 @@ A small local app in front of the bitz pipeline (decision 0028). It shows every 
 - Three buttons are mine alone and the app does them itself: "Ausgabe anlegen" from a draft in `_entwuerfe/`, "Freigeben" (stage 9) and "Entwurf in Buttondown anlegen" (stage 10).
 - The app itself never writes the text of an edition; the skill stimme does that in a run (0032), and my own edits at gate 5b are committed as mine before the next run. It never sends an email, and never checks out another branch. Freigabe only fast-forwards `main` to `dev`.
 - I can also decide the gates in Claude Code with `/redaktion` (skills/redaktion, decision 0034). It uses the JSON endpoints under `/api/` and starts runs the same way the buttons do. When a run ends, the app shows a macOS notification; there is no Element ping any more.
+- The page Ideen (`/ideen`) lists `_ideen/` of the private repository by status, read-only; the writing workshop itself runs in Claude Code with `/ideen` (decision 0038).
 - Run history lives in `~/.local/share/bitz-redaktion/runs.db`, outside git. The repository stays the record.
 
 ## Start

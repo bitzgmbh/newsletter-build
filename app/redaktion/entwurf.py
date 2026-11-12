@@ -4,6 +4,7 @@ Usage, from app/:
   uv run python -m redaktion.entwurf pruefen <edition> [--en]
   uv run python -m redaktion.entwurf aktualisieren <edition> [--en]
   uv run python -m redaktion.entwurf publikum <edition> [--en]
+  uv run python -m redaktion.entwurf nummer <edition> <number> [--en]
 
 The draft is created once through the app (POST /ausgabe/<name>/versand), which
 writes its id into pruefpunkte.md. These commands work on that draft:
@@ -12,6 +13,7 @@ writes its id into pruefpunkte.md. These commands work on that draft:
   aktualisieren  renders the edition again, uploads the figures, replaces the
                  body, subject and preview line of the draft, then checks it
   publikum       sets the audience by the answer to the language question (0036)
+  nummer         sets the issue number; German and English carry the same one
 
 Never sends. Exit 0 when every check passes, 2 when one fails, 1 on usage error.
 """
@@ -70,7 +72,10 @@ def checks(d: dict, meta: dict) -> list[tuple[bool, str]]:
 
 def main(argv: list[str]) -> int:
     args = [a for a in argv[1:] if not a.startswith("--")]
-    if len(args) != 2 or args[0] not in ("pruefen", "aktualisieren", "publikum"):
+    number = None
+    if len(args) == 3 and args[0] == "nummer" and args[2].isdigit():
+        number = int(args.pop())
+    if len(args) != 2 or args[0] not in ("pruefen", "aktualisieren", "publikum", "nummer") or (args[0] == "nummer") != (number is not None):
         print(__doc__)
         return 1
     command, name = args
@@ -82,6 +87,10 @@ def main(argv: list[str]) -> int:
     head = {"Authorization": f"Token {buttondown.api_key()}"}
     url = f"{buttondown.API}/emails/{eid}"
 
+    if command == "nummer":
+        r = httpx.patch(url, headers=head, json={"secondary_id": number}, timeout=60)
+        r.raise_for_status()
+        print(f"Nummer {number} gesetzt für {eid}.")
     if command == "publikum":
         r = httpx.patch(url, headers=head, json={"filters": audience(en)}, timeout=60)
         r.raise_for_status()

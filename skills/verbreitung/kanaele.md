@@ -10,6 +10,7 @@ Was pro Kanal gilt. Die Regeln für jeden Post stehen in `SKILL.md`; hier stehen
 - Hashtags: höchstens zwei, am Ende, nur wenn Lars sie schon nutzt. Vorerst keine. Keine Emojis.
 - Link: im ersten Kommentar unter dem Post. Der Post endet mit der Frage. Parameter `?ref=linkedin`.
 - Zeitpunkt: der Morgen nach dem Versand, zwischen 7 und 8 Uhr.
+- Bild: wenn die Ausgabe eine Grafik hat, eine eigene Fassung mit Titel und Untertitel im Bild, weisser Hintergrund, 2400 mal 1500 Pixel, als `verbreitung-linkedin.png` im Ordner der Ausgabe (SKILL.md, "The image for a post"). Der Titel muss ohne die Ausgabe verständlich sein.
 
 ## Bluesky
 
