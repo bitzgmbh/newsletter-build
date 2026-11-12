@@ -12,6 +12,7 @@ A wrong link or a wrong number must not go out. The skill reads as the Schlussre
 - `personas.md`: the five readers of the review stage, as roles.
 - `blickwinkel.md`: the three perspectives, as decided in 0018.
 - `scripts/links.py`: requests every link in a file and reports the status.
+- `scripts/openaccess.py`: looks up every DOI among the links and says whether the publication is open access; a closed one needs the note "(nicht frei zugänglich)" next to its link.
 
 ## Install
 

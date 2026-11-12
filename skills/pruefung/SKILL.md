@@ -33,7 +33,8 @@ An edition folder in the private repository `bitzgmbh/newsletter`, `ausgaben/<JJ
 A hard fail blocks the edition until it is fixed. Three checks:
 
 1. **Facts.** Every fact, number, date, name or claim about the world traces to a source: an entry in `recherche.md`, a link in the text, or a code chunk that computes it. Lars's own words quoted from `rohentwurf.md`, and statements of his own experience, judgement or intention, are not facts and are not checked. A claim about the world that no source backs fails, even when it sounds right.
-2. **Links.** Run `scripts/links.py <file>`. Every URL must resolve (status 2xx or 3xx). A placeholder where a link belongs, e.g. "[Link]" or a relative `?ref=` without a page, fails, because the edition cannot go out with it.
+2. **Links.** Run `scripts/links.py <file>`. Every URL must resolve (status 2xx or 3xx). A placeholder where a link belongs, e.g. "[Link]" or a relative `?ref=` without a page, fails, because the edition cannot go out with it. A publisher that answers a script with 403 (many journals do) is not a fail when the DOI is known to OpenAlex; say so in the line.
+   - **Open access.** Run `scripts/openaccess.py <file>` on `index.qmd` and, when present, `index-en.qmd`. It looks up every DOI among the links. A scientific publication that is not open access needs a short note in the same line as its link: "(nicht frei zugänglich)" in German, "(not open access)" in English. A closed publication without the note fails, and so does a DOI the script could not look up until it is checked by hand. When the script names a free copy (a repository or the author's page), say so in the report; linking the free copy is better than the note. A publication linked without a DOI (a journal page, a PDF) is checked by hand and listed the same way.
 3. **Numbers.** Every number in the prose comes from a code chunk or from a cited source (`reproducibility.md`). A number typed by hand without a source fails. Dates in the front matter and the word budgets in comments are not prose.
 
 For each item write: Bestanden or Fail, the part and the quoted passage, the reason, and which source would settle it. Name the missing source; do not write the fix.
@@ -70,6 +71,7 @@ Datum, geprüfte Datei, Hauptleserschaft, Stand von recherche.md (vorhanden oder
 ## Hart
 - Fakten: Bestanden oder Fail, je Punkt: Teil, Zitat, Grund, welche Quelle es klären würde.
 - Links: Ausgabe von links.py, je URL eine Zeile.
+- Open Access: Ausgabe von openaccess.py, je DOI eine Zeile; fehlt der Hinweis "nicht frei zugänglich", ist das ein Fail.
 - Zahlen: Bestanden oder Fail, je Zahl.
 
 ## Hinweise
