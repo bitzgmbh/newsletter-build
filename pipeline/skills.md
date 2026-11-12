@@ -4,8 +4,8 @@ First assessment of 2026-10-17, made at the AI Retreat. For each stage of the [p
 
 | # | Stage | Who | Skill needed? | Something to build on | Open decision | Crew role |
 |---|---|---|---|---|---|---|
-| 1 | Intake | Me | Yes, a light one: collect ideas into the backlog | The Element inbox room already captures notes from my phone | | |
-| 2 | Select | Me | No, this is my call. A backlog view would help | A harvested list, like the control center in my vault | | |
+| 1 | Intake | Me | Yes, a light one: collect ideas into the backlog | Decided in 0038: a room of its own, inbox-newsletter, captured like the other rooms; the skill [skills/ideen](../skills/ideen/) files each note in `_ideen/` and runs the writing session (built 2026-11-08) | | Ressortleitung |
+| 2 | Select | Me | No, this is my call. A backlog view would help | Decided in 0038: the Ideen page in [app/](../app/) lists `_ideen/` by status, read-only (built 2026-11-08) | | |
 | 3 | Rough draft | Me | No, the voice stays mine. At most, turn a spoken draft into text | Transcription I already run locally | | |
 | 4 | Research | Agent | Yes | Built: [skills/recherche](../skills/recherche/), on my vault and the web | | Fachbibliothekar:in für Datenrecherche |
 | 5 | Draft | Agent with me | Yes, the core skill: it proposes the outline as bullets, then reviews my text and records what it changes (0015) | Built: [skills/stimme](../skills/stimme/), on my plain-writing skill and [template.md](template.md) | | Wissenschaftsjournalist:in; Kursleiter:in für "Probier es selbst" |

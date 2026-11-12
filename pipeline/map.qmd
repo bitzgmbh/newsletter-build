@@ -67,8 +67,8 @@ Die Vorlage für eine Ausgabe steht in [template.md](template.md). Welche Stufen
 
 | # | Stufe | Wer | Stand |
 |---|---|---|---|
-| 1 | Eingang: Ideen aus einem Element Thread, Sprachnotizen, Stichworte | Ich | offen |
-| 2 | Auswahl der nächsten Ausgabe aus dem Backlog | Ich | offen |
+| 1 | Eingang: Ideen aus dem eigenen Element Raum inbox-newsletter, Sprachnotizen, Stichworte, Fotos | Ich | Skill `ideen` gebaut (0038), erste Werkstatt offen |
+| 2 | Auswahl der nächsten Ausgabe aus dem Vorrat in `_ideen/` | Ich | Seite Ideen in der App gebaut (0038) |
 | 3 | Rohentwurf, gesprochen oder geschrieben | Ich | offen |
 | 4 | Recherche: Zotero, meine Notizen, das Web | Agent | offen |
 | 5 | Entwurf: Gliederung und Text vom Agenten, der Skill prüft seinen Text selbst, Durchsicht von mir, 500 bis 700 Wörter (0015, 0031, 0032, 0033) | Agent mit mir | Skill stimme gebaut, noch ohne Probelauf |

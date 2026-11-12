@@ -46,6 +46,12 @@ format:
 - [0032 Der Text kommt vom Agenten, ich sehe ihn durch](0032-text-vom-agenten.md)
 - [0033 Die Prüfung durch den Skill gehört zu 5b](0033-pruefung-stimme-in-5b.md)
 - [0034 Entscheiden in Claude Code, die App führt durch die Stufen](0034-entscheiden-in-claude-code.md)
+- [0035 Versand am Donnerstag, erst im Wochenabstand, dann alle zwei Wochen](0035-versand-am-donnerstag.md)
+- [0036 Die Sprache wird im Abo Formular abgefragt](0036-sprachfrage-im-formular.md)
+- [0037 Die Ausgabe entsteht im Terminal, die App ist die Übersicht](0037-redaktion-im-terminal.md)
+- [0038 Ideen: ein eigener Eingang, eine Schreibwerkstatt im Terminal, die App zeigt den Vorrat](0038-ideen.md)
+- [0039 Die Marke kommt als Kopie ins private Repository, Grafiken und Website lesen sie](0039-marke-als-kopie.md)
+- [0040 Offengelegt in Sätzen, mit bestätigten Sätzen und einem Link](0040-offengelegt-in-saetzen.md)
 
 ## Open
 
@@ -130,3 +136,5 @@ The sheet I work through at the AI Retreat (16 to 18 October 2026). The table is
 - What would settle it: the first run of editions. Course sign-ups for rstatszh are due at the end of November 2026, so the welcome edition goes out on 3 November and the four editions of "Mehr als R" weekly from 10 November to 1 December, the course first; the trial editions become the live editions. The course page names no sign-up date; end of November is my own plan.
 
 ### Notes
+
+- 2026-11-04: the dates changed with [0035](0035-versand-am-donnerstag.md): the welcome edition goes out on Thursday 5 November, the next edition on 12 November, then one every two weeks. The question itself, where an edition gets its date and who keeps the gates on time, stays open.
