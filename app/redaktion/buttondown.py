@@ -4,6 +4,7 @@ The app only ever creates drafts (status "draft"). Lars checks the preview in
 Buttondown and presses send there. The API key comes from the macOS Keychain,
 service "bitz-buttondown", and is read only at the moment of the upload.
 """
+import html
 import re
 import shutil
 import subprocess
@@ -52,6 +53,17 @@ def _split(text: str) -> tuple[dict, str]:
     return {}, text
 
 
+def _img_to_markdown(m: re.Match) -> str:
+    tag = m.group(0)
+    src = re.search(r'(?<![\w-])src="([^"]*)"', tag)
+    if not src:
+        return tag
+    alt = re.search(r'(?<![\w-])alt="([^"]*)"', tag, flags=re.S)
+    text = html.unescape(alt.group(1)) if alt else ""
+    text = re.sub(r"\s+", " ", text).replace("[", "(").replace("]", ")").strip()
+    return f"![{text}]({src.group(1)})"
+
+
 def clean_markdown(body: str, meta: dict, variables: dict) -> str:
     """Markdown for the email from Quarto source or Quarto's gfm output."""
     body = re.sub(r"<!--.*?-->", "", body, flags=re.S)
@@ -62,6 +74,9 @@ def clean_markdown(body: str, meta: dict, variables: dict) -> str:
     body = re.sub(r"(?ms)^:::+\s*\{\.nur-web[^}]*\}\s*$.*?^:::+\s*$", "", body)
     body = re.sub(r"(?m)^:::+.*$", "", body)
     body = re.sub(r"</?div[^>]*>", "", body)
+    # Quarto's gfm output writes a figure with alt text as an HTML <img>; the
+    # upload and the email need the markdown form.
+    body = re.sub(r"<img\b[^>]*>", _img_to_markdown, body, flags=re.S)
     body = re.sub(r"(?m)^\*Reihe:\s*\*\s*$", "", body)
     body = re.sub(r"\n{3,}", "\n\n", body)
     return body.strip() + "\n"

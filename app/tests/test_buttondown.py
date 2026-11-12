@@ -40,6 +40,13 @@ class Convert(unittest.TestCase):
         problems = buttondown.check_fields({"title": "T", "subtitle": "TODO: Betreff", "description": ""})
         self.assertEqual(len(problems), 2)
 
+    def test_html_img_from_gfm_becomes_markdown(self):
+        body = ('<div class="nur-mail">\n<img src="index_files/figure-commonmark/fig-1.png"\n'
+                'data-fig-alt="Zwei\nSäulen" alt="Zwei\nSäulen, &quot;geplant&quot; [hell]" />\n</div>\n')
+        out = buttondown.clean_markdown(body, {}, {})
+        self.assertEqual(out.strip(), '![Zwei Säulen, "geplant" (hell)](index_files/figure-commonmark/fig-1.png)')
+        self.assertEqual(buttondown.local_images(out), ["index_files/figure-commonmark/fig-1.png"])
+
     def test_local_images(self):
         body = "![a](index_files/x.png) ![b](https://cdn/y.png)"
         self.assertEqual(buttondown.local_images(body), ["index_files/x.png"])
