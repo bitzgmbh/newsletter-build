@@ -1,0 +1,21 @@
+{% extends "base.j2" %}
+{% block title %}Ideen{% endblock %}
+{% block content %}
+<p><a href="/">Übersicht</a></p>
+<h1>Ideen</h1>
+<p class="muted">Der Vorrat in <code>_ideen/</code> des privaten Repositorys (Entscheidung 0038). Die Werkstatt läuft im Terminal mit <code>/ideen</code>; diese Seite zeigt nur den Stand.</p>
+<div class="board">
+{% for title, ideas in groups %}
+  <section class="col">
+    <h2>{{ title }} <span class="muted">{{ ideas|length }}</span></h2>
+    {% for d in ideas %}
+      <a class="card" href="/idee/{{ d.file }}">
+        <strong>{{ d.meta.titel or d.file }}</strong>
+        <span class="muted">{{ d.meta.datum }} · {{ d.meta.form }}</span>
+        <span>{{ d.start }}{% if d.words > 30 %} ...{% endif %}</span>
+      </a>
+    {% else %}<p class="muted">leer</p>{% endfor %}
+  </section>
+{% endfor %}
+</div>
+{% endblock %}

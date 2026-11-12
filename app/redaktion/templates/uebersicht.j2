@@ -17,6 +17,7 @@
 <div class="board">
   <section class="col">
     <h2>Entwürfe</h2>
+    <p class="muted"><a href="/ideen">Ideen</a>: {{ ideas.total }}{% if ideas.neu %}, {{ ideas.neu }} neu{% endif %}</p>
     {% for d in drafts %}
       <a class="card" href="/entwurf/{{ d.file }}">
         <strong>{{ d.meta.ausgabe or d.file }}</strong>

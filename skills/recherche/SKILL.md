@@ -50,6 +50,7 @@ Stufe 4, am <Datum>, aus <wie vielen> Quellen. Jede Zahl im Text muss hierher od
 
 ## Aussagen aus dem Rohentwurf
 - "<Aussage, in Lars's Worten>": <belegt | ? ...>. Quelle: <Link>, Stand <Datum>. "<der Satz aus der Quelle>"
+  Bei einer wissenschaftlichen Publikation dazu: frei zugänglich oder nicht (`skills/pruefung/scripts/openaccess.py` prüft jede DOI), und falls nicht, ob es eine freie Fassung gibt.
 
 ## Eigenes Material
 - <Pfad oder Link>: <was es beiträgt>

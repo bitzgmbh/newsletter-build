@@ -145,6 +145,7 @@ def uebersicht(request: Request):
         request, "uebersicht.j2",
         columns=editions.board(cfg),
         drafts=editions.list_drafts(cfg),
+        ideas=editions.idea_counts(cfg),
         waiting=[e for e in eds if e["waiting"]],
         recent=runs.recent(limit=8),
         active={e["name"]: runs.active(e["name"]) for e in eds},
@@ -181,6 +182,21 @@ def entwurf_uebernehmen(file: str, sendedatum: str = Form(...), kurzname: str = 
         os.unlink(fh.name)
         note += ("Issue: " + p.stdout.strip()) if p.returncode == 0 else ("Issue nicht angelegt: " + p.stderr.strip())
     return RedirectResponse(f"/ausgabe/{name}?hinweis={quote(note)}", status_code=303)
+
+
+@app.get("/ideen", response_class=HTMLResponse)
+def ideen(request: Request):
+    """The backlog of ideas, read-only (decision 0038). The workshop runs in Claude Code."""
+    return page(request, "ideen.j2", groups=editions.idea_board(cfg), counts=editions.idea_counts(cfg))
+
+
+@app.get("/idee/{file}", response_class=HTMLResponse)
+def idee(request: Request, file: str):
+    ideas = {d["file"]: d for d in editions.list_ideas(cfg)}
+    if file not in ideas:
+        raise HTTPException(404, "Keine Idee")
+    text = (editions.ideas_dir(cfg) / file).read_text(encoding="utf-8")
+    return page(request, "idee.j2", idea=ideas[file], text=editions.body_without_frontmatter(text))
 
 
 @app.get("/ausgabe/{name}", response_class=HTMLResponse)
