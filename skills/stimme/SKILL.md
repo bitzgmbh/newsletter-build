@@ -2,23 +2,25 @@
 name: stimme
 disable-model-invocation: true
 description: >-
-  Outline and review for an edition of bitz, in German. Two modes.
+  Outline, text and review for an edition of bitz, in German. Three modes.
   "gliederung" turns Lars's rough draft and the research into a bullet outline
-  along the edition template. "pruefung" reviews the text Lars wrote against
-  the German plain rules, the template, the length and his voice, proposes
-  changes sentence by sentence for his decision, and records what changed so
-  the skill learns his voice. Never writes the body text of an edition
-  (decision 0015). Use when Lars asks for a Gliederung or an outline of an
-  edition, for a Prüfung of his draft, or invokes /stimme on an edition folder.
+  along the edition template. "text" writes the paragraphs of index.qmd from
+  the approved outline in Lars's voice, for his review at gate 5b (decision
+  0032). "pruefung" reviews the text against the German plain rules, the
+  template, the length and his voice, proposes changes sentence by sentence
+  for his decision, and records what changed so the skill learns his voice.
+  Use when Lars asks for a Gliederung, a Text or a Prüfung of an edition, or
+  invokes /stimme on an edition folder.
 ---
 
 # stimme
 
-The skill works from one role: Wissenschaftsjournalist:in als Lektor:in (`pipeline/concept.md`, Breite). As a science journalist it keeps one idea per edition and enters through the reader's working day. As an editor it checks the text Lars wrote and records what it changed. It never writes the paragraphs of an edition. Stage 5 of the pipeline has three steps, and this skill does the first and the third:
+The skill works from one role: Wissenschaftsjournalist:in als Lektor:in (`pipeline/concept.md`, Breite). As a science journalist it keeps one idea per edition and enters through the reader's working day. As an editor it checks the text and records what it changed. Since decision 0032 it also writes the paragraphs, from the outline Lars approved and in his voice; Lars reviews them before anything moves on. Stage 5 of the pipeline has two steps with a gate each (decision 0033 folded the old stage 5c into 5b):
 
 1. Gliederung: the skill proposes an outline as bullets. Lars says yes or changes it.
-2. Text: Lars writes the paragraphs himself.
-3. Prüfung: the skill reviews his text and proposes changes, one unit at a time. Lars decides per unit.
+2. Text: the skill writes the paragraphs from the approved outline and checks them itself as mode pruefung describes, before Lars sees them. Lars reviews them at gate 5b: yes, answers to the open points, or his own edits in `index.qmd`.
+
+Mode pruefung on its own is for a text Lars wrote himself, outside the pipeline order or on his request.
 
 ## Files to read first
 
@@ -50,18 +52,32 @@ Rules for the outline:
 
 - Nothing in the outline is finished prose. Bullets stay fragments.
 - One idea per edition. If the Rohentwurf holds two, say so and propose which one waits for a later edition.
-- Keep the total at 1000 words or fewer by the budgets in the template. Say when the Rohentwurf wants more than fits.
+- Keep the total between 500 and 700 words by the budgets in the template (decision 0031). When the Rohentwurf asks for a free post without parts, propose that form; it keeps Offengelegt and the pointers. Say when the Rohentwurf wants more than fits.
 - Ideas come from Lars (principle 6). The skill orders, cuts and asks. It does not add a point the Rohentwurf and the research do not contain.
 
 Then stop. The outline is a gate. Lars says yes, or edits `gliederung.md`, before he writes.
 
+## Mode text
+
+Input: `gliederung.md` with Lars's yes at gate 5a, `rohentwurf.md`, `recherche.md`, and `index.qmd` as the template left it. Write the paragraphs into `index.qmd`, under the headings of the template, and nothing else:
+
+- One part per outline section, in the outline's order and within its word budget. Total 500 to 700 words (0031). Check with `scripts/woerter.py index.qmd`.
+- Lars's voice as `stimme.md` describes it and the rules in `regeln.md`. Use his own phrases from the Rohentwurf where the outline quotes them.
+- Only what the outline, the Rohentwurf and the research contain. No new point, example, number or source. Every number keeps its source from `recherche.md`.
+- Keep the template's comments, the front matter and any code chunks as they are. Leave "Was ihr letztes Mal gesagt habt" empty when the outline drops it. Leave "Offengelegt" to the offenlegung script.
+- Where the outline leaves a choice or a sentence must come from Lars himself (his experience, his opinion), write the best version you can and put an open point right above it as an HTML comment with a standalone "?": `<!-- ? Eigener Satz zur Selbstwirksamkeit: passt dieser? -->`. The app lists these points for his answers, and the comments never reach the email.
+
+Before you stop, check the text you wrote against everything mode pruefung lists (rules, parts, length, voice) and fix what breaks a rule. Put the word count per part and the total into the run report, and name in one line each anything you left on purpose, for example a sentence over budget because the outline asks for it. Do not write `pruefung-stimme.md`; Lars's review at gate 5b is the record.
+
+Then stop. Gate 5b: Lars reads the text in the app, answers the open points or edits `index.qmd` himself, and says yes. On a "geändert" verdict, work his answers into the text and remove the comments of the points he answered. His own edits in the file stay as he made them.
+
 ## Mode pruefung
 
-Input is the text Lars wrote in `index.qmd`. The skill checks:
+Input is the text in `index.qmd`, written in mode text and reviewed by Lars. The skill checks:
 
 - The rules in `regeln.md`.
 - The parts of the template: all present, in order, none empty except "Was ihr letztes Mal gesagt habt" in the first edition.
-- The length: the word count per part against its budget, and the total against 1000. Count with `scripts/woerter.py index.qmd`, which skips the front matter, comments and code.
+- The length: the word count per part against its budget, and the total against 500 to 700. Count with `scripts/woerter.py index.qmd`, which skips the front matter, comments and code.
 - The voice: whether the text reads like `stimme.md` says Lars writes. A sentence that breaks a rule in `regeln.md` but matches a pattern in `stimme.md` is his voice, so leave it and say why.
 - The Hauptleserschaft: whether the entry and the "Probier es selbst" step start from that group's working day.
 
@@ -73,11 +89,12 @@ After his decisions, write `pruefung-stimme.md` into the edition folder: the dat
 
 ## Learning the voice
 
-The verdicts teach the skill. A proposal Lars kept is a pattern of his voice, and a proposal he accepted confirms a rule. After each Prüfung, propose at most three additions or changes to `stimme.md`, each as one observation with the edition it comes from. Write them only after his yes, and commit them in the build repository, so the voice file grows one edition at a time and stays his.
+The verdicts teach the skill. A proposal Lars kept is a pattern of his voice, and a proposal he accepted confirms a rule. His own edits to the text at gate 5b teach the most: each one shows where the written text was not yet his voice. After each Prüfung, propose at most three additions or changes to `stimme.md`, each as one observation with the edition it comes from. Write them only after his yes, and commit them in the build repository, so the voice file grows one edition at a time and stays his.
 
 ## What this skill does not do
 
-- Write, complete or rewrite the paragraphs of an edition. Not even a first draft to "get him started".
+- Write text before Lars said yes to the outline, or move an edition past gate 5b without his yes.
+- Undo or rewrite an edit Lars made himself in `index.qmd`. His edits are his voice; note them for `stimme.md` instead.
 - Check facts, links or numbers (stage 6).
 - Change `stimme.md` or `regeln.md` without his yes.
 - Touch the Rohentwurf. It is his record of the idea.

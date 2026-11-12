@@ -1,0 +1,21 @@
+{% extends "base.j2" %}
+{% block title %}Versand{% endblock %}
+{% block content %}
+<p><a href="/">Übersicht</a> · <a href="/ausgabe/{{ e.name }}">{{ e.title }}</a></p>
+<h1>Entwurf für Buttondown: {{ e.title }}</h1>
+<p>Die App legt nur einen Entwurf an. Prüfen und senden machst du in Buttondown.</p>
+{% for err in errors %}<p class="hinweis">{{ err }}</p>{% endfor %}
+{% for d in items %}
+<section class="panel">
+  <h2>{{ "Deutsch" if d.lang == "de" else "Englisch" }} ({{ d.qmd }})</h2>
+  <p><strong>Betreff:</strong> {{ d.meta.subtitle }}<br><strong>Vorschau:</strong> {{ d.meta.description }}</p>
+  {% if d.images %}<p class="muted">Bilder zum Hochladen: {{ d.images|join(", ") }}</p>{% endif %}
+  {% if d.problems %}<ul class="hinweis">{% for pr in d.problems %}<li>{{ pr }}</li>{% endfor %}</ul>{% endif %}
+  {% if d.lang == "en" %}<p class="muted">Wer die englische Fassung bekommt, ist noch nicht entschieden. Der Entwurf geht ohne Filter an und bleibt ein Entwurf.</p>{% endif %}
+  <article class="doc">{{ d.body|md|safe }}</article>
+  {% if e.state.next.id in ["10", "11", "fertig"] and not d.problems %}
+  <form method="post"><input type="hidden" name="sprache" value="{{ d.lang }}"><button>Entwurf in Buttondown anlegen</button></form>
+  {% elif e.state.next.id not in ["10", "11", "fertig"] %}<p class="muted">Erst nach der Freigabe.</p>{% endif %}
+</section>
+{% endfor %}
+{% endblock %}

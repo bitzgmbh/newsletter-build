@@ -117,7 +117,7 @@ Die Personas ersetzen keine echten Leser:innen. Sie fangen ab, was offensichtlic
 
 "Möglichst autonom" stösst sich mit Prinzip 6 (die Stimme bleibt meine) und mit den Prüfpunkten. Deshalb gilt:
 
-- **Fest:** meine Ideen (Stufen 1 bis 3), der Prüfpunkt nach dem Entwurf (Stufe 5, dort schreibe ich den Text selbst, Entscheidung 0015) und mein Ja vor dem Senden (Stufe 9).
+- **Fest:** meine Ideen (Stufen 1 bis 3), die Prüfpunkte nach Gliederung und Text (Stufe 5: der Skill schreibt den Text nach meiner Gliederung, ich sehe ihn durch, Entscheidung 0032) und mein Ja vor dem Senden (Stufe 9).
 - **Kann später ohne mein Ja laufen:** die Prüfpunkte nach Recherche (4), Prüfungen (6), Grafiken (7), Übersetzung (8) und Verbreitung (11).
 - **Regel:** Ein Prüfpunkt fällt erst weg, wenn meine Feedback Notizen an dieser Stelle in drei Ausgaben hintereinander keine Änderung zeigen. Meine eigene Spur entscheidet über die Selbstständigkeit, nicht ein Gefühl.
 

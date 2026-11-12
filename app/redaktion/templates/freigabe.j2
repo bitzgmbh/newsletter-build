@@ -1,0 +1,24 @@
+{% extends "base.j2" %}
+{% block title %}Freigabe{% endblock %}
+{% block content %}
+<p><a href="/">Übersicht</a> · <a href="/ausgabe/{{ e.name }}">{{ e.title }}</a></p>
+<h1>Freigabe: {{ e.title }}</h1>
+<p>Die Freigabe schreibt die Offenlegung, trägt <code>Stufe 9 Freigabe: ja</code> in <code>pruefpunkte.md</code> ein, committet auf dev, schiebt main auf dev ({{ p.base }}, nur als fast forward) und pusht beide.</p>
+{% if branch != "dev" %}<p class="hinweis">Das private Repository steht auf {{ branch }}, nicht auf dev.</p>{% endif %}
+{% if not p.fast_forward %}<p class="hinweis">{{ p.base }} hat Commits, die dev nicht hat. Erst main in dev mergen.</p>{% endif %}
+{% if p.others %}
+<section class="panel warn">
+  <h2>Kommt mit nach main</h2>
+  <p>Die Freigabe bringt auch diese Dateien außerhalb der Ausgabe nach main:</p>
+  <ul>{% for f in p.others %}<li><code>{{ f }}</code></li>{% endfor %}</ul>
+</section>
+{% endif %}
+<h2>Änderungen der Ausgabe ({{ p.mine|length }} Dateien)</h2>
+<pre class="diff">{{ p.diff }}</pre>
+{% if e.state.next.id == "9" and branch == "dev" and p.fast_forward %}
+<form method="post" class="panel">
+  <label><input type="checkbox" name="bestaetigt" value="ja" required> Ich habe die Ausgabe gelesen und gebe sie frei.</label>
+  <button type="submit">Freigeben</button>
+</form>
+{% else %}<p class="muted">Freigabe erst bei Stufe 9 (jetzt {{ e.state.next.id }}).</p>{% endif %}
+{% endblock %}

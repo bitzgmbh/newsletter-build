@@ -1,0 +1,163 @@
+{% extends "base.j2" %}
+{% block title %}{{ e.title }}{% endblock %}
+{% block content %}
+{% set st = e.state %}
+<p><a href="/">Übersicht</a></p>
+<h1>{{ e.title }}</h1>
+<p class="muted">{{ e.rel }} · Sendedatum {{ e.date }}</p>
+
+{% set was = {
+  "4": "Der Agent sucht Quellen für jede Aussage im Rohentwurf, dein eigenes Material und Kontext und schreibt recherche.md.",
+  "5a": "Der Agent schlägt aus Rohentwurf und Recherche eine Gliederung in Stichworten vor (gliederung.md).",
+  "5b": "Der Skill stimme schreibt die Absätze in index.qmd, nach deiner Gliederung und in deiner Stimme. Er prüft den Text selbst gegen Regeln, Länge und Stimme. Wo ein Satz von dir kommen muss, setzt er einen offenen Punkt mit \"?\". Danach liest du den Text und gibst dein Urteil (0032).",
+  "6": "Der Skill pruefung prüft Fakten, Links und Zahlen hart und gibt Hinweise zu Länge und Stil (pruefbericht.md).",
+  "7": "Der Skill grafiken baut die Grafik aus Daten, die du nennst (grafiken.md und ein Block in index.qmd).",
+  "8": "Der Skill uebersetzung schreibt die englische Fassung (index-en.qmd).",
+  "11": "Der Skill verbreitung schreibt die Posts für LinkedIn, Bluesky und Mastodon (verbreitung.md). Posten machst du."
+} %}
+<section class="panel status">
+  <p class="stufe"><strong>Nächste Stufe: {{ st.next.id }} {{ st.next.name }}</strong>{% if st.next.note %} ({{ st.next.note }}){% endif %}</p>
+
+  {% if unsaved %}
+  <p class="hinweis">Positron hat ungespeicherte Änderungen an {{ unsaved|join(", ") }}. Speichere sie dort (Cmd+S), bevor du hier klickst; sonst sieht der Runner sie nicht. Danach diese Seite neu laden.</p>
+  {% endif %}
+  {% if active %}
+  <div class="jetzt running">
+    <h3><span class="spinner" aria-hidden="true"></span> Gerade läuft etwas</h3>
+    <p>Der Runner arbeitet an dieser Ausgabe. <a href="/lauf/{{ active }}">Lauf #{{ active }} live ansehen</a>. Wenn er fertig ist, lade diese Seite neu; dann siehst du hier deinen nächsten Schritt.</p>
+  </div>
+  {% elif st.gate_waiting %}
+  <div class="jetzt">
+    <h3>Was jetzt? Dein Urteil zu Stufe {{ st.gate_waiting }}</h3>
+    <ol>
+      <li>Lies links <strong>{{ tabs.get(shown, shown) if shown else "das Ergebnis" }}</strong> (<code>{{ shown }}</code>), das Ergebnis der Stufe.</li>
+      {% if st.gate_waiting == "5b" %}
+      <li>Willst du selbst Sätze ändern, öffne den Text:
+        <form method="post" action="/ausgabe/{{ e.name }}/oeffnen" class="inline"><input type="hidden" name="datei" value="index.qmd"><button class="secondary">index.qmd in Positron öffnen</button></form>
+        Speichern genügt. Die App committet deine Änderungen als deine, bevor der Runner weitermacht.</li>
+      {% endif %}
+      <li>Oder in Claude Code mit Entscheidungsboxen:
+        <code id="cmd">/redaktion {{ e.name[11:] }}</code>
+        <button type="button" class="secondary" onclick="navigator.clipboard.writeText(document.getElementById('cmd').textContent); this.textContent='kopiert'">kopieren</button></li>
+      <li>Entscheide mit einem der Knöpfe. Jeder startet den Runner, der dein Urteil in <code>pruefpunkte.md</code> einträgt.</li>
+    </ol>
+    {% if report6 and report6.blockiert %}
+    <p class="hinweis"><strong>Der Prüfbericht blockiert die Ausgabe: {{ report6.fails }} Fail offen.</strong> Beantworte die Fails rechts und klick "Einarbeiten und weiter". "Ja, weiter" übergeht sie.</p>
+    {% endif %}
+    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
+      <button name="aktion" value="ja">Ja, weiter</button>
+      <span>Passt so. Der Runner trägt dein Ja ein und macht gleich die nächste Stufe.</span>
+    </form>
+    {% if points %}
+    <p class="choice"><a class="button secondary-link" href="#punkte">Offene Punkte beantworten ({{ points|length }})</a>
+      <span>Rechts neben dem Ergebnis steht jeder Punkt mit "?" mit einem eigenen Feld. Deine Antworten gehen zusammen an den Runner, der sie in {{ shown }} einarbeitet. Danach entscheidest du hier noch einmal.</span></p>
+    {% else %}
+    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
+      <textarea name="text" rows="3" placeholder="Was soll sich ändern?" required></textarea>
+      <button name="aktion" value="geaendert" class="secondary">Ändern lassen</button>
+      <span>Der Runner trägt deine Sätze ein und passt das Ergebnis an. Danach entscheidest du hier noch einmal.</span>
+    </form>
+    {% endif %}
+    <details class="selten">
+      <summary>Selten: die Ausgabe zurückschicken</summary>
+      <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
+        <select name="zurueck" required><option value="" disabled selected>zurück zu Stufe …</option>{% for b in back_to %}<option>{{ b }}</option>{% endfor %}</select>
+        <button name="aktion" value="blockiert" class="danger">Blockieren</button>
+        <span>Nur wenn das Ergebnis nicht zu retten ist. Die Ausgabe springt auf die gewählte Stufe zurück.</span>
+      </form>
+    </details>
+  </div>
+  {% elif st.next.id == "9" %}
+  <div class="jetzt">
+    <h3>Was jetzt? Die Freigabe</h3>
+    <p>Alle Stufen haben dein Ja. Lies die Ausgabe ein letztes Mal und gib sie frei. Danach geht sie als Entwurf nach Buttondown.</p>
+    <p><a class="button" href="/ausgabe/{{ e.name }}/freigabe">Zur Freigabe</a></p>
+  </div>
+  {% elif st.next.id == "10" %}
+  <div class="jetzt">
+    <h3>Was jetzt? Der Entwurf in Buttondown</h3>
+    <p>Die Ausgabe ist freigegeben. Die App legt einen Entwurf in Buttondown an; senden machst du dort.</p>
+    <p><a class="button" href="/ausgabe/{{ e.name }}/versand">Entwurf für Buttondown</a></p>
+  </div>
+  {% elif st.next.id == "fertig" %}
+  <div class="jetzt"><h3>Fertig</h3><p>Alle Stufen haben dein Ja.</p></div>
+  {% else %}
+  <div class="jetzt">
+    <h3>Was jetzt? Stufe {{ st.next.id }} starten</h3>
+    <p>{{ was.get(st.next.id, "") }} Danach liest du das Ergebnis hier und gibst dein Urteil.</p>
+    <form method="post" action="/ausgabe/{{ e.name }}/lauf" class="choice">
+      {% if st.next.id == "7" %}<input name="quelle" placeholder="Datenquelle für die Grafik (Datei oder Paket)">{% endif %}
+      <button name="aktion" value="start">Stufe {{ st.next.id }} {{ st.next.name }} starten</button>
+    </form>
+  </div>
+  {% endif %}
+</section>
+
+<div class="{% if points %}two answer-layout{% else %}one{% endif %}">
+  <section>
+    <nav class="tabs">
+      {% for f in present %}<a href="?datei={{ f }}" class="{% if f == shown %}on{% endif %}" title="{{ f }}">{{ tabs[f] }}</a>{% endfor %}
+    </nav>
+    {% if report %}
+    <article class="doc bericht">
+      <p class="urteil {{ 'rot' if report.blockiert else 'gruen' }}">{{ report.urteil or "Kein Urteil im Bericht." }}</p>
+      <h3>Harte Prüfungen</h3>
+      {% for g in report.hart %}{% set c = g.counts %}{% set total = c.ok + c.hinweis + c.fail %}
+      <div class="check">
+        <span class="name">{{ g.name }}</span>
+        <span class="bar">{% if total %}<i class="ok" style="flex:{{ c.ok }}"></i><i class="hinweis" style="flex:{{ c.hinweis }}"></i><i class="fail" style="flex:{{ c.fail }}"></i>{% endif %}</span>
+        <span class="zahlen">{{ c.ok }} bestanden{% if c.hinweis %} · {{ c.hinweis }} Hinweis{% endif %}{% if c.fail %} · <strong>{{ c.fail }} Fail</strong>{% endif %}</span>
+      </div>
+      {% endfor %}
+      <h3>Zu entscheiden ({{ report.punkte|length }})</h3>
+      {% for p in report.punkte %}
+      <div class="befund {{ p.art }}"><p class="wo">{{ p.section }} <span class="tag {{ 'fail' if p.art == 'muss' else 'hinweis' }}">{{ "Fail" if p.art == "muss" else "Hinweis" }}</span></p>{{ p.text|md|safe }}</div>
+      {% else %}<p class="muted">Kein Fail und kein Hinweis.</p>{% endfor %}
+      {% if points %}<p class="muted">Rechts hat jeder Punkt ein Feld für deine Antwort.</p>{% endif %}
+      <h3>Hinweise zu Länge, Stil und Leser:innen</h3>
+      {% for g in report.hinweise %}
+      <details><summary>{{ g.name }}{% if g.eintraege %} ({{ g.eintraege|length }}){% endif %}</summary>
+        {% if g.body %}{{ g.body|md|safe }}{% endif %}
+        {% if g.eintraege %}<ul>{% for i in g.eintraege %}<li>{{ i.text|md|safe }}</li>{% endfor %}</ul>{% endif %}
+      </details>
+      {% endfor %}
+      <details><summary>Ganzer Bericht</summary>{{ shown_text|md|safe }}</details>
+    </article>
+    {% elif shown %}<article class="doc">{{ shown_text|md|safe }}</article>{% else %}<p class="muted">Noch kein Ergebnis einer Stufe.</p>{% endif %}
+  </section>
+  {% if points %}
+  <section id="punkte" class="answers">
+    <form method="post" action="/ausgabe/{{ e.name }}/antworten">
+      <h2>Offene Punkte in {{ shown }} ({{ points|length }})</h2>
+      <p class="muted">Beantworte, was du jetzt weisst. Leere Felder bleiben offen.</p>
+      {% for p in points %}
+      <div class="punkt">
+        <p class="wo">{{ p.n }}. {{ p.section or "ohne Teil" }}{% if p.art == "muss" %} <span class="tag fail">Fail, muss behoben werden</span>{% elif p.art == "kann" %} <span class="tag hinweis">Hinweis</span>{% endif %}</p>
+        <p class="frage">{{ p.text }}</p>
+        <textarea name="antwort_{{ p.n }}" rows="2" placeholder="Deine Antwort"></textarea>
+      </div>
+      {% endfor %}
+      <div class="punkt">
+        <p class="wo">Sonst noch etwas</p>
+        <textarea name="allgemein" rows="3" placeholder="Was sonst noch anders soll"></textarea>
+      </div>
+      <div class="send">
+        <button type="submit" name="weiter" value="ja">Einarbeiten und weiter</button>
+        <button type="submit" class="secondary">Einarbeiten, dann noch einmal ansehen</button>
+        <span class="muted">"Einarbeiten und weiter": der Runner arbeitet die Antworten in {{ shown }} ein, zählt das als dein Ja und macht gleich die nächste Stufe. Die zweite Variante, wenn du das Ergebnis danach noch einmal sehen willst.</span>
+      </div>
+    </form>
+  </section>
+  {% endif %}
+</div>
+
+<section>
+  <h2>Prüfpunkte</h2>
+  <table class="gates-kurz">
+  {% for g in gate_rows %}<tr><td class="muted">{{ g.when }}</td><td>{{ g.stage }}</td><td><span class="verdict {{ g.word|replace(',', '')|replace(' ', '-') }}">{{ g.word }}</span></td>
+    <td>{% if g.rest %}<details><summary>Text</summary><p>{{ g.rest }}</p></details>{% endif %}</td></tr>
+  {% else %}<tr><td class="muted">noch keine</td></tr>{% endfor %}
+  </table>
+  {% if recent %}<h2>Läufe</h2><ul>{% for r in recent %}<li><a href="/lauf/{{ r.id }}">#{{ r.id }}</a> Stufe {{ r.stage }}, {{ r.status }}, {{ r.started|zeit }}</li>{% endfor %}</ul>{% endif %}
+</section>
+{% endblock %}

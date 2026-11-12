@@ -16,7 +16,8 @@ My summary for the retreat board, in German, the language the newsletter is writ
 - `decisions/` has one page per decision, with the options and my reasons. Open questions are in `decisions/README.md`, generated from `decisions/README.qmd`: a table as the overview, and one section per question for notes.
 - `pipeline/map.qmd` shows the stages of the pipeline and where each one stands.
 - `pipeline/concept.md` holds the goal, the assumptions I test and the crew behind each stage (in German, decision 0010).
-- `skills/` holds the skills and hooks around the work. The pipeline stage skills land there as they get built.
+- `skills/` holds the skills and hooks around the work, one per pipeline stage plus the runner.
+- `app/` holds Redaktion, the local app I use to move editions through the stages, answer the gates and create the Buttondown draft (decisions 0028 and 0029).
 - `prompts/` archives, word for word, the prompts behind Claude-assisted commits (see `disclosure.md`).
 - The editions and the website live in the private repository `bitzgmbh/newsletter` (decisions 0005 and 0025).
 - `disclosure.md` explains how AI use is recorded in this repository.
@@ -24,7 +25,7 @@ My summary for the retreat board, in German, the language the newsletter is writ
 
 ## Current state
 
-The pipeline exists as a map and a concept. No stage is built yet.
+Every agent stage has a skill (4 Recherche to 11 Verbreitung), the runner moves an edition one stage per call, and the app in `app/` puts the board, the gates, the Freigabe and the Buttondown draft on one screen. The first edition is planned to run through it in November 2026.
 
 ## What stays out
 

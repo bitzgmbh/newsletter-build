@@ -1,0 +1,49 @@
+{% extends "base.j2" %}
+{% block title %}Lauf #{{ run.id }}{% endblock %}
+{% block content %}
+<p><a href="/">Übersicht</a> · <a href="/ausgabe/{{ run.edition }}">{{ run.edition }}</a></p>
+<h1>Lauf #{{ run.id }}, Stufe {{ run.stage }}</h1>
+<p>Status: <strong id="status">{{ run.status }}</strong>{% if run.verdict %} · Urteil: {{ run.verdict }}{% endif %}
+  <span id="cost">{% if run.cost %} · {{ "%.2f"|format(run.cost) }} USD, {{ run.turns }} Schritte{% endif %}</span></p>
+<ol id="log" class="log">
+{% for ev in events %}<li class="{{ ev.kind }}" data-id="{{ ev.rowid }}"><pre>{{ ev.text }}</pre></li>{% endfor %}
+</ol>
+{% if run.status == "läuft" %}
+<p id="puls" class="puls" role="status"><span class="spinner" aria-hidden="true"></span>
+  <span>Läuft seit <strong id="dauer">…</strong>. Letzter Schritt vor <strong id="still">…</strong>.</span></p>
+{% endif %}
+<div id="weiter" class="panel jetzt"{% if run.status == "läuft" %} hidden{% endif %}>
+  <h3>Wie weiter?</h3>
+  <p>Der Bericht des Laufs steht oben. Geh zurück zur Ausgabe: dort steht das neue Ergebnis der Stufe,
+     und du entscheidest wieder mit "Ja, weiter", beantwortest die offenen Punkte oder lässt noch einmal ändern.</p>
+  <p><a class="button" href="/ausgabe/{{ run.edition }}">Zurück zur Ausgabe</a></p>
+</div>
+{% if run.status == "läuft" %}
+<script>
+const log = document.getElementById("log");
+const last = [...log.children].map(li => +li.dataset.id).pop() || 0;
+const started = {{ run.started }} * 1000;
+let lastStep = Date.now();
+const fmt = (ms) => { const s = Math.floor(ms / 1000); return s < 60 ? s + " s" : Math.floor(s / 60) + " min " + (s % 60) + " s"; };
+const tick = setInterval(() => {
+  document.getElementById("dauer").textContent = fmt(Date.now() - started);
+  document.getElementById("still").textContent = fmt(Date.now() - lastStep);
+}, 1000);
+const es = new EventSource("/lauf/{{ run.id }}/events?after=" + last);
+es.onmessage = (m) => {
+  const ev = JSON.parse(m.data);
+  const li = document.createElement("li"); li.className = ev.kind;
+  const pre = document.createElement("pre"); pre.textContent = ev.text; li.appendChild(pre);
+  log.appendChild(li); lastStep = Date.now();
+  document.getElementById("puls").scrollIntoView({block: "end"});
+};
+es.addEventListener("ende", (m) => {
+  const d = JSON.parse(m.data); es.close();
+  document.getElementById("status").textContent = d.status;
+  document.getElementById("weiter").hidden = false;
+  clearInterval(tick); document.getElementById("puls").remove();
+  if (d.cost) document.getElementById("cost").textContent = " · " + d.cost.toFixed(2) + " USD, " + d.turns + " Schritte";
+});
+</script>
+{% endif %}
+{% endblock %}

@@ -2,11 +2,14 @@
 
 Die Bausteine, die der Skill in `index.qmd` einsetzt, ohne Daten. `<name>` ist der Name der Grafik, `<datei>` die Datei in `daten/`, die `holen.R` geholt hat. Die Daten kommen von Lars (siehe SKILL.md).
 
-## 1. Setup Chunk: Daten lesen, Zahlen rechnen, an OJS übergeben
+Farben und Schrift kommen aus der bitz Marke: `_brand.yml` im Wurzelverzeichnis von `bitzgmbh/newsletter`, gelesen über `R/marke.R` im selben Repository (Entscheidung 0039). In den Bausteinen steht kein Hex-Wert und kein Schriftname. Welches Token wofür gilt, steht in SKILL.md unter "The brand".
+
+## 1. Setup Chunk: Daten lesen, Zahlen rechnen, Marke lesen, an OJS übergeben
 
 ````markdown
 ```{r}
 #| label: daten-<name>
+#| message: false
 library(readr)
 library(dplyr)
 datei <- "daten/<datei>"
@@ -19,9 +22,21 @@ letztes <- d[nrow(d), ]
 abgerufen <- format(as.Date(file.info(datei)$mtime), "%d.%m.%Y")
 zahl <- function(x) format(x, decimal.mark = ",", nsmall = 1)
 quelle <- paste0("Quelle: <Herausgeber>, <Datensatz>, abgerufen am ", abgerufen)
-ojs_define(d_<name> = d)
+
+# Die bitz Marke: Farben und Schrift aus _brand.yml, nie als fester Wert.
+source("../../R/marke.R")
+br <- load_brand(brand_path())
+farbe <- cat_colours(br, 1)           # eine Reihe: chart-1, das Grün der Marke
+# farben <- cat_colours(br, <n>)      # Gruppen: chart-1 bis chart-n in dieser Reihenfolge
+# farben <- seq_steps(br, <n>)        # geordnete Stufen: seq-low (wenig) bis seq-high (viel)
+ojs_define(d_<name> = d,
+           marke_<name> = list(farbe = farbe, ink = tok(br, "foreground"),
+                               grey = tok(br, "secondary"), linie = tok(br, "grey-light"),
+                               schrift = font_of(br, "base")))
 ```
 ````
+
+Bei mehreren Reihen geht der Vektor `farben` an `scale_colour_manual()` oder `scale_fill_manual()` und als `farben = unname(farben)` in die Liste für OJS, dort als `color: {domain: <Gruppen>, range: m.farben, legend: true}`. Die Legende folgt der Reihenfolge der Gruppen oder Stufen.
 
 ## 2. Eine Zahl im Text, aus den Daten
 
@@ -42,20 +57,19 @@ Im Jahr `r letztes$<x>` lag <die Grösse> bei `r zahl(letztes$<y>)` <Einheit>.
 #| fig-height: 4.2
 #| dev: ragg_png
 library(ggplot2)
+require_brand_font(br)                # bricht ab, wenn die Schrift der Marke fehlt
 ggplot(d, aes(<x>, <y>)) +
-  geom_line(linewidth = 1.2, colour = "#2440a8") +
-  geom_point(size = 2.4, colour = "#2440a8") +
+  geom_line(linewidth = 1.2, colour = farbe) +
+  geom_point(size = 2.4, colour = farbe) +
   scale_y_continuous(labels = zahl) +
   labs(x = NULL, y = "<Grösse in Einheit>", caption = quelle) +
-  theme_minimal(base_size = 16) +
-  theme(panel.grid.minor = element_blank(),
-        plot.caption = element_text(size = 10, hjust = 0))
+  theme_brand(br, base_size = 16)     # Hintergrund weiss, wie die Mail
 ```
 
 :::
 ````
 
-Regeln: `echo: false` gilt für das Dokument, kein Code Folding. Eine Aussage pro Grafik, keine Legende, wenn Farbe nichts bedeutet, Schrift gross genug für das Handy, die Quelle als Caption.
+Regeln: `echo: false` gilt für das Dokument, kein Code Folding. Eine Aussage pro Grafik, keine Legende, wenn Farbe nichts bedeutet, Schrift gross genug für das Handy, die Quelle als Caption. `theme_brand()` setzt Schrift, Textfarben, Rasterlinien und den weissen Hintergrund aus der Marke; `require_brand_font()` steht vor dem Zeichnen, damit kein Bild in einer Ersatzschrift entsteht. Fehlt die Schrift und lässt sie sich nicht laden, bricht das Rendern mit einer Meldung ab. Dann die Schrift installieren, nichts am Chunk ändern.
 
 ## 4. Die interaktive Grafik für die Website
 
@@ -64,18 +78,24 @@ Regeln: `echo: false` gilt für das Dokument, kein Code Folding. Eine Aussage pr
 
 ```{ojs}
 //| label: fig-<name>-web
-Plot.plot({
-  height: 320,
-  marginLeft: 50,
-  style: {fontSize: "14px"},
-  x: {label: null, tickFormat: d => String(d)},
-  y: {label: "<Grösse in Einheit>", grid: true, tickFormat: d => d.toLocaleString("de-CH")},
-  marks: [
-    Plot.line(transpose(d_<name>), {x: "<x>", y: "<y>", stroke: "#2440a8", strokeWidth: 2}),
-    Plot.dot(transpose(d_<name>), {x: "<x>", y: "<y>", fill: "#2440a8", r: 4,
-      title: d => `${d.<x>}: ${d.<y>.toLocaleString("de-CH")} <Einheit>`, tip: true})
-  ]
-})
+{
+  // Farben und Schrift aus _brand.yml, über ojs_define() aus dem Setup Chunk.
+  const m = marke_<name>;
+  const daten = transpose(d_<name>);
+  return Plot.plot({
+    height: 320,
+    marginLeft: 50,
+    style: {fontSize: "14px", fontFamily: `'${m.schrift}', sans-serif`, color: m.ink,
+            background: "transparent"},
+    x: {label: null, tickFormat: d => String(d)},
+    y: {label: "<Grösse in Einheit>", grid: true, tickFormat: d => d.toLocaleString("de-CH")},
+    marks: [
+      Plot.line(daten, {x: "<x>", y: "<y>", stroke: m.farbe, strokeWidth: 2}),
+      Plot.dot(daten, {x: "<x>", y: "<y>", fill: m.farbe, r: 4,
+        title: d => `${d.<x>}: ${d.<y>.toLocaleString("de-CH")} <Einheit>`, tip: true})
+    ]
+  });
+}
 ```
 
 `r quelle`.
@@ -83,7 +103,7 @@ Plot.plot({
 :::
 ````
 
-`transpose()` ist die Hilfe von Quarto für Daten aus `ojs_define()`. Die Daten stecken damit im gerenderten Dokument und in `_freeze/`; die Website braucht weder R noch die Datei.
+`transpose()` ist die Hilfe von Quarto für Daten aus `ojs_define()`. Die Daten und die Werte der Marke stecken damit im gerenderten Dokument und in `_freeze/`; die Website braucht weder R noch die Datei. Die Schriftdatei lädt die Seite selbst, weil `_quarto.yml` die Marke einbindet. Der Hintergrund bleibt durchsichtig, damit das Papier der Seite durchscheint.
 
 ## 5. Skelett von `daten/holen.R`
 
@@ -129,5 +149,6 @@ cat("geholt:", ziel, "(", groesse, "Bytes )\n")
 # Grafiken
 
 - fig-<name>: <die Aussage>. Stützt: <der Satz oder die Zahl im Text>. Quelle: <Herausgeber, Datensatz, URL>, abgerufen am <Datum>.
-- Versionen: R <x.y.z>, ggplot2 <x.y.z>, readr <x.y.z>, dplyr <x.y.z>, Quarto <x.y.z> (aus sessionInfo() und quarto --version).
+- Marke: <Stand aus marke-stand.txt im Wurzelverzeichnis>. Tokens: <welches Token für welche Reihe, Gruppe oder Stufe>.
+- Versionen: R <x.y.z>, ggplot2 <x.y.z>, readr <x.y.z>, dplyr <x.y.z>, ragg <x.y.z>, systemfonts <x.y.z>, brand.yml <x.y.z>, Quarto <x.y.z> (aus sessionInfo() und quarto --version).
 ```

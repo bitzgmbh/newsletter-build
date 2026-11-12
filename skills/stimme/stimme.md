@@ -34,4 +34,8 @@ Lars hat zwei Posts aus dem GHE Blog als Proben seiner Stimme benannt. Beide sin
 
 ## Aus den Ausgaben
 
-Noch keine. Die erste Ausgabe schreibt Lars ganz von Hand (Probelauf 0); ihre Prüfung liefert die ersten Beobachtungen aus einem echten Text.
+Aus der Prüfung von 2026-11-10-lernen-am-eigenen-projekt (Stufe 5c, 3. November 2026), nach Lars's Ja:
+
+- Du nennst einen Teil nach seinem Inhalt, nicht nach der Vorlage: "Der Kurs" statt "Die Idee". Die Namen der Teile können flexibel bleiben (2026-11-10-lernen-am-eigenen-projekt).
+- Du prüfst, ob eine Zeitangabe zum Versanddatum stimmt, und streichst, was dann veraltet ist: "es gibt keine laufende Ausgabe" (2026-11-10-lernen-am-eigenen-projekt).
+- Beim Lesen markierst du offene Stellen mit einem Merkwort im Text, auch in einer Überschrift, und die Antwort kommt als Stichwort: "Der Kurs", "inline", "okay so" (2026-11-10-lernen-am-eigenen-projekt).

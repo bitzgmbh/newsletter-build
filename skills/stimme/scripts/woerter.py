@@ -56,8 +56,8 @@ def main(argv):
     total = sum(n for _, n in counts)
     for name, n in counts:
         print(f"{n:5d}  {name}")
-    print(f"{total:5d}  Total (Budget 1000)")
-    return 0 if total <= 1000 else 2
+    print(f"{total:5d}  Total (Rahmen 500 bis 700)")
+    return 0 if total <= 700 else 2
 
 
 if __name__ == "__main__":

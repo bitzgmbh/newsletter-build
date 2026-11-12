@@ -46,7 +46,7 @@ Die Regeln für Deutsch, abgeleitet aus dem plain-writing Skill, den Lars für E
 
 ## Form einer Ausgabe
 
-31. Die Teile und Wortzahlen aus `pipeline/template.md`, höchstens 1000 Wörter.
+31. Die Teile und Wortzahlen aus `pipeline/template.md`, 500 bis 700 Wörter (0031). Ab und zu ein freier Beitrag ohne Teile, gleich lang, mit Offengelegt und den Hinweisen.
 32. Eine Idee pro Ausgabe. Eine zweite Idee wird eine zweite Ausgabe.
 33. Der Einstieg kommt aus dem Alltag der Hauptleserschaft oder aus einer Anekdote aus Lars's Kursen, in weniger als vier Sätzen.
 34. "Probier es selbst" setzt bei einer Aufgabe an, die die Leser:innen heute in Excel machen (concept.md, A4).
