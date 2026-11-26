@@ -5,7 +5,7 @@ Die Regeln für Deutsch, abgeleitet aus dem plain-writing Skill, den Lars für E
 ## Schreibweise
 
 1. Schweizer Schreibweise: ss statt ß, immer.
-2. Die Form mit Doppelpunkt: Leser:innen, Kolleg:innen, Beginner:innen.
+2. Die Form mit Doppelpunkt: Leser:innen, Kolleg:innen, Beginner:innen, Teilnehmer:innen. Nie die Form mit Partizip: nicht "Teilnehmende", "Studierende", "Forschende", "Mitarbeitende". Das gilt auch für Titel, Achsen und Quellenzeilen von Grafiken und für Posts.
 3. Die Leser:innen werden mit du angesprochen.
 4. Gerade Anführungszeichen ("so"), keine typografischen.
 5. Keine Gedankenstriche, weder lang noch kurz. Ein Punkt, ein Komma, ein "und", oder zwei Sätze.
