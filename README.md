@@ -6,7 +6,15 @@ Until 26 October 2026 the newsletter was called Zur Einsicht, which is now the n
 
 ## Current state
 
-The welcome edition went out on 5 November 2026. Decision 0035 sets the rhythm after it: the next edition on Thursday 12 November 2026, then one every two weeks on Thursdays.
+Three editions are out. Since the welcome edition of 5 November 2026 an edition goes out every two weeks on Thursdays, in German and in English (decision 0035). The next one is due on Thursday 10 December 2026.
+
+| No. | Sent | German | English |
+|---:|---|---|---|
+| 3 | 26 November 2026 | [Lernen am eigenen Projekt](https://buttondown.com/bitz/archive/lernen-am-eigenen-projekt/) | [Learning with your own project](https://buttondown.com/bitz/archive/learning-with-your-own-project/) |
+| 2 | 12 November 2026 | [Wie lernt man R am besten?](https://buttondown.com/bitz/archive/wie-lernt-man-r-am-besten/) | [How do you learn R best?](https://buttondown.com/bitz/archive/how-do-you-learn-r-best/) |
+| 1 | 5 November 2026 | [Willkommen bei bitz](https://buttondown.com/bitz/archive/willkommen-bei-bitz/) | |
+
+What the last edition changed in the system: the export for the mail drops the whole block for the website, the draft check looks for messages from R, charts carry their legend above the chart in one row, and an edition now shows the answers to the question of the edition before it. The log of [26 November 2026](log/2026-11-26.md) has the details.
 
 I work through an edition in the terminal with Claude Code, and the app in `app/` shows where each edition stands (decision 0037). The stages 1 and 2 have the skill `ideen` and the page Ideen in the app (0038). The stages 4 to 8, 10 and 11 each have a skill. The runner, which moves an edition one stage per call, still exists and runs only when I ask for it.
 
@@ -20,6 +28,7 @@ The pipeline has 13 stages, drawn in [pipeline/map.qmd](pipeline/map.qmd). Today
 4. My yes is the push from `dev` to `main` in the private repository (stage 9).
 5. The skill `versand` creates the Buttondown drafts in German and English, sets who receives which one and checks the drafts against the repository. I send them in Buttondown myself (stage 10).
 6. The skill `verbreitung` writes the posts that lead to the edition. I post them (stage 11).
+7. After each sent edition this README gets the new row in the table above and what the edition changed in the system, together with the log entry of the day.
 
 No skill starts on its own, and nothing goes out without my yes.
 

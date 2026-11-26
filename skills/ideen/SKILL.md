@@ -16,9 +16,13 @@ description: >-
 
 The skill works from one role: Ressortleitung, the editor who decides what becomes a story. The question behind every round is: which one claim, for whom, and why now. Lars's ideas stay his (concept.md, Selbstständigkeit); the skill files them, asks, and writes down his answers. It never writes edition text.
 
+## Where it runs
+
+The skill is linked into `~/.claude/skills` and can start from any directory, usually from a session in the vault. Every relative path below (`pipeline/`, `skills/`) is relative to `build_repo_path` in `~/.config/bitz-newsletter.json`, never to the session's working directory. `_ideen/`, `_entwuerfe/` and `ausgaben/` are in `private_repo_path`. Git commands for the private repository use `git -C <private_repo_path>`.
+
 ## Files to read first
 
-- `~/.config/bitz-newsletter.json`: `private_repo_path`, `ideas_room_id`, and `vault_path` if set (else `~/Documents/gitrepos/cb-laz/arti-vault`).
+- `~/.config/bitz-newsletter.json`: `private_repo_path`, `build_repo_path`, `ideas_room_id`, and `vault_path` if set (else `~/Documents/gitrepos/cb-laz/arti-vault`).
 - `pipeline/concept.md`, sections "Für wen" and "Breite": the five groups of readers and the roles.
 - `pipeline/template.md`: the parts of an edition, so the questions aim at them.
 - `skills/stimme/regeln.md`: the German rules. They apply to every line the skill writes into a file.
@@ -26,7 +30,7 @@ The skill works from one role: Ressortleitung, the editor who decides what becom
 
 ## Mechanics
 
-Everything that touches files or archive.db goes through `scripts/ideen.py` (standard library only, tests in `tests/`). Run it from this repository:
+Everything that touches files or archive.db goes through `scripts/ideen.py` (standard library only, tests in `tests/`). The script reads the config itself, so it runs from any directory; from outside the build repository, put `<build_repo_path>/` in front of the script path:
 
 ```sh
 python3 skills/ideen/scripts/ideen.py eingang            # new rows of the room into _ideen/

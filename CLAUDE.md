@@ -17,6 +17,10 @@ One file per work session in `log/`, named `YYYY-MM-DD.md` (add `-2` for a secon
 
 Write in plain German (decision 0010). Leave a bullet empty with "nichts" rather than padding it.
 
+## README after each sent edition
+
+After every edition that went out, `README.md` gets the new row in the table of editions under "Current state", the date of the next edition and a short paragraph on what the edition changed in the system. The steps are in `skills/versand/SKILL.md`, section "After the send".
+
 ## Decisions
 
 One file per decision in `decisions/`, numbered `NNNN-short-name.md`, with Frage, Optionen, Wahl, Warum and Datum (files before 0010 use the English labels). When a decision is made, remove its row and its section from the open part of `decisions/README.qmd`. Then run `quarto render decisions/README.qmd` and commit `README.qmd` together with the generated `README.md`. Never edit `decisions/README.md` by hand.

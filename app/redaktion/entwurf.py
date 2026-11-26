@@ -54,7 +54,10 @@ def checks(d: dict, meta: dict) -> list[tuple[bool, str]]:
     b = d.get("body", "")
     text = re.sub(r"<!--.*?-->", "", b, flags=re.S)
     blocks = [x.strip() for x in text.split("\n\n") if x.strip()]
-    wrapped = [x[:40] for x in blocks if "\n" in x and not x.startswith(("- ", "* ", "|", "#"))]
+    # Lists and tables have one line per item; only a paragraph must stay on one line.
+    wrapped = [x[:40] for x in blocks if "\n" in x and not x.startswith(("- ", "* ", "|", "#"))
+               and not re.match(r"\d+\.\s", x)]
+    leftovers = ("```", "library(", "Plot.plot(", "Attaching package", "masked from")
     n_filters = len((d.get("filters") or {}).get("filters", []))
     return [
         (d.get("status") == "draft", f"Status {d.get('status')} (erwartet draft)"),
@@ -62,7 +65,7 @@ def checks(d: dict, meta: dict) -> list[tuple[bool, str]]:
         ("<br" not in b and "</p>" not in b, "kein HTML aus dem Rich Text Editor (<br>, <p>)"),
         (not wrapped, f"kein Zeilenende mitten im Absatz {wrapped[:3] if wrapped else ''}".strip()),
         (not buttondown.local_images(b) and "<img" not in b, "Grafiken hochgeladen, kein lokaler Pfad"),
-        ("```" not in b and "library(" not in b, "kein Code im Text"),
+        (not any(x in b for x in leftovers), "kein Code und keine Meldung von R im Text"),
         ("TODO" not in b and "{{<" not in b, "kein TODO, kein offener Shortcode"),
         (d.get("subject") == str(meta.get("subtitle")), f"Betreff: {d.get('subject')}"),
         (d.get("description") == str(meta.get("description") or ""), "Vorschausatz wie im Kopf der Ausgabe"),

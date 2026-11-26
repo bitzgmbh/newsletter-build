@@ -24,6 +24,12 @@ class Convert(unittest.TestCase):
         out = buttondown.clean_markdown(body, self.META, {})
         self.assertEqual(out.strip(), "Mail")
 
+    def test_nur_web_with_html_in_code_dropped_whole(self):
+        body = ('<div class="nur-web">\n\n``` {ojs}\n  const l = html`<div>a</div>`;\n'
+                '  return html`<div>${l}</div>`;\n```\n\nWebtext\n\n</div>\n\nMail\n')
+        out = buttondown.clean_markdown(body, self.META, {})
+        self.assertEqual(out.strip(), "Mail")
+
     def test_empty_reihe_line_dropped(self):
         out = buttondown.clean_markdown("*Reihe: {{< meta reihe >}}*\n\nText\n", self.META, {})
         self.assertEqual(out, "Text\n")

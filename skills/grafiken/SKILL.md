@@ -64,9 +64,11 @@ The org `.gitignore` ignores `*.csv`. The skill does not commit data. It writes 
 3. Insert into `index.qmd`, at the place the outline or Lars names, from the templates in `vorlage.md`:
    - a setup chunk (`label: daten`, no output) that reads the file, keeps the rows and columns needed, computes the numbers the text uses, reads the brand, and calls `ojs_define()` with the data and the brand values;
    - the figure chunk with `label: fig-<name>`, `fig-cap` and `fig-alt` built with `!expr` from the data, `echo: false`, `dev: ragg_png`, inside `::: {.nur-mail}`;
-   - the OJS cell with `Plot.plot()` on `transpose(<name>)`, with tooltips, inside `::: {.nur-web}`, followed by the source line.
+   - the OJS cell with `Plot.plot()` on `transpose(<name>)`, with tooltips, inside `::: {.nur-web}`, followed by the source line. Its label starts with `grafik-`, never with `fig-`: a `fig-` label without a caption puts an empty "Abbildung 2" on the page. The same holds for every chart without a caption.
+   - A legend is above the chart in one row, in the order of the data from left to right (lightest step left, darkest right), in both charts. HTML inside the OJS cell is fine; the export for the mail drops the whole `nur-web` block.
+   - No chunk shows messages or warnings from R: `_quarto.yml` of the private repository sets `message: false` and `warning: false` for all chunks.
    - Numbers from the data in the text as inline R code, never typed.
-4. Render the edition with `quarto render` from the repository root and look at the result: both charts present, the caption states one thing, labels legible at phone width.
+4. Render the edition with `quarto render` from the repository root and look at the result: both charts present, the caption states one thing, labels legible at phone width, no output of R ("Attaching package") anywhere on the page.
 5. Write `grafiken.md` into the edition folder: the chart's label, the claim, the one statement, the source with URL and date, the state of the brand from `marke-stand.txt` with the tokens used, and the versions from `sessionInfo()` (R, ggplot2, readr, dplyr, ragg, systemfonts, brand.yml, Quarto).
 6. Stop. The chart is a gate: Lars looks at it and says yes.
 
