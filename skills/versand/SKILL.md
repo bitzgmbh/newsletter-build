@@ -91,6 +91,16 @@ A survey can only be answered from the mail. In the web archive Buttondown shows
 
 A subscriber answers a survey once. A second click lands on the sign-up page. Lars's test accounts receive the real mail with the live survey, so no click on an answer in a test mail.
 
+## After the send
+
+Once Lars says the mail is out, read both mails back (status `sent`) and do these steps without being asked:
+
+1. Add a line to `pruefpunkte.md` of the edition: "Stufe 10 Versand: gesendet von Lars in Buttondown am <date> um <time> Uhr, deutsch und englisch; im Archiv unter <both addresses>". Commit it and push dev and main of the private repository.
+2. Update `README.md` of this repository, section "Current state": a new row in the table of editions (number, date, both archive links), the date of the next edition, and one paragraph on what the edition changed in the system, with a link to the log entry. This update follows every sent edition (Lars, 26 November 2026).
+3. Write or complete the log entry of the day in `log/`.
+4. Push dev of this repository and open or update the pull request into main.
+5. Stop the app if this session started it.
+
 ## What this skill never does
 
 - Send, schedule or publish an email. Changing the text of a sent mail (`aktualisieren`) changes its archive page and sends nothing; the check then reports the status `sent`, which is expected.
