@@ -15,7 +15,9 @@ The edition is written in Quarto, the mail goes out from Buttondown. This skill 
 ## Before
 
 - Stage 9 is done: `stand.py` shows "10 Versand" for the edition, dev and main of the private repository are pushed.
-- The app runs (`curl -s <app_url>/api/ausgaben`). If not, ask Lars to start it in its own terminal with `cd app && uv run redaktion`.
+- The app runs (`curl -s <app_url>/api/ausgaben`). If not, start it as a background command with `cd app && uv run redaktion` and stop it after the send, or ask Lars to start it in its own terminal. After a change to the code of the app, restart it.
+- Neither `index.qmd` nor `index-en.qmd` has changes that are not committed (`git status` in the private repository). The app renders the working copy. The visual editor of RStudio rewrites a file when it saves: it takes the `{=markdown}` block away from a survey tag and puts the end marker of Offengelegt onto the last sentence. Put both back before the drafts are made, and ask Lars to use the Source mode.
+- Read the preview once (`GET <app_url>/ausgabe/<name>/versand`): no code, no message from R, the survey tag present in each language.
 - Every survey tag in the text (`{{ survey.<code> }}`) exists in Buttondown under exactly that code, one survey per language.
 
 ## Create the drafts
@@ -58,8 +60,10 @@ The command reads the draft back from Buttondown and checks what has gone wrong 
 - The body still starts with `<!-- buttondown-editor-mode: plaintext -->` and holds no `<br>`.
 - No paragraph has a line end inside it. Buttondown shows such a line end as a break in the mail; the export renders with `wrap:none` for this reason.
 - Every figure is uploaded. Quarto writes a figure with alt text as an HTML `<img>`; the export turns it into a markdown image first.
-- No code, no TODO, no open shortcode. The English file is in the render list of `_quarto.yml` (`ausgaben/*/index-en.qmd`); outside it Quarto renders the file with its code visible.
+- No code, no message from R ("Attaching package"), no TODO, no open shortcode. The English file is in the render list of `_quarto.yml` (`ausgaben/*/index-en.qmd`); outside it Quarto renders the file with its code visible.
 - Subject and preview line match the header of the edition, and the audience is filtered.
+
+Once Lars has scheduled the mail, the status reads `scheduled` and the first check fails; that is expected.
 
 Report the result to Lars with the link to each draft. A check that fails is fixed in the repository or in the export, never in the Buttondown editor.
 
