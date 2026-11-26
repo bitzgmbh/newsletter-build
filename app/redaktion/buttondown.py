@@ -70,7 +70,9 @@ def clean_markdown(body: str, meta: dict, variables: dict) -> str:
     body = re.sub(r"\{\{<\s*meta\s+([\w.-]+)\s*>\}\}", lambda m: _lookup(meta, m.group(1)), body)
     body = re.sub(r"\{\{<\s*var\s+([\w.-]+)\s*>\}\}", lambda m: _lookup(variables, m.group(1)), body)
     # gfm output writes divs as HTML; Quarto source writes fenced divs.
-    body = re.sub(r'<div class="nur-web"[^>]*>.*?</div>', "", body, flags=re.S)
+    # The block ends at a closing tag that starts a line: code inside it (an OJS chunk
+    # that builds HTML) can hold further closing div tags.
+    body = re.sub(r'(?ms)^<div class="nur-web"[^>]*>.*?^</div>[ \t]*$', "", body)
     body = re.sub(r"(?ms)^:::+\s*\{\.nur-web[^}]*\}\s*$.*?^:::+\s*$", "", body)
     body = re.sub(r"(?m)^:::+.*$", "", body)
     body = re.sub(r"</?div[^>]*>", "", body)
