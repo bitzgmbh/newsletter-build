@@ -66,6 +66,8 @@ def checks(d: dict, meta: dict) -> list[tuple[bool, str]]:
         (not wrapped, f"kein Zeilenende mitten im Absatz {wrapped[:3] if wrapped else ''}".strip()),
         (not buttondown.local_images(b) and "<img" not in b, "Grafiken hochgeladen, kein lokaler Pfad"),
         (not any(x in b for x in leftovers), "kein Code und keine Meldung von R im Text"),
+        (not re.search(r"Teilnehmende|Studierende|Forschende|Mitarbeitende", b),
+         "Form mit Doppelpunkt (Teilnehmer:innen), keine Form mit Partizip"),
         ("TODO" not in b and "{{<" not in b, "kein TODO, kein offener Shortcode"),
         (d.get("subject") == str(meta.get("subtitle")), f"Betreff: {d.get('subject')}"),
         (d.get("description") == str(meta.get("description") or ""), "Vorschausatz wie im Kopf der Ausgabe"),
